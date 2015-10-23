@@ -7,6 +7,13 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'welcome#index'
 
+  #Need to double check naming conventions for multiple named resources. Else add explicit route to controller
+  resources :users
+  resources :products
+  resources :jobs
+  resources :solution_submissions
+  resources :job_pages
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

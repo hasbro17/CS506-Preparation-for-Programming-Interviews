@@ -1,5 +1,5 @@
 class CreateJobs < ActiveRecord::Migration
-  def change
+  def up
     create_table :jobs do |t|
     	
     	execute <<-SQL

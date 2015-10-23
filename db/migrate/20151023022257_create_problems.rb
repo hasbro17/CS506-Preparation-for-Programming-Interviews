@@ -5,8 +5,10 @@ class CreateProblems < ActiveRecord::Migration
 		CREATE TYPE difficulty AS ENUM ('easy', 'medium', 'hard');
 	SQL
 
+    #Need to link with test cases
     create_table :problems do |t|
     	t.text :problem_title
+      t.integer :total_score
     	t.text :problem_description
     	t.text :input_description
     	t.text :output_description

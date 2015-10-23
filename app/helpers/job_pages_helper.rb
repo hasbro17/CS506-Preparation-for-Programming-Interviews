@@ -1,0 +1,2 @@
+module JobPagesHelper
+end

@@ -11,16 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151023024217) do
+ActiveRecord::Schema.define(version: 20151023032539) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "job_pages", force: :cascade do |t|
+    t.text     "link_name"
+    t.text     "link"
+    t.integer  "job_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "job_pages", ["job_id"], name: "index_job_pages_on_job_id", using: :btree
 
 # Could not dump table "jobs" because of following StandardError
 #   Unknown type 'j_status' for column 'job_status'
 
 # Could not dump table "problems" because of following StandardError
 #   Unknown type 'difficulty' for column 'difficulty_level'
+
+# Could not dump table "solution_submissions" because of following StandardError
+#   Unknown type 's_status' for column 'solution_status'
 
   create_table "users", force: :cascade do |t|
     t.text     "username"
@@ -38,4 +51,6 @@ ActiveRecord::Schema.define(version: 20151023024217) do
     t.datetime "updated_at",  null: false
   end
 
+  add_foreign_key "job_pages", "jobs"
+  add_foreign_key "solution_submissions", "users"
 end
