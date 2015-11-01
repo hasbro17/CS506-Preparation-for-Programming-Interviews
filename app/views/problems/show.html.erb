@@ -1,0 +1,37 @@
+<h2><%= @problem.problem_title %></h2>
+
+<p>
+  <strong>Problem Statment</strong><br>
+  <%= @problem.problem_description %>  
+</p>
+
+<p>
+  <strong>Input Description</strong><br>
+  <%= @problem.input_description %>  
+</p>
+
+<p>
+  <strong>Output Description</strong><br>
+  <%= @problem.output_description %>  
+</p>
+
+<p>
+  <strong>Sample Input</strong><br>
+  <code>
+  <%= @problem.sample_input %>  
+  </code>
+</p>
+
+<p>
+  <strong>Sample Output</strong><br>
+  <code>
+  <%= @problem.sample_output %>  
+  </code>
+</p>
+ 
+<p>
+  <strong>Code Editor Coming Soon</strong><br>
+  
+</p>
+
+<%= link_to 'Back to Problems List', problems_path %>
