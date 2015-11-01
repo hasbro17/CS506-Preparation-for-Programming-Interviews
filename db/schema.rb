@@ -26,14 +26,51 @@ ActiveRecord::Schema.define(version: 20151023032539) do
 
   add_index "job_pages", ["job_id"], name: "index_job_pages_on_job_id", using: :btree
 
-# Could not dump table "jobs" because of following StandardError
-#   Unknown type 'j_status' for column 'job_status'
+  create_table "jobs", force: :cascade do |t|
+    t.text     "job_title"
+    t.text     "job_status"
+    t.integer  "num_views"
+    t.date     "date_posted"
+    t.text     "job_description"
+    t.text     "skills_required"
+    t.text     "job_type"
+    t.text     "role_type"
+    t.text     "location"
+    t.text     "company_name"
+    t.binary   "company_logo_image"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
 
-# Could not dump table "problems" because of following StandardError
-#   Unknown type 'difficulty' for column 'difficulty_level'
+  create_table "problems", force: :cascade do |t|
+    t.text     "problem_title"
+    t.text     "problem_area"
+    t.integer  "total_score"
+    t.text     "problem_description"
+    t.text     "input_description"
+    t.text     "output_description"
+    t.text     "sample_input"
+    t.text     "sample_output"
+    t.float    "accomplish_rate"
+    t.binary   "solution_file"
+    t.text     "difficulty_level"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
 
-# Could not dump table "solution_submissions" because of following StandardError
-#   Unknown type 's_status' for column 'solution_status'
+  create_table "solution_submissions", force: :cascade do |t|
+    t.integer  "problem_id"
+    t.date     "date_submitted"
+    t.text     "solution_status"
+    t.integer  "score"
+    t.text     "language"
+    t.binary   "solution_file"
+    t.integer  "user_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "solution_submissions", ["user_id"], name: "index_solution_submissions_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.text     "username"

@@ -1,13 +1,15 @@
 class CreateProblems < ActiveRecord::Migration
   
   def up
-	execute <<-SQL
-		CREATE TYPE difficulty AS ENUM ('easy', 'medium', 'hard');
-	SQL
+	#execute <<-SQL
+	#	CREATE TYPE difficulty AS ENUM ('easy', 'medium', 'hard');
+	#SQL
 
     #Need to link with test cases
     create_table :problems do |t|
     	t.text :problem_title
+      t.text :problem_area #Might need a separate table for this
+      #t.text :problem_sub_area #Just keep area for now
       t.integer :total_score
     	t.text :problem_description
     	t.text :input_description
@@ -16,7 +18,8 @@ class CreateProblems < ActiveRecord::Migration
     	t.text :sample_output
     	t.float :accomplish_rate
     	t.binary :solution_file#Might need to see if just text can be used
-    	t.column :difficulty_level, :difficulty
+    	#t.column :difficulty_level, :difficulty
+      t.text :difficulty_level
     	t.timestamps null: false
     end
   end
@@ -26,9 +29,9 @@ class CreateProblems < ActiveRecord::Migration
   def down
   	drop_table :problems
 
-  	execute <<-SQL
-  		DROP TYPE difficulty;
-  	SQL
+  	#execute <<-SQL
+  	#	DROP TYPE difficulty;
+  	#SQL
   end
 
 
