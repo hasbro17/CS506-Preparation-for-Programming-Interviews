@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
   #Need to double check naming conventions for multiple named resources. Else add explicit route to controller
   resources :users
-  resources :products
+  resources :problems
   resources :jobs
   resources :solution_submissions
   resources :job_pages
