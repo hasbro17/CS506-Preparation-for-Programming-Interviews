@@ -50,3 +50,6 @@ gem 'rails_12factor', group: :production
 
 ruby "2.2.3"
 
+#Ace Code Editor
+gem 'ace-rails-ap'
+

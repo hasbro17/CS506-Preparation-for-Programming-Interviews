@@ -1,0 +1,12 @@
+<h1>Solution Submitted</h1>
+<p>
+  <strong>Language:</strong>
+  <%= @solution_submission.language %>
+</p>
+ 
+<p>
+  <strong>Code:</strong>
+  <%= simple_format(@solution_submission.solution_string) %>
+</p>
+
+<%= link_to 'Problems List', problems_path %>

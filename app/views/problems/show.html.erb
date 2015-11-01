@@ -18,7 +18,7 @@
 <p>
   <strong>Sample Input</strong><br>
   <code>
-  <%= @problem.sample_input %>  
+  <%= simple_format(@problem.sample_input) %>  
   </code>
 </p>
 
@@ -31,6 +31,24 @@
  
 <p>
   <strong>Code Editor Coming Soon</strong><br>
+  <%= form_for :solution_submission, url: solution_submissions_path do |f| %>  <p>
+    <%= f.label :title, 'Write your solution' %><br>
+    <%= f.text_area :solution_string %><br>
+    <%= f.hidden_field :problem_id, value: @problem.id %><br>
+	
+	<%= f.radio_button :language, 'C++', :checked => true %>
+    <%= f.label :language, 'C++' %>
+    <%= f.radio_button :language, 'Java' %>
+    <%= f.label :language, 'Java'%>
+    <%= f.radio_button :language, 'Python' %>
+    <%= f.label :language, 'Python'%>
+ 
+  </p>
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
   
 </p>
 
