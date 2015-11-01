@@ -1,0 +1,19 @@
+<h1>Problems List</h1>
+ 
+<table>
+  <tr>
+    <th>Problem</th>
+    <th>Area</th>
+    <th>Max Score</th>
+    <th>Difficulty</th>
+  </tr>
+ 
+  <% @problems.each do |problem| %>
+    <tr>
+      <td><%= link_to problem.problem_title, problem_path(problem.id) %></td>
+      <td><%= problem.problem_area %></td>
+      <td><%= problem.total_score %></td>
+      <td><%= problem.difficulty_level %></td>
+    </tr>
+  <% end %>
+</table>
