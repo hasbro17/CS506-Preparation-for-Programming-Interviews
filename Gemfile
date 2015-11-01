@@ -48,5 +48,7 @@ end
 #Heroku Integration
 gem 'rails_12factor', group: :production
 
+#Password encryption
+gem 'bcrypt-ruby', :require => 'bcrypt' 
 ruby "2.2.3"
 

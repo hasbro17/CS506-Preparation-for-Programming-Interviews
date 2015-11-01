@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151023032539) do
+ActiveRecord::Schema.define(version: 20151025233100) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 20151023032539) do
   create_table "users", force: :cascade do |t|
     t.text     "username"
     t.text     "email"
-    t.text     "password"
+    t.text     "hashed_password"
     t.text     "first_name"
     t.text     "last_name"
     t.date     "join_date"
@@ -47,8 +47,9 @@ ActiveRecord::Schema.define(version: 20151023032539) do
     t.text     "fb_accnt"
     t.binary   "resume_pdf"
     t.binary   "profile_pic"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.string   "salt"
   end
 
   add_foreign_key "job_pages", "jobs"
