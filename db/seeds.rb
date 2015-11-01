@@ -7,22 +7,24 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-require 'digest/sha1'
 require 'date'
 
 
 users_list = [
-	#[username, email, password, first_name, last_name, join_date, company, git_accnt, fb_accnt, resume_pdf, profile_pic]
-  [ "haseeb", "hasbro17@gmail.com", "haseeb_password", "Haseeb", "Tariq", Date.new(2014,8,20), "Some Company", "https://github.com/hasbro17", "https://www.facebook.com/hasbro17", nil, nil ],
-  [ "jacob", "hasbro17@gmail.com", "jacob_password", "Jacob", "Wurtz", Date.new(2015,4,20), "Another Company", "https://github.com/JacobWurtz", "https://www.facebook.com/", nil, nil ]
+	#[username, email, simple_password, salt, first_name, last_name, join_date, company, git_accnt, fb_accnt, resume_pdf, profile_pic]
+  [ "haseeb", "hasbro17@gmail.com", "haseeb_password", BCrypt::Engine.generate_salt, "Haseeb", "Tariq", Date.new(2014,8,20), "Some Company", "https://github.com/hasbro17", "https://www.facebook.com/hasbro17", nil, nil ],
+  [ "jacob", "jacobwurtz@gmail.com", "jacob_password", BCrypt::Engine.generate_salt, "Jacob", "Wurtz", Date.new(2015,4,20), "Another Company", "https://github.com/JacobWurtz", "https://www.facebook.com/", nil, nil ]
 ]
 
 
-users_list.each do |username, email, password, first_name, last_name, join_date, company, git_accnt, fb_accnt, resume_pdf, profile_pic |
+users_list.each do |username, email, simple_password, salt, first_name, last_name, join_date, company, git_accnt, fb_accnt, resume_pdf, profile_pic |
   #Simply hash the password without a salt for now, can add salt field later
-  User.create( username: username, email: email, password: Digest::SHA1.hexdigest(password), first_name: first_name, 
+  encrypt_pass = BCrypt::Engine.hash_secret(simple_password, salt)
+  User.create( username: username, email: email, hashed_password: encrypt_pass, 
+  	first_name: first_name, 
 	last_name: last_name, join_date: join_date, company: company, 
-	git_accnt: git_accnt, fb_accnt: fb_accnt, resume_pdf: resume_pdf, profile_pic: profile_pic )
+	git_accnt: git_accnt, fb_accnt: fb_accnt, resume_pdf: resume_pdf, profile_pic: profile_pic, salt: salt )
+  
 end
 
 

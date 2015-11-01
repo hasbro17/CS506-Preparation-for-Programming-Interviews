@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+  get 'sessions/login'
+
+  post 'sessions/login_attempt'
+
+  get 'sessions/profile'
+
+
+  get 'sessions/setting'
+
   get 'welcome/index'
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -7,13 +16,21 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'welcome#index'
 
+
   #Need to double check naming conventions for multiple named resources. Else add explicit route to controller
   resources :users
   resources :problems
   resources :jobs
   resources :solution_submissions
   resources :job_pages
+  resources :sessions
 
+
+ resources :posts do
+	member do
+		get 'new'
+	end
+ end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

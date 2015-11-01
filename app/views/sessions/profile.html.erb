@@ -1,0 +1,8 @@
+<% @page_title = "Profile" -%>
+<h1>Profile</h1>
+<h2 class='User_Header'> <%=@current_user[:username]%></h2>
+<h3>
+ <%=@current_user[:email]%> </br>
+ <%=@current_user[:created_at]%> </br>
+ <%=@current_user[:updated_at]%> 
+</h3>
