@@ -1,28 +1,49 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Preparation for Programming Interviews:
 
-Things you may want to cover:
+Rails 4.2.4
+Ruby 2.2.3
 
-* Ruby version
+To run the app as a local instance in development mode on your local server
 
-* System dependencies
+1. Check out the Iteration 1 release tag by doing
+	git clone --branch v.1.0.1 https://github.com/hasbro17/CS506-Preparation-for-Programming-Interviews
 
-* Configuration
+2. Set up the local Postgres Database:
+	Postgres 9.4.5
 
-* Database creation
+	To run the app in development mode, as defined in the database.yml file, the app accesses a database called "ppi-506_development" using a role called "ppi-506".
+	Username: ppi-506
+	Password: ppi-506
 
-* Database initialization
+	The app fetches the password from an environment variable defined in database.yml file called "PPI_506_DATABASE_PASSWORD".
+	So set the environment variable (for bash) 
+	export PPI_506_DATABASE_PASSWORD="ppi-506"
 
-* How to run the test suite
+	Create the role "ppi-506" in your postgres database and set the permissions for that user to: 
+	1. Login
+	2. Create a database
 
-* Services (job queues, cache servers, search engines, etc.)
+	Then log into the postgres instance using the role ppi-506 and create the required datbase "ppi-506_development".
 
-* Deployment instructions
+	The app should be able to connect to the local database.
 
-* ...
+3. To install dependencies, run:
+	bundle update
 
+4. Migrate and seed the database
+	Run the commands inside the ppi-506 app directory
+	1. rake db:drop
+	2. rake db:create
+	3. rake db:migrate
+	4. rake db:seed
 
-Please feel free to use a different markup language if you do not plan to run
+	This should set up and seed the database
+
+5. Launch the rails app on local host by
+	rails server
+
+6. Visit localhost:3000 in your browser to see the app.
+
 <tt>rake doc:app</tt>.
