@@ -49,7 +49,8 @@ end
 gem 'rails_12factor', group: :production
 
 #Password encryption
-gem 'bcrypt-ruby', :require => 'bcrypt' 
+#gem 'bcrypt-ruby', :require => 'bcrypt' 
+gem 'bcrypt', :require => 'bcrypt' 
 ruby "2.2.3"
 
 #Ace Code Editor
