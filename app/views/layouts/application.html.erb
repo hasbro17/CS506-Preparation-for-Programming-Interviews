@@ -7,8 +7,22 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+    <header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <nav>
+          <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to "Home",   welcome_index_path %></li>
+            <li><%=link_to 'Profile', sessions_profile_path%></li>
+            <li><%= link_to "Problems",   problems_path %></li>
+            <li><%= link_to "Jobs",   jobs_path %></li>
+            <li><%= link_to "Log in", sessions_login_path %></li>
 
-<%= yield %>
-
-</body>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <div class="container">
+      <%= yield %>
+    </div>
+  </body>
 </html>
