@@ -8,7 +8,7 @@ Ruby 2.2.3
 To run the app as a local instance in development mode on your local server
 
 1. Check out the Iteration 1 release tag by doing
-	git clone --branch v.1.0.1 https://github.com/hasbro17/CS506-Preparation-for-Programming-Interviews
+	git clone --branch v1.0.2 https://github.com/hasbro17/CS506-Preparation-for-Programming-Interviews.git
 
 2. Set up the local Postgres Database:
 	Postgres 9.4.5
