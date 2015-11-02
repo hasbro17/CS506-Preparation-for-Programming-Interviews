@@ -175,7 +175,7 @@ end
 #Seed jobs
 jobs_list = [
 
-	#[job_title, job_status, num_views, date_posted, job_description, skills_required, job_type, role_type, location, company_name, company_logo_image]
+	#[job_title, job_status, num_views, date_posted, job_description, skills_required, job_type, role_type, location, company_name, company_logo_image, job_link]
 
 	["Senior Full-Stack Web Developer",
 	"Open",
@@ -205,7 +205,9 @@ Duties will include:
 	"Full-Stack",
 	"Gaithersburg, MD",
 	"Xometry",
-	nil],
+	nil,
+	"https://www.xometry.com/careers/senior-full-stack-web-developer/"
+	],
 	
 
 	["Software Engineer",
@@ -229,7 +231,9 @@ Desired Skills
 	"Sofware-Engineer",
 	"San Jose, CA",
 	"Cisco Systems",
-	nil],
+	nil,
+	"https://jobs.cisco.com/job/San-Jose-Embedded-Senior-Software-Engineer-CA-95101/271615500/"
+	],
 
 
 	["Applications Engineer (iOS)",
@@ -267,7 +271,9 @@ Desired Skills
 	"Software-Engineering",
 	"San Mateo, CA",
 	"GoPro",
-	nil],
+	nil,
+	"https://gopro.com/careers/"
+	],
 
 
 	["Security/Big-Data Research Internship",
@@ -286,11 +292,14 @@ Candidates should be pursuing a PhD or be engaged in active research and have st
 	"Data Science/Engineering",
 	"Princeton, NJ",
 	"NEC Laboratories America",
-	nil]
+	nil,
+	"http://www.nec-labs.com/working-at-nec-labs/"
+	]
 ]
 
 
-jobs_list.each do | job_title, job_status, num_views, date_posted, job_description, skills_required, job_type, role_type, location, company_name, company_logo_image |
+jobs_list.each do | job_title, job_status, num_views, date_posted, job_description, skills_required, job_type, role_type, location, company_name, company_logo_image, job_link |
 	Job.create(job_title: job_title, job_status: job_status, num_views: num_views, date_posted: date_posted, job_description: job_description,
-	 skills_required: skills_required, job_type: job_type, role_type: role_type, location: location, company_name: company_name, company_logo_image: company_logo_image)
+	 skills_required: skills_required, job_type: job_type, role_type: role_type, 
+	 location: location, company_name: company_name, company_logo_image: company_logo_image, job_link: job_link)
 end

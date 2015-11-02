@@ -1,0 +1,21 @@
+<h1>Jobs List</h1>
+ 
+<table>
+  <tr>
+    <th>Job Title</th>
+    <th>Position</th>
+    <th>Role</th>
+    <th>Company</th>
+    <th>Location</th>
+  </tr>
+ 
+  <% @jobs.each do |job| %>
+    <tr>
+      <td><%= link_to job.job_title, job_path(job.id) %></td>
+      <td><%= job.job_type %></td>
+      <td><%= job.role_type %></td>
+      <td><%= job.company_name %></td>
+      <td><%= job.location %></td>      
+    </tr>
+  <% end %>
+</table>
