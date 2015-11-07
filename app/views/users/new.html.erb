@@ -6,7 +6,8 @@
 		<p> Email: </br> <%= f.text_field :email%></p>
 		<p> Password: </br> <%= f.password_field :password%></p>
 		<p> Password Confirmation:</br> <%= f.password_field :password_confirmation%></p>
-		<%= f.submit :Signup %>
+		<%= f.submit :Signup %> </br>
+	<%= flash[:notice] %>
 	<% end %>
 
 	<% if @user.errors.any?%>
