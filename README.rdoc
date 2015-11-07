@@ -34,10 +34,10 @@ To run the app as a local instance in development mode on your local server
 
 4. Migrate and seed the database
 	Run the commands inside the ppi-506 app directory
-	1. rake db:drop
-	2. rake db:create
-	3. rake db:migrate
-	4. rake db:seed
+	1. bin/rake db:drop
+	2. bin/rake db:create
+	3. bin/rake db:migrate
+	4. bin/rake db:seed
 
 	This should set up and seed the database
 
