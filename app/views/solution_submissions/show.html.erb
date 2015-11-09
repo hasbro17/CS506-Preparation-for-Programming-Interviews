@@ -9,4 +9,9 @@
   <%= simple_format(@solution_submission.solution_string) %>
 </p>
 
+<p>
+  <strong>Output generated:</strong>
+  <%= simple_format(@solution_submission.solution_status) %>
+</p>
+
 <%= link_to 'Problems List', problems_path %>
