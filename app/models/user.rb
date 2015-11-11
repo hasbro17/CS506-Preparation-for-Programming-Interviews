@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
 	validates_presence_of :password_confirmation
 	validates_length_of :password, :in => 6..20, :on => :create
 
-
+#called on login to authenticate user
 	def self.authenticate(params)
 		if EMAIL_REGEX.match(params[:username_or_email])
 			user = User.find_by_email params[:username_or_email]
@@ -26,14 +26,15 @@ class User < ActiveRecord::Base
 		end
 	end
 
-
+#called to match given password to database password
 	def match_password(login_password)
-		puts BCrypt::Engine.hash_secret(login_password, salt)
-		if hashed_password == BCrypt::Engine.hash_secret(login_password, salt)
+		hashpass = BCrypt::Password.new(hashed_password)
+		if hashed_password == hashpass
 			return true
 		end
 	end
 
+#encrypts a new password
 	def encrypt_password
 		unless password.blank?
 			self.salt = BCrypt::Engine.generate_salt
@@ -41,6 +42,7 @@ class User < ActiveRecord::Base
 		end
 	end
 
+#called to clear password for security reasons
 	def clear_password
 		self.password = nil
 	end
