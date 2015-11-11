@@ -4,6 +4,11 @@ class JobsController < ApplicationController
 	def index
 		#Fetch all problems
 		@jobs = Job.all
+		if params[:search]
+      @jobs = Job.search(params[:search]).order("created_at DESC")
+    else
+      @jobs = Job.order("created_at DESC")
+    end
 	end
 
 	#Show the specific problem clicked on
