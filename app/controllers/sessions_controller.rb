@@ -20,13 +20,16 @@ class SessionsController < ApplicationController
 		end
 	end
 
+#setup parameters for login attempt
 	def login_params
 		params.permit(:username_or_email, :login_password)
 	end
 	
-	def logout
+#logout method. Destroys user session
+	def destroy
 		session[:user_id] = nil
-		redirect_to :action => 'login'
+		flash[:notice] = "You've successfully logged out"
+		render "login"
 	end
 
 	def profile

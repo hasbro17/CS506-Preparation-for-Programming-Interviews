@@ -8,18 +8,17 @@ class User < ActiveRecord::Base
 	EMAIL_REGEX = /\A[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\z/i
 	validates :username, :presence => true, :uniqueness => true, :length => {:in => 3..20}
 	validates :email, :presence => true, :uniqueness => true, :format => EMAIL_REGEX
-	validates_presence_of :password_confirmation
 	validates :password, :confirmation => true
+	validates_presence_of :password_confirmation
 	validates_length_of :password, :in => 6..20, :on => :create
 
+#called on login to authenticate user
 	def self.authenticate(params)
-		logger.info("authenticating")
 		if EMAIL_REGEX.match(params[:username_or_email])
 			user = User.find_by_email params[:username_or_email]
 		else
 			user = User.find_by_username(params[:username_or_email])
 		end
-		puts user
 		if user && user.match_password(params[:login_password])
 			return user
 		else
@@ -27,14 +26,15 @@ class User < ActiveRecord::Base
 		end
 	end
 
-
+#called to match given password to database password
 	def match_password(login_password)
-		puts BCrypt::Engine.hash_secret(login_password, salt)
-		if hashed_password == BCrypt::Engine.hash_secret(login_password, salt)
+		hashpass = BCrypt::Password.new(hashed_password)
+		if hashed_password == hashpass
 			return true
 		end
 	end
 
+#encrypts a new password
 	def encrypt_password
 		unless password.blank?
 			self.salt = BCrypt::Engine.generate_salt
@@ -42,6 +42,7 @@ class User < ActiveRecord::Base
 		end
 	end
 
+#called to clear password for security reasons
 	def clear_password
 		self.password = nil
 	end
