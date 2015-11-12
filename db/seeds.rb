@@ -8,6 +8,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 require 'date'
+require_relative "../enums.rb"
 
 
 users_list = [
@@ -36,7 +37,7 @@ problems_list = [
 	#Picked from:https://www.hackerrank.com/challenges/insert-a-node-at-a-specific-position-in-a-linked-list
 	["Insert a node at a specific position in a linked list",
 
-	"Linked Lists",
+	Enums::problem_areas_enum["Linked Lists"],
 	 
 	 100, 
 	 
@@ -56,12 +57,13 @@ problems_list = [
 
 	 nil,
 
-	 "Easy" ],
+	 Enums::problem_difficulty_enum["Easy"] 
+	 ],
 
 
 	 ["Merge two sorted linked lists",
 
-	  "Linked Lists",
+	  Enums::problem_areas_enum["Linked Lists"],
 
 	  100,
 
@@ -86,13 +88,13 @@ NULL
 	  
 	  nil,
 
-	  "Medium"],
+	  Enums::problem_difficulty_enum["Medium"]],
 
 
 
 	 ["Detect Cycle",
 	  
-	  "Linked Lists",
+	  Enums::problem_areas_enum["Linked Lists"],
 	  
 	  100,
 	  
@@ -115,12 +117,12 @@ NULL
 
 	  nil,
 	  
-	  "Hard"],
+	  Enums::problem_difficulty_enum["Hard"]],
 
 
 	 ["Binary Search Tree : Insertion",
 	  
-	  "Trees",
+	  Enums::problem_areas_enum["Trees"],
 	  
 	  100,
 	  
@@ -161,7 +163,7 @@ node * right;
 	  
 	  nil,
 
-	  "Easy"]
+	  Enums::problem_difficulty_enum["Easy"]]
 
 ]
 
@@ -201,8 +203,8 @@ Duties will include:
 • Familiarity with automated unit/regression testing and continuous integration
 • Familiarity with versioning systems such as Git
 • Familiarity with agile software development methodologies",
-	"Full-Time",
-	"Full-Stack",
+	Enums::job_type_enum["Full Time"],
+	Enums::role_type_enum["Full-Stack Developer"],
 	"Gaithersburg, MD",
 	"Xometry",
 	nil,
@@ -227,8 +229,8 @@ Desired Skills
 ● Ability to understand a complex problem and work on a small section of the problem. 
 ● Ability to generate specifications for smaller part of the bigger problem. 
 ● Cisco iOS knowledge is preferable but not a must. ",
-	"Full-Time",
-	"Sofware-Engineer",
+	Enums::job_type_enum["Full Time"],
+	Enums::role_type_enum["Software Engineer"],
 	"San Jose, CA",
 	"Cisco Systems",
 	nil,
@@ -267,8 +269,8 @@ Desired Skills
 • Ability to quickly learn and apply new technologies and methodologies - Ability to manage multiple projects and issues concurrently
 • Have some familiarity with Linux embedded programming
 • Experience working with external partners and suppliers",
-	"Full-Time",
-	"Software-Engineering",
+	Enums::job_type_enum["Full Time"],
+	Enums::role_type_enum["Software Engineer"],
 	"San Mateo, CA",
 	"GoPro",
 	nil,
@@ -288,8 +290,8 @@ Candidates should be pursuing a PhD or be engaged in active research and have st
 - Program analysis and domain specific language design
 - System programming, kernel instrumentation, kernel event tracing
 - Security big-data analytics (data mining, machine learning for security)",
-	"Internship",
-	"Data Science/Engineering",
+	Enums::job_type_enum["Internship"],
+	Enums::role_type_enum["Data Scientist"],
 	"Princeton, NJ",
 	"NEC Laboratories America",
 	nil,

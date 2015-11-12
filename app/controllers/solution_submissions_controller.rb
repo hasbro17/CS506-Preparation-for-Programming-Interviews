@@ -9,7 +9,10 @@ class SolutionSubmissionsController < ApplicationController
 	def create
 		@solution_submission = SolutionSubmission.new(solution_submission_params)
 		#Can get rid of date_submitted, already have created timestamp
-		@solution_submission.solution_status = 'Unchecked' #Need to change this to an enum
+
+		@solution_submission.send_to_checker()
+
+		#@solution_submission.solution_status = 'Unchecked' #Need to change this to an enum
 		@solution_submission.save
 		redirect_to @solution_submission
 	end
