@@ -2,6 +2,7 @@ class ProblemsController < ApplicationController
 
 	#Show the list of all problems
 	def index
+		
 		#Fetch all problems
 		@problems = Problem.all
 	end

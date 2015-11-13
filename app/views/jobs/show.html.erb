@@ -19,7 +19,7 @@ Job Status: <%=@job.job_status%> <br>
   <%= simple_format(@job.skills_required) %>  
 </p>
 
-<%= link_to "Link to company careers", @job.job_link %>
+<%= link_to "Link to company careers", @job.job_link[0] %>
 
 <%= link_to "Back to Jobs List", jobs_path %>
 
