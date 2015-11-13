@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151102025337) do
+ActiveRecord::Schema.define(version: 20151112025226) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,9 +38,9 @@ ActiveRecord::Schema.define(version: 20151102025337) do
     t.text     "location"
     t.text     "company_name"
     t.binary   "company_logo_image"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
-    t.text     "job_link"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.text     "job_link",           default: [],              array: true
   end
 
   create_table "problems", force: :cascade do |t|
@@ -55,8 +55,15 @@ ActiveRecord::Schema.define(version: 20151102025337) do
     t.float    "accomplish_rate"
     t.binary   "solution_file"
     t.text     "difficulty_level"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.text     "skeleton_code",       default: [],              array: true
+    t.text     "supported_langs",     default: [],              array: true
+    t.text     "solution_code",       default: [],              array: true
+    t.text     "expected_stdout",     default: [],              array: true
+    t.text     "given_stdin",         default: [],              array: true
+    t.text     "test_prefix",         default: [],              array: true
+    t.text     "test_suffix",         default: [],              array: true
   end
 
   create_table "solution_submissions", force: :cascade do |t|
@@ -67,9 +74,12 @@ ActiveRecord::Schema.define(version: 20151102025337) do
     t.text     "language"
     t.binary   "solution_file"
     t.integer  "user_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.text     "solution_string"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.text     "generated_stdout"
+    t.text     "submitted_code"
+    t.text     "stdin"
+    t.text     "generated_errors"
   end
 
   add_index "solution_submissions", ["user_id"], name: "index_solution_submissions_on_user_id", using: :btree

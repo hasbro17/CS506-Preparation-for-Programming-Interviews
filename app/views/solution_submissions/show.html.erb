@@ -6,11 +6,16 @@
  
 <p>
   <strong>Code:</strong>
-  <%= simple_format(@solution_submission.solution_string) %>
+  <%= simple_format(@solution_submission.submitted_code) %>
 </p>
 
 <p>
-  <strong>Output generated:</strong>
+  <strong>Stdout:</strong>
+  <%= simple_format(@solution_submission.generated_stdout) %>
+</p>
+
+<p>
+  <strong>Solution status:</strong>
   <%= simple_format(@solution_submission.solution_status) %>
 </p>
 

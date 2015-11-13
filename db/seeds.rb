@@ -30,34 +30,257 @@ end
 
 
 #Seed problems
+
+
+
+#supported_langs[]
+supported_langs_P1 = [
+	Enums::languages_enum["C/C++"],
+	Enums::languages_enum["Java"],
+	Enums::languages_enum["Python"]
+]
+
+#Skeleton code to prefill box
+skeleton_code_P1 = [
+	"/*
+  Insert Node at the end of a linked list 
+  head pointer input could be NULL as well for empty list
+  Node is defined as 
+  struct Node
+  {
+     int data;
+     struct Node *next;
+  }
+*/
+Node* Insert(Node *head,int data)
+{
+  // Complete this method
+}
+",
+	
+	"/*
+  Insert Node at the end of a linked list 
+  head pointer input could be NULL as well for empty list
+  Node is defined as 
+  class Node {
+     int data;
+     Node next;
+  }
+*/
+Node Insert(Node head,int data) {
+// This is a \"method-only\" submission. 
+// You only need to complete this method. 
+  
+}
+",
+	
+	"\"\"\"
+ Insert Node at the end of a linked list 
+ head pointer input could be None as well for empty list
+ Node is defined as
+ 
+ class Node(object):
+ 
+   def __init__(self, data=None, next_node=None):
+       self.data = data
+       self.next = next_node
+ 
+ return back the head of the linked list in the below method
+\"\"\"
+
+def Insert(head, data):
+"
+	
+]
+
+#Solution for methods
+solution_code_P1 = [
+
+	#C-Solution#
+	"Node* Insert(Node *head,int data)  
+ {  
+  // Complete this method  
+   Node *cur= new Node;  
+   cur->data = data;  
+   cur->next = NULL;  
+   if(head==NULL){  
+     head = cur;  
+   }else{  
+     Node *curr = new Node;  
+     curr = head;  
+     while(curr->next !=NULL){  
+       curr = curr->next;  
+     }  
+     curr->next = cur;  
+   }  
+     return head;  
+ }",
+
+	#Java
+	"Node Insert(Node head,int data) {
+    if (head == null){
+        head = new Node();
+        head.data = data;
+    }
+    else {
+        Node node = head;
+        while (node.next != null){
+            node = node.next;
+        }
+        node.next = new Node();
+        node.next.data = data;
+    }
+    return head;
+}",
+
+	#No Python added yet
+	"def Insert(head, data):
+    runner = head
+    if head == None:
+        head = Node(data)
+        return head
+    
+    while runner.next != None:
+        runner = runner.next
+    runner.next = Node(data)
+    return head"
+]
+
+#Will generate this on the fly everytime for now with solution file
+expected_stdout_P1 = [
+	"",
+	"",
+	""
+]
+
+#None for this problem
+given_stdin_P1 = [
+	"",
+	"",
+	""
+]
+
+
+test_prefix_P1 = [
+	"#include <stdio.h>
+#include <stdlib.h>
+
+struct Node
+{
+	int data;
+	struct Node *next;
+};
+
+",
+	"class Test {
+
+	class Node {
+		int data;
+		Node next;
+	}
+
+",
+
+	"class Node(object):
+    def __init__(self, data=None, next_node=None):
+        self.data = data
+        self.next = next_node
+
+"
+]
+
+test_suffix_P1 = [
+	"
+int main(){
+	Node* head = NULL;
+	int numNodes = 4;
+	int i;
+	for(i=0; i<numNodes; i++){
+		head = Insert(head, i);
+	}
+
+	Node* runner = head;
+	printf(\"%d\",runner->data);
+	for(i=1; i<numNodes; i++){
+		runner = runner->next;
+		printf(\"->%d\", runner->data);
+	}
+	return 0;
+}",
+
+	"
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		// your code goes here
+		Test test = new Test();
+		Node head = null;
+		
+		for(int i=0; i<4; i++){
+			head = test.Insert(head, i);
+		}
+		
+		System.out.print(head.data);
+		for(int i=1; i<4; i++){
+			head = head.next;
+			System.out.print(\"->\"+head.data);
+		}
+
+	}
+}",
+
+	"
+head = None
+for i in range(4):
+    head = Insert(head, i)
+
+runner = head
+print runner.data,
+for i in range(4):
+    runner = runner.next
+    print \"->\" + str(runner.data),
+"
+]
+
 problems_list = [
-	#[problem_title, problem_area, total_score, problem_description, input_description, output_description, sample_input, sample_output, accomplish_rate, solution_file, difficulty_level],#
+	#[problem_title, problem_area, total_score, problem_description, input_description, output_description, sample_input, sample_output, accomplish_rate, solution_file, difficulty_level #
+	# skeleton_code[], supported_langs[], solution_code[], expected_stdout[],
+	# given_stdin[], test_prefix[], test_suffix[] ],#
 	
 
-	#Picked from:https://www.hackerrank.com/challenges/insert-a-node-at-a-specific-position-in-a-linked-list
-	["Insert a node at a specific position in a linked list",
+
+	#Picked from:https://www.hackerrank.com/challenges/insert-a-node-at-the-tail-of-a-linked-list
+	["Insert a node at the tail of a linked list",
 
 	Enums::problem_areas_enum["Linked Lists"],
 	 
-	 100, 
+	 100,
 	 
-	 "You’re given the pointer to the head node of a linked list, an integer to add to the list and the position at which the integer must be inserted. Create a new node with the given integer, insert this node at the desired position and return the head node. A position of 0 indicates head, a position of 1 indicates one node away from the head and so on. The head pointer given may be null meaning that the initial list is empty.",
+	 "You’re given the pointer to the head node of a linked list and an integer to add to the list. Create a new node with the given integer, insert this node at the tail of the linked list and return the head node. The head pointer given may be null meaning that the initial list is empty.",
 	 
-	 "You have to complete the Node* Insert(Node* head, int data, int position) method which takes three arguments - the head of the linked list, the integer to insert and the position at which the integer must be inserted. You should NOT read any input from stdin/console. position will always be between 0 and the number of the elements in the list (inclusive).",
+	 "You have to complete the Node* Insert(Node* head, int data) method which takes two arguments - the head of the linked list and the integer to insert. You should NOT read any input from stdin/console.",
 	 
-	 "Insert the new node at the desired position and return the head of the updated linked list. Do NOT print anything to stdout/console.",
+	 "Insert the new node at the tail and just return the head of the updated linked list. Do NOT print anything to stdout/console.",
 	 
-	 "NULL, data = 3, position = 0
-3 --> NULL, data = 4, position = 0",
+	 "NULL, data = 2 
+2 --> NULL, data = 3",
 	 
-	 "3 --> NULL 
-4 --> 3 --> NULL",
+	 "2 -->NULL
+2 --> 3 --> NULL",
 
 	 0,
 
 	 nil,
 
-	 Enums::problem_difficulty_enum["Easy"] 
+	 Enums::problem_difficulty_enum["Easy"],
+
+	 skeleton_code_P1,
+	 supported_langs_P1,
+	 solution_code_P1,
+	 expected_stdout_P1,
+	 given_stdin_P1, 
+	 test_prefix_P1, 
+	 test_suffix_P1
+
 	 ],
 
 
@@ -88,7 +311,17 @@ NULL
 	  
 	  nil,
 
-	  Enums::problem_difficulty_enum["Medium"]],
+	  Enums::problem_difficulty_enum["Medium"],
+
+	nil,
+	nil,
+	nil, 
+	nil,
+	nil,
+	nil,
+	nil
+
+	  ],
 
 
 
@@ -117,7 +350,17 @@ NULL
 
 	  nil,
 	  
-	  Enums::problem_difficulty_enum["Hard"]],
+	  Enums::problem_difficulty_enum["Hard"],
+
+	 nil,
+	 nil,
+	 nil, 
+	 nil,
+	 nil,
+	 nil,
+	 nil
+
+	  ],
 
 
 	 ["Binary Search Tree : Insertion",
@@ -163,14 +406,28 @@ node * right;
 	  
 	  nil,
 
-	  Enums::problem_difficulty_enum["Easy"]]
+	  Enums::problem_difficulty_enum["Easy"],
+
+	 nil,
+	 nil,
+	 nil, 
+	 nil,
+	 nil,
+	 nil,
+	 nil
+
+	]
 
 ]
 
-problems_list.each do | problem_title, problem_area, total_score, problem_description, input_description, output_description, sample_input, sample_output, accomplish_rate, solution_file, difficulty_level |
+problems_list.each do | problem_title, problem_area, total_score, problem_description, input_description, output_description, sample_input, sample_output, accomplish_rate, solution_file, difficulty_level,
+						skeleton_code, supported_langs, solution_code, expected_stdout,
+						given_stdin, test_prefix, test_suffix |
 	Problem.create(problem_title: problem_title, problem_area: problem_area, total_score: total_score, problem_description: problem_description,
 	 input_description: input_description, output_description: output_description, sample_input: sample_input,
-	  sample_output: sample_output, accomplish_rate: accomplish_rate, solution_file: solution_file, difficulty_level: difficulty_level)
+	  sample_output: sample_output, accomplish_rate: accomplish_rate, solution_file: solution_file, difficulty_level: difficulty_level,
+	  skeleton_code: skeleton_code, supported_langs: supported_langs, solution_code: solution_code, expected_stdout: expected_stdout,
+	  given_stdin: given_stdin, test_prefix: test_prefix, test_suffix: test_suffix)
 end
 
 
