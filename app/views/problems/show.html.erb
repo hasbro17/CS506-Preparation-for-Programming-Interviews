@@ -32,23 +32,40 @@
 
 <p>
 
-<h3>Skeleton Codes</h3>
-  <%= form_for :display do |f| %>
-  <%= f.label :title, 'C/C++' %><br>
-  <%= f.text_area :c_sk, :value => @problem.skeleton_code[0], size: "30x10", :readonly => true %><br>
+<% if @problem.skeleton_code != nil %>
+  <h3>Skeleton Codes</h3>
+    <%= form_for :display do |f| %>
+    <%= f.label :title, 'C/C++' %><br>
+    <%= f.text_area :c_sk, :value => @problem.skeleton_code[0], size: "30x10", :readonly => true %><br>
 
-  <%= f.label :title, 'Java' %><br>
-  <%= f.text_area :j_sk, :value => @problem.skeleton_code[1], size: "30x10", :readonly => true %><br>
+    <%= f.label :title, 'Java' %><br>
+    <%= f.text_area :j_sk, :value => @problem.skeleton_code[1], size: "30x10", :readonly => true %><br>
 
-  <%= f.label :title, 'Python2' %><br>
-  <%= f.text_area :p_sk, :value => @problem.skeleton_code[2], size: "30x10", :readonly => true %><br>
+    <%= f.label :title, 'Python2' %><br>
+    <%= f.text_area :p_sk, :value => @problem.skeleton_code[2], size: "30x10", :readonly => true %><br>
+  <% end %>
+    
+  </p>
 <% end %>
-  
-</p>
 
  
 <p>
   <strong>Code Editor</strong><br>
+
+  <pre id="editor">function foo(items) {
+    var i;
+    for (i = 0; i &lt; items.length; i++) {
+        alert("Ace Rocks " + items[i]);
+    }
+}</pre>
+
+<script src="ace-builds-master/src/ace.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    var editor = ace.edit("editor");
+    editor.setTheme("ace/theme/twilight");
+    editor.session.setMode("ace/mode/javascript");
+</script>
+
   <%= form_for :solution_submission, url: solution_submissions_path do |f| %>  <p>
     <%= f.label :title, 'Write your solution' %><br>
     <%= f.text_area :submitted_code %><br>
