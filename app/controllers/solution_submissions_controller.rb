@@ -1,4 +1,5 @@
 class SolutionSubmissionsController < ApplicationController
+	before_filter :authenticate_user, :only => [:create, :show]
 
 
 	def show
@@ -9,8 +10,9 @@ class SolutionSubmissionsController < ApplicationController
 	def create
 		@solution_submission = SolutionSubmission.new(solution_submission_params)
 		#Can get rid of date_submitted, already have created timestamp
+		@solution_submission.user_id = @current_user.id
 
-		#Check
+		@solution_submission.send_to_checker()
 
 		#If problem is supported for this language
 		@solution_submission.save

@@ -40,7 +40,33 @@ supported_langs_P1 = [
 	Enums::languages_enum["Python"]
 ]
 
+
+
 #Skeleton code to prefill box
+
+skeleton_code_toy = [
+	#C/C++
+	"#include <iostream>
+
+int main()
+{
+	std::cout << \"Hello World\\n\";
+	return 0;
+}",
+	#Java
+	"class HelloWorld {
+
+    public static void main(String[] args) {
+        // Prints \"Hello, World\" to the terminal window.
+        System.out.println(\"Hello, World\");
+    }
+
+}",
+	#Python
+	"print \"Hello World\""
+
+]
+
 skeleton_code_P1 = [
 	"/*
   Insert Node at the end of a linked list 
@@ -91,6 +117,28 @@ Node Insert(Node head,int data) {
 def Insert(head, data):
 "
 	
+]
+
+solution_code_toy = [
+	#C/C++
+	"#include <iostream>
+
+int main()
+{
+	std::cout << \"Hello World\\n\";
+	return 0;
+}",
+	#Java
+	"class HelloWorld {
+
+    public static void main(String[] args) {
+        // Prints \"Hello, World\" to the terminal window.
+        System.out.println(\"Hello, World\");
+    }
+
+}",
+	#Python
+	"print \"Hello World\""
 ]
 
 #Solution for methods
@@ -147,6 +195,12 @@ solution_code_P1 = [
 ]
 
 #Will generate this on the fly everytime for now with solution file
+expected_stdout_toy = [
+	"",
+	"",
+	""
+]
+
 expected_stdout_P1 = [
 	"",
 	"",
@@ -154,12 +208,25 @@ expected_stdout_P1 = [
 ]
 
 #None for this problem
+given_stdin_toy = [
+	"",
+	"",
+	""
+]
+
 given_stdin_P1 = [
 	"",
 	"",
 	""
 ]
 
+#Test code prefix
+
+test_prefix_toy = [
+	"",
+	"",
+	""
+]
 
 test_prefix_P1 = [
 	"#include <stdio.h>
@@ -187,6 +254,12 @@ struct Node
         self.next = next_node
 
 "
+]
+
+test_suffix_toy = [
+	"",
+	"",
+	""
 ]
 
 test_suffix_P1 = [
@@ -246,6 +319,26 @@ problems_list = [
 	# skeleton_code[], supported_langs[], solution_code[], expected_stdout[],
 	# given_stdin[], test_prefix[], test_suffix[] ],#
 	
+	["Hello World Test", 
+	Enums::problem_areas_enum["Linked Lists"], 
+	100, 
+	"Print out \"Hello World\". Write out the entire program with preprocessing directives and main function. For Java do not make the class public. Solution is given in skeleton codes.", 
+	"None", 
+	"Print out Hello World", 
+	"None", 
+	"Hello World", 
+	0, 
+	nil, 
+	Enums::problem_difficulty_enum["Easy"],
+	skeleton_code_toy,
+	supported_langs_P1,
+	solution_code_toy,
+	expected_stdout_toy,
+	given_stdin_toy, 
+	test_prefix_toy, 
+	test_suffix_toy
+
+	],
 
 
 	#Picked from:https://www.hackerrank.com/challenges/insert-a-node-at-the-tail-of-a-linked-list

@@ -26,6 +26,7 @@ module Enums
 
 	#Problem Areas
 	@@problem_areas_enum = {
+		"Toy" => "Toy",
 		"Linked Lists" => "Linked Lists",
 		"Trees" => "Trees",
 		"Stacks and Queues" => "Stacks and Queues"

@@ -56,3 +56,6 @@ ruby "2.2.3"
 #Ace Code Editor
 gem 'ace-rails-ap'
 
+
+#Adding Bootstrap
+gem 'bootstrap-sass',       '3.2.0.0'

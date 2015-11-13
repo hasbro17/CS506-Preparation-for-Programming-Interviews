@@ -5,8 +5,10 @@
 </p>
  
 <p>
-  <strong>Code:</strong>
-  <%= simple_format(@solution_submission.submitted_code) %>
+  <strong>Code Submitted:</strong>
+  <%= form_for :display do |f| %>
+  <%= f.text_area :code_submit, :value => @solution_submission.submitted_code, size: "70x10", :readonly => true %><br>
+  <% end %>
 </p>
 
 <p>
