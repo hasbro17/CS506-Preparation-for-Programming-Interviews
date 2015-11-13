@@ -558,7 +558,7 @@ Duties will include:
 	"Gaithersburg, MD",
 	"Xometry",
 	nil,
-	"https://www.xometry.com/careers/senior-full-stack-web-developer/"
+	["https://www.xometry.com/careers/senior-full-stack-web-developer/"]
 	],
 	
 
@@ -584,7 +584,7 @@ Desired Skills
 	"San Jose, CA",
 	"Cisco Systems",
 	nil,
-	"https://jobs.cisco.com/job/San-Jose-Embedded-Senior-Software-Engineer-CA-95101/271615500/"
+	["https://www.jobs.cisco.com/job/San-Jose-Embedded-Senior-Software-Engineer-CA-95101/271615500/"]
 	],
 
 
@@ -624,7 +624,7 @@ Desired Skills
 	"San Mateo, CA",
 	"GoPro",
 	nil,
-	"https://gopro.com/careers/"
+	["https://www.gopro.com/careers/"]
 	],
 
 
@@ -645,7 +645,7 @@ Candidates should be pursuing a PhD or be engaged in active research and have st
 	"Princeton, NJ",
 	"NEC Laboratories America",
 	nil,
-	"http://www.nec-labs.com/working-at-nec-labs/"
+	["http://www.nec-labs.com/working-at-nec-labs/"]
 	]
 ]
 
