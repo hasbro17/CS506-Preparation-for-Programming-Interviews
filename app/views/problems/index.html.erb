@@ -4,62 +4,45 @@
 
 <p><b>Unsupported problems:</b> User submitted code is compiled and executed by itself. The submission is marked incorrect since there are no test files to check it</p>
 
-<!--
-<%= form_for :solution_submission, :url => {:controller => 'problems', :action => 'index'} do |f| %>  <p>
-    <%= f.label :title, 'Search' %><br>
-    <%= f.text_area :search%><br>
-  
-  <%= f.radio_button :problem_difficulty, 'Easy' %>
-    <%= f.label :problem_difficulty, 'Easy' %>
-    <%= f.radio_button :problem_difficulty, 'Medium' %>
-    <%= f.label :problem_difficulty, 'Medium'%>
-    <%= f.radio_button :problem_difficulty, 'Hard' %>
-    <%= f.label :problem_difficulty, 'Hard'%>
- 
-  </p>
- 
-  <p>
-    <%= f.submit %>
-  </p>
-  <% end %>
-  -->
-
 <p>
 <%= form_tag(problems_path, :method => 'get', class: "form-inline", id: "search-form") do %>
-    <%= text_field_tag :search, params[:search] %><br>
+    <%= text_field_tag :search, params[:search] %>   <%= submit_tag "Search", :name => nil %> <br>
 
-    <%= radio_button_tag(:problem_difficulty, "Easy") %>
+    <%= radio_button_tag(:difficulty_level, "Easy") %>
     <%= label_tag(:Easy, "Easy") %>
-    <%= radio_button_tag(:problem_difficulty, "Medium") %>
+    <%= radio_button_tag(:difficulty_level, "Medium") %>
     <%= label_tag(:Medium, "Medium") %>
-    <%= radio_button_tag(:problem_difficulty, "Hard") %>
-    <%= label_tag(:Hard, "Hard") %>
+    <%= radio_button_tag(:difficulty_level, "Hard") %>
+    <%= label_tag(:Hard, "Hard") %><br>
 
-    <%= submit_tag "Search", :name => nil %>
+    <%= check_box_tag 'SortName', 'SortName' %>
+    <%= label_tag(:Name, "Sort by Name") %><br>
   
 <% end %>
+
+
 </p>
 
 
 <table>
   <tr>
-    <th>Problem</th>
-    <th>Area</th>
-    <th>Max Score</th>
-    <th>Difficulty</th>
-    <th>Suppported</th>
+    <th style="text-align:center;">Problem</th>
+    <th style="text-align:center;">Area</th>
+    <th style="text-align:center;">Max Score</th>
+    <th style="text-align:center;">Difficulty</th>
+    <th style="text-align:center;">Suppported</th>
   </tr>
  
   <% @problems.each do |problem| %>
     <tr>
-      <td><%= link_to problem.problem_title, problem_path(problem.id) %></td>
-      <td><%= problem.problem_area %></td>
-      <td><%= problem.total_score %></td>
-      <td><%= problem.difficulty_level %></td>
+      <td style="text-align:left;"><%= link_to problem.problem_title, problem_path(problem.id) %></td>
+      <td style="text-align:center;"><%= problem.problem_area %></td>
+      <td style="text-align:center;"><%= problem.total_score %></td>
+      <td style="text-align:center;"><%= problem.difficulty_level %></td>
       <% if problem.supported_langs != nil %>
-        <td>Supported</td>
+        <td style="text-align:center;">Supported</td>
       <%else%>
-        <td>Unsupported</td>
+        <td style="text-align:center;">Unsupported</td>
       <%end%>
 
     </tr>

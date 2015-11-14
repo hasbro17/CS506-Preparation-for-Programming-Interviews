@@ -1,5 +1,5 @@
 class Problem < ActiveRecord::Base
-	scope :problem_difficulty, -> (problem_difficulty) { where problem_difficulty: problem_difficulty }
+	scope :difficulty_level, -> (difficulty_level) { where difficulty_level: difficulty_level }
 
 	 # It returns the articles whose titles contain one or more words that form the query
   	def self.search(query)
