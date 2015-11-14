@@ -2,9 +2,16 @@ class ProblemsController < ApplicationController
 
 	#Show the list of all problems
 	def index
-		
-		#Fetch all problems
-		@problems = Problem.all
+
+		if params[:search]
+			@problemss = Problem.search(params[:search]).order("created_at DESC")
+		else
+			@problems = Problem.order("created_at DESC")
+		end
+
+		#filter
+		@problems = @problems.problem_difficulty(params[:problem_difficulty]) if params[:problem_difficulty].present?
+
 	end
 
 	#Show the specific problem clicked on

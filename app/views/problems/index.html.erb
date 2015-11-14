@@ -4,6 +4,43 @@
 
 <p><b>Unsupported problems:</b> User submitted code is compiled and executed by itself. The submission is marked incorrect since there are no test files to check it</p>
 
+<!--
+<%= form_for :solution_submission, :url => {:controller => 'problems', :action => 'index'} do |f| %>  <p>
+    <%= f.label :title, 'Search' %><br>
+    <%= f.text_area :search%><br>
+  
+  <%= f.radio_button :problem_difficulty, 'Easy' %>
+    <%= f.label :problem_difficulty, 'Easy' %>
+    <%= f.radio_button :problem_difficulty, 'Medium' %>
+    <%= f.label :problem_difficulty, 'Medium'%>
+    <%= f.radio_button :problem_difficulty, 'Hard' %>
+    <%= f.label :problem_difficulty, 'Hard'%>
+ 
+  </p>
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+  <% end %>
+  -->
+
+<p>
+<%= form_tag(problems_path, :method => 'get', class: "form-inline", id: "search-form") do %>
+    <%= text_field_tag :search, params[:search] %><br>
+
+    <%= radio_button_tag(:problem_difficulty, "Easy") %>
+    <%= label_tag(:Easy, "Easy") %>
+    <%= radio_button_tag(:problem_difficulty, "Medium") %>
+    <%= label_tag(:Medium, "Medium") %>
+    <%= radio_button_tag(:problem_difficulty, "Hard") %>
+    <%= label_tag(:Hard, "Hard") %>
+
+    <%= submit_tag "Search", :name => nil %>
+  
+<% end %>
+</p>
+
+
 <table>
   <tr>
     <th>Problem</th>
