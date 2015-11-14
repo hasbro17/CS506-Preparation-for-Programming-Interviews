@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
 
 #these call functions in the application controller to save and maintain user data
-	before_filter :authenticate_user, :only => [:login, :profile, :setting]
+	before_filter :authenticate_user, :only => [:profile, :setting]
 	before_filter :save_login_state, :only => [:login, :login_attempt]
 
 #called on navigation to login page. Redirects to profile if user logged in
@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
 		end
   end
 
-#an attempt to login
+#an attempt to login. Called on login submit
 	def login_attempt
 		#call authenticate method in model to check for correct parameters
 		authorized_user = User.authenticate(login_params)
@@ -42,11 +42,6 @@ class SessionsController < ApplicationController
 
 #profile page renderer. Checks for logged-in user and then renders profile page or login page
 	def profile
-		if @current_user
-			render "sessions/profile"
-		else
-			render "login"
-		end
 	end
 
 #Modifies profile information and settings. Called from Modify Profile view. Params are optional 
