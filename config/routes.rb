@@ -5,8 +5,10 @@ Rails.application.routes.draw do
 
   get 'sessions/profile'
 
-
   get 'sessions/setting'
+
+#used for logout call
+  get "log_out" => "sessions#destroy", :as => "logout"
 
   get 'welcome/index'
 

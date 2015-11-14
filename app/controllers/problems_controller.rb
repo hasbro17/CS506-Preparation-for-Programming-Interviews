@@ -2,6 +2,7 @@ class ProblemsController < ApplicationController
 
 	#Show the list of all problems
 	def index
+		
 		#Fetch all problems
 		@problems = Problem.order(params[:sort])
 		#if params[:search]
@@ -9,6 +10,7 @@ class ProblemsController < ApplicationController
 	    #else
 	    #  @problems = Problem.order("created_at DESC")
 	    #end
+
 	end
 
 	#Show the specific problem clicked on

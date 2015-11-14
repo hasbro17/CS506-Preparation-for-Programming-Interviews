@@ -5,8 +5,20 @@
 </p>
  
 <p>
-  <strong>Code:</strong>
-  <%= simple_format(@solution_submission.solution_string) %>
+  <strong>Code Submitted:</strong>
+  <%= form_for :display do |f| %>
+  <%= f.text_area :code_submit, :value => @solution_submission.submitted_code, size: "70x10", :readonly => true %><br>
+  <% end %>
+</p>
+
+<p>
+  <strong>Stdout:</strong>
+  <%= simple_format(@solution_submission.generated_stdout) %>
+</p>
+
+<p>
+  <strong>Solution status:</strong>
+  <%= simple_format(@solution_submission.solution_status) %>
 </p>
 
 <%= link_to 'Problems List', problems_path %>

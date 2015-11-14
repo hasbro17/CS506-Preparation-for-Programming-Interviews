@@ -27,17 +27,39 @@
   <code>
   <%= simple_format(@problem.sample_output) %>  
   </code>
+
 </p>
+
+<% if @problem.skeleton_code != nil %>
+<p>
+
+<h3>Skeleton Codes</h3>
+  <%= form_for :display do |f| %>
+  <%= f.label :title, 'C/C++' %><br>
+  <%= f.text_area :c_sk, :value => @problem.skeleton_code[0], size: "70x12", :readonly => true %><br>
+
+  <%= f.label :title, 'Java' %><br>
+  <%= f.text_area :j_sk, :value => @problem.skeleton_code[1], size: "70x12", :readonly => true %><br>
+
+  <%= f.label :title, 'Python2' %><br>
+  <%= f.text_area :p_sk, :value => @problem.skeleton_code[2], size: "70x12", :readonly => true %><br>
+<% end %>
+  
+</p>
+<% end %>
+
  
 <p>
-  <strong>Code Editor Coming Soon</strong><br>
+  <strong>Code Editor</strong><br>
   <%= form_for :solution_submission, url: solution_submissions_path do |f| %>  <p>
     <%= f.label :title, 'Write your solution' %><br>
-    <%= f.text_area :solution_string %><br>
+    <%= f.text_area :submitted_code, size: "70x12" %><br>
+
     <%= f.hidden_field :problem_id, value: @problem.id %><br>
+
 	
-	<%= f.radio_button :language, 'C++', :checked => true %>
-    <%= f.label :language, 'C++' %>
+	<%= f.radio_button :language, 'C/C++', :checked => true %>
+    <%= f.label :language, 'C/C++' %>
     <%= f.radio_button :language, 'Java' %>
     <%= f.label :language, 'Java'%>
     <%= f.radio_button :language, 'Python' %>

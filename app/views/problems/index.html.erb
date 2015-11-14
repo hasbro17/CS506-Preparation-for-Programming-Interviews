@@ -1,4 +1,5 @@
 <h1>Problems List</h1>
+
 <body>
   <!-- When submit the form, the view rendered will be the index view of our articles resource -->
   <%= form_tag(problems_path, :method => "get", class: "navbar-form", id: "search-form") do %>
@@ -18,6 +19,9 @@
   </div>
 <% end %>
 -->
+<p><b>Supported problems:</b> User submitted code is tested with our test cases, the submission is checked and saved</p>
+
+<p><b>Unsupported problems:</b> User submitted code is compiled and executed by itself. The submission is marked incorrect since there are no test files to check it</p>
 <table>
   <tr>
     <th><%= link_to "Problem", :sort => "problem_title"%></th>
@@ -32,6 +36,12 @@
       <td><%= problem.problem_area %></td>
       <td><%= problem.total_score %></td>
       <td><%= problem.difficulty_level %></td>
+      <% if problem.supported_langs != nil %>
+        <td>Supported</td>
+      <%else%>
+        <td>Unsupported</td>
+      <%end%>
+
     </tr>
   <% end %>
 </table>
