@@ -21,11 +21,11 @@
 -->
 <table>
   <tr>
-    <th><%= link_to "Job Title", :sort => "title"%></th>
-    <th>Position</th>
-    <th>Role</th>
-    <th>Company</th>
-    <th>Location</th>
+    <th><%= link_to "Job Title", :sort => "job_title"%></th>
+    <th><%= link_to "Position", :sort => "job_type"%></th>
+    <th><%= link_to "Role", :sort => "role_type"%></th>
+    <th><%= link_to "Company", :sort => "company_name"%></th>
+    <th><%= link_to "Location", :sort => "location"%></th>
   </tr>
  
   <% @jobs.each do |job| %>

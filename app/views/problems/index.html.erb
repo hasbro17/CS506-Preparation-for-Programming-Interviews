@@ -20,10 +20,10 @@
 -->
 <table>
   <tr>
-    <th>Problem</th>
-    <th>Area</th>
-    <th>Max Score</th>
-    <th>Difficulty</th>
+    <th><%= link_to "Problem", :sort => "problem_title"%></th>
+    <th><%= link_to "Area", :sort => "problem_area"%></th>
+    <th><%= link_to "Max Score", :sort => "total_score"%> </th>
+    <th><%= link_to "Difficulty", :sort => "difficulty_level"%></th>
   </tr>
  
   <% @problems.each do |problem| %>

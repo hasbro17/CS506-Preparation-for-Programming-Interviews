@@ -1,5 +1,5 @@
 class Job < ActiveRecord::Base
-	has_one :job_page
+  has_one :job_page
 	validates :job_title, presence: true, uniqueness: true
   #validates :job_description, presence: true
   #validates :job_type, presence: true
