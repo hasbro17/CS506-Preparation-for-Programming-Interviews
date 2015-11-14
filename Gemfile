@@ -59,3 +59,9 @@ gem 'ace-rails-ap'
 
 #Adding Bootstrap
 gem 'bootstrap-sass',       '3.2.0.0'
+
+#Filter gem
+gem 'filterrific'
+
+#Paginate
+gem 'will_paginate-bootstrap'

@@ -15,3 +15,4 @@
 //= require turbolinks
 //= require_tree .
 //= require ace-rails-ap
+//= require filterrific/filterrific-jquery

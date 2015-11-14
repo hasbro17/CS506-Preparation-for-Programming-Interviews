@@ -1,0 +1,33 @@
+<%# app/views/problems/_list.html.erb %>
+<div id="filterrific_results">
+
+
+  <div>
+    <%= page_entries_info problems, renderer: BootstrapPagination::Rails, bootstrap: 3 %>
+  </div>
+
+  <table>
+  <tr>
+      <th>Problem</th>
+      <th>Area</th>
+      <th>Max Score</th>
+      <th>Difficulty</th>
+      <th>Suppported</th>
+   </tr>
+    <% problems.each do |problem| %>
+      <tr>
+        <td><%= link_to problem.problem_title, problem_path(problem.id) %></td>
+        <td><%= problem.problem_area %></td>
+        <td><%= problem.total_score %></td>
+        <td><%= problem.difficulty_level %></td>
+        <% if problem.supported_langs != nil %>
+          <td>Supported</td>
+        <%else%>
+          <td>Unsupported</td>
+        <%end%>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
+<%= will_paginate problems, renderer: BootstrapPagination::Rails, bootstrap: 3 %>

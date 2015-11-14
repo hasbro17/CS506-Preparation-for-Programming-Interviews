@@ -1,30 +1,47 @@
+<%# app/views/problems/index.html.erb %>
 <h1>Problems List</h1>
 
 <p><b>Supported problems:</b> User submitted code is tested with our test cases, the submission is checked and saved</p>
 
 <p><b>Unsupported problems:</b> User submitted code is compiled and executed by itself. The submission is marked incorrect since there are no test files to check it</p>
 
-<table>
-  <tr>
-    <th>Problem</th>
-    <th>Area</th>
-    <th>Max Score</th>
-    <th>Difficulty</th>
-    <th>Suppported</th>
-  </tr>
- 
-  <% @problems.each do |problem| %>
-    <tr>
-      <td><%= link_to problem.problem_title, problem_path(problem.id) %></td>
-      <td><%= problem.problem_area %></td>
-      <td><%= problem.total_score %></td>
-      <td><%= problem.difficulty_level %></td>
-      <% if problem.supported_langs != nil %>
-        <td>Supported</td>
-      <%else%>
-        <td>Unsupported</td>
-      <%end%>
+<%#
+  Filterrific adds the `form_for_filterrific` view helper:
+  * adds dom id 'filterrific_filter'
+  * applies javascript behaviors:
+      * AJAX form submission on change
+      * AJAX spinner while AJAX request is being processed
+  * sets form_for options like :url, :method and input name prefix
+%>
+<%= form_for_filterrific @filterrific, html: { id: 'filterrific-no-ajax-auto-submit' } do |f| %>
+  <div>
+    Search
+    <%# give the search field the 'filterrific-periodically-observed' class for live updates %>
+    <%= f.text_field(
+      :search_query,
+      class: 'filterrific-periodically-observed'
+    ) %>
+  </div>
+  <div>
+    Difficulty
+    <%= f.select(
+      :with_difficulty_level,
+      @filterrific.select_options[:with_difficulty_level],
+      { include_blank: '- Any -' }
+    ) %>
+  </div>
+  <div>
+    <%= link_to(
+      'Reset filters',
+      reset_filterrific_url,
+    ) %>
+  </div>
+  <%# add an automated spinner to your form when the list is refreshed %>
+  <%= render_filterrific_spinner %>
+  <%= f.submit 'Filter' %>
+<% end %>
 
-    </tr>
-  <% end %>
-</table>
+<%= render(
+  partial: 'problems/list',
+  locals: { problems: @problems }
+) %>
