@@ -3,7 +3,7 @@ class JobsController < ApplicationController
 	#Show the list of all problems
 	def index
 		#Fetch all problems
-		@jobs = Job.all
+		@jobs = Job.order(params[:sort])
 		if params[:search]
       @jobs = Job.search(params[:search]).order("created_at DESC")
     else
