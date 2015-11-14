@@ -38,9 +38,9 @@ ActiveRecord::Schema.define(version: 20151112025226) do
     t.text     "location"
     t.text     "company_name"
     t.binary   "company_logo_image"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
-    t.text     "job_link",           default: [],              array: true
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.text     "job_link"
   end
 
   create_table "problems", force: :cascade do |t|
