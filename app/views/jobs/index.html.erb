@@ -1,6 +1,5 @@
 <h1>Jobs List</h1>
 
-<body>
   <!-- When submit the form, the view rendered will be the index view of our articles resource -->
   <%= form_tag(jobs_path, :method => "get", class: "navbar-form", id: "search-form") do %>
     <div class="input-append">
@@ -10,15 +9,7 @@
       <button class="btn" type="submit"><i class="icon-search"></i></button>
     </div>
   <% end %>
-  <!--
-</body>
-  <% @jobs.each do |job| %>
-  <div class="job">
-    <h1 class="job-job"><%= link_to job.job_title, job %></h1>
-    <p class="job-job"><%= job.job_description %></p>
-  </div>
-<% end %>
--->
+
 <table>
   <tr>
     <th><%= link_to "Job Title", :sort => "title"%></th>
