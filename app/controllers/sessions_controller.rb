@@ -1,8 +1,9 @@
 class SessionsController < ApplicationController
 
 #these call functions in the application controller to save and maintain user data
-	before_filter :authenticate_user, :only => [:profile, :setting]
+	before_filter :authenticate_user, :only => [:profile, :setting, :stats]
 	before_filter :save_login_state, :only => [:login, :login_attempt]
+	before_filter :stats, :only =>[:profile]
 	before_filter :set_notice, :only => [:login_attempt, :destroy]
 
 #sets value of notice variables
@@ -50,6 +51,19 @@ class SessionsController < ApplicationController
 
 #profile page renderer. Checks for logged-in user and then renders profile page or login page
 	def profile
+	end
+
+
+#creates statistics to be displayed on the profile page
+	def stats
+		@nil = "Not Defined"
+		@total = SolutionSubmission.where(:user_id == @current_user.username).count
+		@correct = SolutionSubmission.where(:user_id == @current_user.username).where(:solution_status == "correct").count
+		@type = [
+									SolutionSubmission.where(:user_id == @current_user.username).where(:language == "c++").count,
+									SolutionSubmission.where(:user_id == @current_user.username).where(:language == "python").count,
+									SolutionSubmission.where(:user_id == @current_user.username).where(:language == "java").count
+								]	
 	end
 
 #Modifies profile information and settings. Called from Modify Profile view. Params are optional 
