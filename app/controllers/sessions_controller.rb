@@ -3,6 +3,14 @@ class SessionsController < ApplicationController
 #these call functions in the application controller to save and maintain user data
 	before_filter :authenticate_user, :only => [:profile, :setting]
 	before_filter :save_login_state, :only => [:login, :login_attempt]
+	before_filter :set_notice, :only => [:login_attempt, :destroy]
+
+#sets value of notice variables
+	def set_notice
+		@success_notice = "You logged in as "
+		@failure_notice = "Invalid Username or Password"
+		@logout_notice = "You've successfully logged out"
+	end
 
 #called on navigation to login page. Redirects to profile if user logged in
   def login
@@ -19,11 +27,11 @@ class SessionsController < ApplicationController
 			#creates a session with username
 			session[:user_id] = authorized_user.username;
 			#notifications
-			flash[:notice] = "You logged in as #{authorized_user.username}"
+			flash[:notice] = "#{@success_notice} " + " #{authorized_user.username}"
 			redirect_to(:action => 'profile')
 		else #failed login attempt
-			flash[:notice] = "Invalid Username or Password"
-			puts "Failed login"
+			puts @failure_notice
+			flash[:notice] = "#{@failure_notice}"
 			render "login"
 		end
 	end
@@ -36,7 +44,7 @@ class SessionsController < ApplicationController
 #logout method. Destroys user session
 	def destroy
 		session[:user_id] = nil
-		flash[:notice] = "You've successfully logged out"
+		flash[:notice] = "#{@logout_notice}"
 		render "login"
 	end
 

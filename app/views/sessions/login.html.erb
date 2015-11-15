@@ -2,8 +2,8 @@
 <div class ="Sign_form">
 	<h1>Log in</h1>
 	<%=form_tag(:action => 'login_attempt') do %>
-		<p> Username or Email: </br> <%= text_field_tag( :username_or_email) %></p>
-		<p> Password: </br> <%= password_field_tag :login_password %></p>
-		<%= submit_tag("Log In") %>
+		<p> Username or Email: </br> <%= text_field_tag (:username_or_email), "", :id => 'user_field' %></p>
+		<p> Password: </br> <%= password_field_tag (:login_password), "", :id => 'password_field'%></p>
+		<%= submit_tag "Log In"%>
 	<% end %>
 	<%= flash[:notice] %>
