@@ -14,11 +14,14 @@ class UsersController < ApplicationController
 	def create
 		@user = User.new(person_params)
 		if @user.save
-				flash[:notice] = "#{@success_notice}"
+			flash[:notice] = "#{@success_notice}"
+				#creates a session with username
+			session[:user_id] = @user.username
+			redirect_to(:controller => 'sessions', :action => 'profile')
 		else
 			flash[:notice] = "#{@failure_notice}"
+			render "new"
 		end
-	render "new"
 	end
 
 	def person_params
