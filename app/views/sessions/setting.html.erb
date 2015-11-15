@@ -1,2 +1,11 @@
-<h1>Sessions#setting</h1>
-<p>Find me in app/views/sessions/setting.html.erb</p>
+<h1>Modify Profile</h1>
+<% @page_title = "Modify Profile" -%>
+<div class ="settings_form">
+	<%=form_tag(:action => 'setting') do %>
+		<p> Email: </br> <%= text_field_tag( :email) %></p>
+		<p>First Name: </br> <%= text_field_tag(:first_name) %></p>
+		<p>Last Name: </br> <%= text_field_tag(:last_name) %></p>
+		<p>Company Name: </br> <%= text_field_tag(:company) %></p>
+		<%= submit_tag("Modify") %>
+	<% end %>
+	<%= flash[:notice] %>

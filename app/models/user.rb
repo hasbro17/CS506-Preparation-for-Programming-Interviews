@@ -1,3 +1,4 @@
+
 class User < ActiveRecord::Base
 	has_many :solution_submission
 	attr_accessor :password
@@ -28,8 +29,7 @@ class User < ActiveRecord::Base
 
 #called to match given password to database password
 	def match_password(login_password)
-		hashpass = BCrypt::Password.new(hashed_password)
-		if hashed_password == hashpass
+		if BCrypt::Password.new(hashed_password)==login_password
 			return true
 		end
 	end
@@ -37,8 +37,7 @@ class User < ActiveRecord::Base
 #encrypts a new password
 	def encrypt_password
 		unless password.blank?
-			self.salt = BCrypt::Engine.generate_salt
-			self.hashed_password = BCrypt::Engine.hash_secret(:password, salt)
+			self.hashed_password = BCrypt::Password.create(password)
 		end
 	end
 
