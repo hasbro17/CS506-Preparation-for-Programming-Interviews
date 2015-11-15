@@ -4,6 +4,13 @@
 <h3>
  <%=@current_user[:email]%> </br>
  <%=@current_user[:created_at]%> </br>
- <%=@current_user[:updated_at]%> 
+ <%=@current_user[:updated_at]%>  </br>
+<% if (@current_user[:first_name] && @current_user[:last_name]) %>
+<%=@current_user[:first_name]  + " "  + @current_user[:last_name] %>
+<% end %>
+<% if (@current_user[:company]) %> </br>
+<%=@current_user[:company]%>
+<% end %>
 </h3>
 <%= link_to "Logout", :controller => 'sessions', :action => 'destroy' %>
+<%= link_to "Modify Profile Settings", sessions_setting_path%>
