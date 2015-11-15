@@ -1,21 +1,53 @@
 <h1>Jobs List</h1>
+
+<p>
+<%= form_tag(jobs_path, :method => 'get', class: "form-inline", id: "search-form") do %>
+    <%= text_field_tag :search, params[:search], :placeholder => "Search for jobs" %>   <%= submit_tag "Search", :name => nil %> 
+    <%= collection_select(:job, :location, Job.select(:location).distinct, :location, :location, {:prompt => "Select Location"}) %><br>
+
+    
+
+    Position Type
+    <%= radio_button_tag(:job_type, "Full Time") %>
+    <%= label_tag(:FullTime, "Full Time") %>
+    <%= radio_button_tag(:job_type, "Internship") %>
+    <%= label_tag(:Internship, "Internship") %><br>
+    Sort By
+    <%= radio_button_tag(:SortType, "NumViews") %>
+    <%= label_tag(:Popular, "Most Popular") %>
+    <%= radio_button_tag(:SortType, "Date") %>
+    <%= label_tag(:Recent, "Most Recent") %><br>
+
+    <h5>Role Type(Multi-Select)</h5>
+    <%= collection_select(:job, :role_type, Job.select(:role_type).distinct, :role_type, :role_type, {}, {:multiple => true}) %><br>
+<br>
+<br>
+  
+<% end %>
+
+</p>
+
  
-<table>
+<table class="table table-hover">
   <tr>
-    <th>Job Title</th>
-    <th>Position</th>
-    <th>Role</th>
-    <th>Company</th>
-    <th>Location</th>
+    <th style="text-align:center;">Job Title</th>
+    <th style="text-align:center;">Position</th>
+    <th style="text-align:center;">Role</th>
+    <th style="text-align:center;">Company</th>
+    <th style="text-align:center;">Location</th>
+    <th style="text-align:center;">Number of Views(For Testing)</th>
+    <th style="text-align:center;">Date Posted(For Testing)</th>
   </tr>
  
   <% @jobs.each do |job| %>
     <tr>
-      <td><%= link_to job.job_title, job_path(job.id) %></td>
-      <td><%= job.job_type %></td>
-      <td><%= job.role_type %></td>
-      <td><%= job.company_name %></td>
-      <td><%= job.location %></td>      
+      <td style="text-align:left;"><%= link_to job.job_title, job_path(job.id) %></td>
+      <td style="text-align:center;"><%= job.job_type %></td>
+      <td style="text-align:center;"><%= job.role_type %></td>
+      <td style="text-align:center;"><%= job.company_name %></td>
+      <td style="text-align:center;"><%= job.location %></td>
+      <td style="text-align:center;"><%= job.num_views %></td>
+      <td style="text-align:center;"><%= job.date_posted %></td>
     </tr>
   <% end %>
 </table>
