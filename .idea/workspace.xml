@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f13457b5-7676-4355-bd84-75cd7f88c167" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/requests/user_creations_spec.rb" afterPath="$PROJECT_DIR$/spec/requests/user_creations_spec.rb" />
-    </list>
+    <list default="true" id="f13457b5-7676-4355-bd84-75cd7f88c167" name="Default" comment="" />
     <ignored path="ppi.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/components/" />
