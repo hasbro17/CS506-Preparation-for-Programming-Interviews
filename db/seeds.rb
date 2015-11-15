@@ -579,7 +579,7 @@ Desired Skills
 ● Ability to understand a complex problem and work on a small section of the problem. 
 ● Ability to generate specifications for smaller part of the bigger problem. 
 ● Cisco iOS knowledge is preferable but not a must. ",
-	Enums::job_type_enum["Full Time"],
+	Enums::job_type_enum["Internship"],
 	Enums::role_type_enum["Software Engineer"],
 	"San Jose, CA",
 	"Cisco Systems",
