@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 		if @user.save
 			flash[:notice] = "#{@success_notice}"
 				#creates a session with username
-			session[:user_id] = @user.username
+			session[:user_id] = @user.id
 			redirect_to(:controller => 'sessions', :action => 'profile')
 		else
 			flash[:notice] = "#{@failure_notice}"

@@ -25,8 +25,8 @@ class SessionsController < ApplicationController
 		#call authenticate method in model to check for correct parameters
 		authorized_user = User.authenticate(login_params)
 		if authorized_user
-			#creates a session with username
-			session[:user_id] = authorized_user.username;
+			#creates a session with userid
+			session[:user_id] = authorized_user.id;
 			#notifications
 			flash[:notice] = "#{@success_notice} " + " #{authorized_user.username}"
 			redirect_to(:action => 'profile')
@@ -56,14 +56,26 @@ class SessionsController < ApplicationController
 
 #creates statistics to be displayed on the profile page
 	def stats
+		#NOTE: All of this code should be using the enums from the Enums file
+		# and should be moved to the model.
 		@nil = "Not Defined"
-		@total = SolutionSubmission.where(:user_id == @current_user.username).count
-		@correct = SolutionSubmission.where(:user_id == @current_user.username).where(:solution_status == "correct").count
-		@type = [
-									SolutionSubmission.where(:user_id == @current_user.username).where(:language == "c++").count,
-									SolutionSubmission.where(:user_id == @current_user.username).where(:language == "python").count,
-									SolutionSubmission.where(:user_id == @current_user.username).where(:language == "java").count
-								]	
+		submissions = SolutionSubmission.where("user_id = ?", @current_user.id)
+		@total = submissions.count
+		@correct = 0
+		@lang_count = {"C/C++" => 0, "Java" => 0, "Python" => 0,}
+		#Measure counts
+		submissions.each do |submission|
+			if submission.solution_status == "Correct"
+				@correct += 1
+			end
+			if submission.language == "C/C++"
+				@lang_count["C/C++"] += 1
+			elsif submission.language == "Java"
+				@lang_count["Java"] += 1
+			elsif submission.language == "Python"
+				@lang_count["Python"] += 1
+			end
+		end
 	end
 
 #Modifies profile information and settings. Called from Modify Profile view. Params are optional 

@@ -17,11 +17,11 @@ Company: <% if (@current_user[:company]) %>
  </br>
 </br>
 
-Total Problem Submissions: <%=@total %> </br>
-Correct submissions: <%=@correct %> </br>
-C++ submissions: <%=@type[0] %> </br>
-Python submissions: <%=@type[1] %> </br>
-Java submissions: <%=@type[2] %> </br>
+Total Number of Attempts: <%= @total %> </br>
+Correct submissions: <%= @correct %> </br>
+C++ submissions: <%= @lang_count["C/C++"] %> </br>
+Java submissions: <%= @lang_count["Java"] %> </br>
+Python submissions: <%= @lang_count["Python"] %> </br>
 
 
 </h3>
