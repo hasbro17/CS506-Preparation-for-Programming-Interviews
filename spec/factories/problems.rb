@@ -1,6 +1,5 @@
 FactoryGirl.define do
-  factory :contact do |f|
-    f.firstname "John"
-    f.lastname "Doe"
+  factory :problem do |f|
+    f.problem_title "Hello World Test"    
   end
 end

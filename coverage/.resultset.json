@@ -1,39 +1,39 @@
 {
   "RSpec": {
     "coverage": {
-      "/home/haotian/workplace/RubymineProjects/ppi/app/helpers/application_helper.rb": [
+      "/home/sean/ComputerScience/CS506/CS506-Preparation-for-Programming-Interviews/app/helpers/application_helper.rb": [
         1,
         null
       ],
-      "/home/haotian/workplace/RubymineProjects/ppi/app/helpers/job_pages_helper.rb": [
+      "/home/sean/ComputerScience/CS506/CS506-Preparation-for-Programming-Interviews/app/helpers/job_pages_helper.rb": [
         1,
         null
       ],
-      "/home/haotian/workplace/RubymineProjects/ppi/app/helpers/jobs_helper.rb": [
+      "/home/sean/ComputerScience/CS506/CS506-Preparation-for-Programming-Interviews/app/helpers/jobs_helper.rb": [
         1,
         null
       ],
-      "/home/haotian/workplace/RubymineProjects/ppi/app/helpers/problems_helper.rb": [
+      "/home/sean/ComputerScience/CS506/CS506-Preparation-for-Programming-Interviews/app/helpers/problems_helper.rb": [
         1,
         null
       ],
-      "/home/haotian/workplace/RubymineProjects/ppi/app/helpers/sessions_helper.rb": [
+      "/home/sean/ComputerScience/CS506/CS506-Preparation-for-Programming-Interviews/app/helpers/sessions_helper.rb": [
         1,
         null
       ],
-      "/home/haotian/workplace/RubymineProjects/ppi/app/helpers/solution_submissions_helper.rb": [
+      "/home/sean/ComputerScience/CS506/CS506-Preparation-for-Programming-Interviews/app/helpers/solution_submissions_helper.rb": [
         1,
         null
       ],
-      "/home/haotian/workplace/RubymineProjects/ppi/app/helpers/users_helper.rb": [
+      "/home/sean/ComputerScience/CS506/CS506-Preparation-for-Programming-Interviews/app/helpers/users_helper.rb": [
         1,
         null
       ],
-      "/home/haotian/workplace/RubymineProjects/ppi/app/helpers/welcome_helper.rb": [
+      "/home/sean/ComputerScience/CS506/CS506-Preparation-for-Programming-Interviews/app/helpers/welcome_helper.rb": [
         1,
         null
       ],
-      "/home/haotian/workplace/RubymineProjects/ppi/app/models/user.rb": [
+      "/home/sean/ComputerScience/CS506/CS506-Preparation-for-Programming-Interviews/app/models/user.rb": [
         null,
         1,
         1,
@@ -84,7 +84,7 @@
         null,
         null
       ],
-      "/home/haotian/workplace/RubymineProjects/ppi/app/controllers/users_controller.rb": [
+      "/home/sean/ComputerScience/CS506/CS506-Preparation-for-Programming-Interviews/app/controllers/users_controller.rb": [
         1,
         1,
         1,
@@ -118,7 +118,7 @@
         null,
         null
       ],
-      "/home/haotian/workplace/RubymineProjects/ppi/app/controllers/application_controller.rb": [
+      "/home/sean/ComputerScience/CS506/CS506-Preparation-for-Programming-Interviews/app/controllers/application_controller.rb": [
         1,
         null,
         null,
@@ -151,7 +151,7 @@
         null,
         null
       ],
-      "/home/haotian/workplace/RubymineProjects/ppi/app/controllers/sessions_controller.rb": [
+      "/home/sean/ComputerScience/CS506/CS506-Preparation-for-Programming-Interviews/app/controllers/sessions_controller.rb": [
         1,
         null,
         null,
@@ -233,6 +233,6 @@
         null
       ]
     },
-    "timestamp": 1447654390
+    "timestamp": 1447669967
   }
 }
