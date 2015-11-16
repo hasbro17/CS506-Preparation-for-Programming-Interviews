@@ -4,7 +4,7 @@ require 'spec_helper'
 
 
 describe "user_model_test" do
-  
+
   before(:all) do
     @testUser = User.new(
         :username => "testUser",
