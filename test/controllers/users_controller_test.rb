@@ -13,7 +13,7 @@ test "create user with controller" do
       :password => "123456",
       :password_confirmation =>"123456",
   )
-  user = User.find_by_username("testUser")
+  user = User.find_by_username("newUser")
   assert_not_nil(user,"user should not be nil")
   assert_instance_of(User, user, "user should be instance of User")
 end
