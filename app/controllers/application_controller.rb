@@ -7,13 +7,18 @@ class ApplicationController < ActionController::Base
 	def authenticate_user
 		if session[:user_id]
 			#set current user object to @current_user object variable
-			@current_user = User.find_by(username: session[:user_id])
+			@current_user = User.find(session[:user_id])
 			return true
 		else
 			#automatically redirects user to login page on actions that require login state
 			redirect_to(:controller => 'sessions', :action => 'login')
 			return false
 		end
+	#Invalid Session params
+	rescue ActiveRecord::RecordNotFound
+		session[:user_id] = nil
+		redirect_to(:controller => 'sessions', :action => 'login')
+		return false
 	end
 
 # def current_user
