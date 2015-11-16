@@ -4514,3 +4514,120 @@ Started GET "/welcome/index" for 127.0.0.1 at 2015-11-15 17:34:03 -0600
 Processing by WelcomeController#index as HTML
   Rendered welcome/index.html.erb within layouts/application (0.5ms)
 Completed 200 OK in 84ms (Views: 83.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/problems" for 127.0.0.1 at 2015-11-15 22:28:25 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ProblemsController#index as HTML
+  [1m[35mProblem Load (1.0ms)[0m  SELECT "problems".* FROM "problems"  ORDER BY created_at DESC
+  Rendered problems/index.html.erb within layouts/application (18.1ms)
+Completed 200 OK in 333ms (Views: 320.1ms | ActiveRecord: 3.6ms)
+
+
+Started GET "/assets/custom.self-b755cb4ea372370d20e8aaf855bc017e8ade91a7c6c9789ba995418c6d1ee3e4.css?body=1" for 127.0.0.1 at 2015-11-15 22:28:25 -0600
+
+
+Started GET "/assets/job_pages.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-11-15 22:28:25 -0600
+
+
+Started GET "/assets/problems.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-11-15 22:28:25 -0600
+
+
+Started GET "/assets/solution_submissions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-11-15 22:28:25 -0600
+
+
+Started GET "/assets/sessions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-11-15 22:28:26 -0600
+
+
+Started GET "/assets/jobs.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-11-15 22:28:26 -0600
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-11-15 22:28:26 -0600
+
+
+Started GET "/assets/welcome.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-11-15 22:28:26 -0600
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2015-11-15 22:28:26 -0600
+
+
+Started GET "/assets/jquery.self-a714331225dda820228db323939889f149aec0127aeb06255646b616ba1ca419.js?body=1" for 127.0.0.1 at 2015-11-15 22:28:26 -0600
+
+
+Started GET "/assets/jquery_ujs.self-d456baa54c1fa6be2ec3711f0a72ddf7a5b2f34a6b4f515f33767d6207b7d4b3.js?body=1" for 127.0.0.1 at 2015-11-15 22:28:26 -0600
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2015-11-15 22:28:26 -0600
+
+
+Started GET "/assets/job_pages.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-11-15 22:28:26 -0600
+
+
+Started GET "/assets/jobs.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-11-15 22:28:26 -0600
+
+
+Started GET "/assets/problems.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-11-15 22:28:26 -0600
+
+
+Started GET "/assets/sessions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-11-15 22:28:26 -0600
+
+
+Started GET "/assets/solution_submissions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-11-15 22:28:26 -0600
+
+
+Started GET "/assets/users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-11-15 22:28:26 -0600
+
+
+Started GET "/assets/welcome.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-11-15 22:28:26 -0600
+
+
+Started GET "/assets/ace/ace.self-021c5629e6950842cac60cb997a6c4a8b71ee0dfa68b17464e86d3b2d72ad409.js?body=1" for 127.0.0.1 at 2015-11-15 22:28:26 -0600
+
+
+Started GET "/assets/set_ace_paths.self-447bb2f30ee8f03c6548f989c21ce57b148859628dc067749d8772c96f01cdf0.js?body=1" for 127.0.0.1 at 2015-11-15 22:28:26 -0600
+
+
+Started GET "/assets/ace-rails-ap.self-75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070.js?body=1" for 127.0.0.1 at 2015-11-15 22:28:26 -0600
+
+
+Started GET "/assets/application.self-f8806224e027f3e3f0138ea9ce99319e298dfdb323304d1f1be6eae8e8c74724.js?body=1" for 127.0.0.1 at 2015-11-15 22:28:26 -0600
+
+
+Started GET "/problems?utf8=%E2%9C%93&search=cycle" for 127.0.0.1 at 2015-11-15 22:28:34 -0600
+Processing by ProblemsController#index as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"cycle"}
+  [1m[36mProblem Load (0.5ms)[0m  [1mSELECT "problems".* FROM "problems" WHERE (problem_title like '%cycle%')  ORDER BY created_at DESC[0m
+  Rendered problems/index.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 113ms (Views: 111.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/problems?utf8=%E2%9C%93&search=Cycle" for 127.0.0.1 at 2015-11-15 22:28:38 -0600
+Processing by ProblemsController#index as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"Cycle"}
+  [1m[35mProblem Load (0.4ms)[0m  SELECT "problems".* FROM "problems" WHERE (problem_title like '%Cycle%')  ORDER BY created_at DESC
+  Rendered problems/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 116ms (Views: 114.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/problems?utf8=%E2%9C%93&search=Cycle&difficulty_level=Easy" for 127.0.0.1 at 2015-11-15 22:28:46 -0600
+Processing by ProblemsController#index as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"Cycle", "difficulty_level"=>"Easy"}
+  [1m[36mProblem Load (0.4ms)[0m  [1mSELECT "problems".* FROM "problems" WHERE (problem_title like '%Cycle%') AND "problems"."difficulty_level" = $1  ORDER BY created_at DESC[0m  [["difficulty_level", "Easy"]]
+  Rendered problems/index.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 95ms (Views: 90.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/problems?utf8=%E2%9C%93&search=Cycle&difficulty_level=Hard" for 127.0.0.1 at 2015-11-15 22:28:49 -0600
+Processing by ProblemsController#index as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"Cycle", "difficulty_level"=>"Hard"}
+  [1m[35mProblem Load (0.3ms)[0m  SELECT "problems".* FROM "problems" WHERE (problem_title like '%Cycle%') AND "problems"."difficulty_level" = $1  ORDER BY created_at DESC  [["difficulty_level", "Hard"]]
+  Rendered problems/index.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 110ms (Views: 108.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/problems?utf8=%E2%9C%93&search=&difficulty_level=Easy&SortName=SortName" for 127.0.0.1 at 2015-11-15 22:29:01 -0600
+Processing by ProblemsController#index as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"", "difficulty_level"=>"Easy", "SortName"=>"SortName"}
+  [1m[36mProblem Load (0.3ms)[0m  [1mSELECT "problems".* FROM "problems" WHERE (problem_title like '%%') AND "problems"."difficulty_level" = $1  ORDER BY created_at DESC[0m  [["difficulty_level", "Easy"]]
+  Rendered problems/index.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 110ms (Views: 108.6ms | ActiveRecord: 0.3ms)
