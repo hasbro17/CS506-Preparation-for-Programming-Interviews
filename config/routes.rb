@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'sessions/setting'
   post 'sessions/setting'
 
+
 #used for logout call
   get "log_out" => "sessions#destroy", :as => "logout"
 
