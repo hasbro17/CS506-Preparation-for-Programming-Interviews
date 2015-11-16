@@ -4285,3 +4285,232 @@ Started GET "/users/new" for 127.0.0.1 at 2015-11-15 14:39:53 -0600
 Processing by UsersController#new as HTML
   Rendered users/new.html.erb within layouts/application (4.4ms)
 Completed 200 OK in 170ms (Views: 168.7ms | ActiveRecord: 0.0ms)
+  [1m[36m (475.1ms)[0m  [1mDROP DATABASE IF EXISTS "ppi-506_development"[0m
+  [1m[36m (69.0ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
+  [1m[35m (65.1ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateUsers (20151022235641)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (67.7ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "username" text, "email" text, "password" text, "first_name" text, "last_name" text, "join_date" date, "company" text, "git_accnt" text, "fb_accnt" text, "resume_pdf" bytea, "profile_pic" bytea, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20151022235641"]]
+  [1m[36m (26.6ms)[0m  [1mCOMMIT[0m
+Migrating to CreateProblems (20151023022257)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (75.9ms)[0m  [1mCREATE TABLE "problems" ("id" serial primary key, "problem_title" text, "problem_area" text, "total_score" integer, "problem_description" text, "input_description" text, "output_description" text, "sample_input" text, "sample_output" text, "accomplish_rate" float, "solution_file" bytea, "difficulty_level" text, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20151023022257"]]
+  [1m[36m (10.9ms)[0m  [1mCOMMIT[0m
+Migrating to CreateJobs (20151023024217)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (87.9ms)[0m  [1mCREATE TABLE "jobs" ("id" serial primary key, "job_title" text, "job_status" text, "num_views" integer, "date_posted" date, "job_description" text, "skills_required" text, "job_type" text, "role_type" text, "location" text, "company_name" text, "company_logo_image" bytea, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20151023024217"]]
+  [1m[36m (10.2ms)[0m  [1mCOMMIT[0m
+Migrating to CreateSolutionSubmissions (20151023031118)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (87.8ms)[0m  [1mCREATE TABLE "solution_submissions" ("id" serial primary key, "problem_id" integer, "date_submitted" date, "solution_status" text, "score" integer, "language" text, "solution_file" bytea, "user_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (32.3ms)[0m  CREATE  INDEX  "index_solution_submissions_on_user_id" ON "solution_submissions"  ("user_id")
+  [1m[36m (1.1ms)[0m  [1mALTER TABLE "solution_submissions" ADD CONSTRAINT "fk_rails_553c0f6298"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20151023031118"]]
+  [1m[36m (18.4ms)[0m  [1mCOMMIT[0m
+Migrating to CreateJobPages (20151023032539)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (79.1ms)[0m  [1mCREATE TABLE "job_pages" ("id" serial primary key, "link_name" text, "link" text, "job_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (43.6ms)[0m  CREATE  INDEX  "index_job_pages_on_job_id" ON "job_pages"  ("job_id")
+  [1m[36m (0.8ms)[0m  [1mALTER TABLE "job_pages" ADD CONSTRAINT "fk_rails_de8be9c8fd"
+FOREIGN KEY ("job_id")
+  REFERENCES "jobs" ("id")
+[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20151023032539"]]
+  [1m[36m (16.8ms)[0m  [1mCOMMIT[0m
+Migrating to AddSaltToUser (20151025193317)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "users" ADD "salt" character varying[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20151025193317"]]
+  [1m[36m (11.7ms)[0m  [1mCOMMIT[0m
+Migrating to ChangeColumnName (20151025233100)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "users" RENAME COLUMN "password" TO "hashed_password"[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20151025233100"]]
+  [1m[36m (11.0ms)[0m  [1mCOMMIT[0m
+Migrating to AddSolutionStringToSolutionSubmissions (20151101060435)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "solution_submissions" ADD "solution_string" text[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20151101060435"]]
+  [1m[36m (15.1ms)[0m  [1mCOMMIT[0m
+Migrating to AddJobLinkToJobs (20151102025337)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (238.5ms)[0m  [1mALTER TABLE "jobs" ADD "job_link" text[] DEFAULT '{}'[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20151102025337"]]
+  [1m[36m (14.7ms)[0m  [1mCOMMIT[0m
+Migrating to AddSolutionFields (20151112023511)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "solution_submissions" RENAME COLUMN "solution_string" TO "generated_stdout"[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "solution_submissions" ADD "submitted_code" text
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "solution_submissions" ADD "stdin" text[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "solution_submissions" ADD "generated_errors" text
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20151112023511"]]
+  [1m[35m (5.2ms)[0m  COMMIT
+Migrating to AddCodeFieldsToProblem (20151112025226)
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (72.7ms)[0m  ALTER TABLE "problems" ADD "skeleton_code" text[] DEFAULT '{}'
+  [1m[36m (67.0ms)[0m  [1mALTER TABLE "problems" ADD "supported_langs" text[] DEFAULT '{}'[0m
+  [1m[35m (89.8ms)[0m  ALTER TABLE "problems" ADD "solution_code" text[] DEFAULT '{}'
+  [1m[36m (78.3ms)[0m  [1mALTER TABLE "problems" ADD "expected_stdout" text[] DEFAULT '{}'[0m
+  [1m[35m (78.6ms)[0m  ALTER TABLE "problems" ADD "given_stdin" text[] DEFAULT '{}'
+  [1m[36m (67.0ms)[0m  [1mALTER TABLE "problems" ADD "test_prefix" text[] DEFAULT '{}'[0m
+  [1m[35m (67.3ms)[0m  ALTER TABLE "problems" ADD "test_suffix" text[] DEFAULT '{}'
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20151112025226"]]
+  [1m[35m (9.4ms)[0m  COMMIT
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (3.0ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'job_pages'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36m (2.8ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'jobs'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (2.3ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'problems'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36m (2.2ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'solution_submissions'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.8ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'haseeb' LIMIT 1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'hasbro17@gmail.com' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'jacob' LIMIT 1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'jacobwurtz@gmail.com' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "problems" ("problem_title", "problem_area", "total_score", "problem_description", "input_description", "output_description", "sample_input", "sample_output", "accomplish_rate", "difficulty_level", "skeleton_code", "supported_langs", "solution_code", "expected_stdout", "given_stdin", "test_prefix", "test_suffix", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19) RETURNING "id"[0m  [["problem_title", "Hello World Test"], ["problem_area", "Linked Lists"], ["total_score", 100], ["problem_description", "Print out \"Hello World\". Write out the entire program with preprocessing directives and main function. For Java do not make the class public. Solution is given in skeleton codes."], ["input_description", "None"], ["output_description", "Print out Hello World"], ["sample_input", "None"], ["sample_output", "Hello World"], ["accomplish_rate", 0.0], ["difficulty_level", "Easy"], ["skeleton_code", "{\"#include <iostream>\n\nint main()\n{\n\tstd::cout << \\\"Hello World\\\\n\\\";\n\treturn 0;\n}\",\"class HelloWorld {\n\n    public static void main(String[] args) {\n        // Prints \\\"Hello, World\\\" to the terminal window.\n        System.out.println(\\\"Hello, World\\\");\n    }\n\n}\",\"print \\\"Hello World\\\"\"}"], ["supported_langs", "{C/C++,Java,Python}"], ["solution_code", "{\"#include <iostream>\n\nint main()\n{\n\tstd::cout << \\\"Hello World\\\\n\\\";\n\treturn 0;\n}\",\"class HelloWorld {\n\n    public static void main(String[] args) {\n        // Prints \\\"Hello, World\\\" to the terminal window.\n        System.out.println(\\\"Hello, World\\\");\n    }\n\n}\",\"print \\\"Hello World\\\"\"}"], ["expected_stdout", "{\"\",\"\",\"\"}"], ["given_stdin", "{\"\",\"\",\"\"}"], ["test_prefix", "{\"\",\"\",\"\"}"], ["test_suffix", "{\"\",\"\",\"\"}"], ["created_at", "2015-11-15 23:33:31.155559"], ["updated_at", "2015-11-15 23:33:31.155559"]]
+  [1m[35m (3.0ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "problems" ("problem_title", "problem_area", "total_score", "problem_description", "input_description", "output_description", "sample_input", "sample_output", "accomplish_rate", "difficulty_level", "skeleton_code", "supported_langs", "solution_code", "expected_stdout", "given_stdin", "test_prefix", "test_suffix", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19) RETURNING "id"  [["problem_title", "Insert a node at the tail of a linked list"], ["problem_area", "Linked Lists"], ["total_score", 100], ["problem_description", "You’re given the pointer to the head node of a linked list and an integer to add to the list. Create a new node with the given integer, insert this node at the tail of the linked list and return the head node. The head pointer given may be null meaning that the initial list is empty."], ["input_description", "You have to complete the Node* Insert(Node* head, int data) method which takes two arguments - the head of the linked list and the integer to insert. You should NOT read any input from stdin/console."], ["output_description", "Insert the new node at the tail and just return the head of the updated linked list. Do NOT print anything to stdout/console."], ["sample_input", "NULL, data = 2 \n2 --> NULL, data = 3"], ["sample_output", "2 -->NULL\n2 --> 3 --> NULL"], ["accomplish_rate", 0.0], ["difficulty_level", "Easy"], ["skeleton_code", "{\"/*\n  Insert Node at the end of a linked list \n  head pointer input could be NULL as well for empty list\n  Node is defined as \n  struct Node\n  {\n     int data;\n     struct Node *next;\n  }\n*/\nNode* Insert(Node *head,int data)\n{\n  // Complete this method\n}\n\",\"/*\n  Insert Node at the end of a linked list \n  head pointer input could be NULL as well for empty list\n  Node is defined as \n  class Node {\n     int data;\n     Node next;\n  }\n*/\nNode Insert(Node head,int data) {\n// This is a \\\"method-only\\\" submission. \n// You only need to complete this method. \n  \n}\n\",\"\\\"\\\"\\\"\n Insert Node at the end of a linked list \n head pointer input could be None as well for empty list\n Node is defined as\n \n class Node(object):\n \n   def __init__(self, data=None, next_node=None):\n       self.data = data\n       self.next = next_node\n \n return back the head of the linked list in the below method\n\\\"\\\"\\\"\n\ndef Insert(head, data):\n\"}"], ["supported_langs", "{C/C++,Java,Python}"], ["solution_code", "{\"Node* Insert(Node *head,int data)  \n {  \n  // Complete this method  \n   Node *cur= new Node;  \n   cur->data = data;  \n   cur->next = NULL;  \n   if(head==NULL){  \n     head = cur;  \n   }else{  \n     Node *curr = new Node;  \n     curr = head;  \n     while(curr->next !=NULL){  \n       curr = curr->next;  \n     }  \n     curr->next = cur;  \n   }  \n     return head;  \n }\",\"Node Insert(Node head,int data) {\n    if (head == null){\n        head = new Node();\n        head.data = data;\n    }\n    else {\n        Node node = head;\n        while (node.next != null){\n            node = node.next;\n        }\n        node.next = new Node();\n        node.next.data = data;\n    }\n    return head;\n}\",\"def Insert(head, data):\n    runner = head\n    if head == None:\n        head = Node(data)\n        return head\n    \n    while runner.next != None:\n        runner = runner.next\n    runner.next = Node(data)\n    return head\"}"], ["expected_stdout", "{\"\",\"\",\"\"}"], ["given_stdin", "{\"\",\"\",\"\"}"], ["test_prefix", "{\"#include <stdio.h>\n#include <stdlib.h>\n\nstruct Node\n{\n\tint data;\n\tstruct Node *next;\n};\n\n\",\"class Test {\n\n\tclass Node {\n\t\tint data;\n\t\tNode next;\n\t}\n\n\",\"class Node(object):\n    def __init__(self, data=None, next_node=None):\n        self.data = data\n        self.next = next_node\n\n\"}"], ["test_suffix", "{\"\nint main(){\n\tNode* head = NULL;\n\tint numNodes = 4;\n\tint i;\n\tfor(i=0; i<numNodes; i++){\n\t\thead = Insert(head, i);\n\t}\n\n\tNode* runner = head;\n\tprintf(\\\"%d\\\",runner->data);\n\tfor(i=1; i<numNodes; i++){\n\t\trunner = runner->next;\n\t\tprintf(\\\"->%d\\\", runner->data);\n\t}\n\treturn 0;\n}\",\"\n\tpublic static void main (String[] args) throws java.lang.Exception\n\t{\n\t\t// your code goes here\n\t\tTest test = new Test();\n\t\tNode head = null;\n\t\t\n\t\tfor(int i=0; i<4; i++){\n\t\t\thead = test.Insert(head, i);\n\t\t}\n\t\t\n\t\tSystem.out.print(head.data);\n\t\tfor(int i=1; i<4; i++){\n\t\t\thead = head.next;\n\t\t\tSystem.out.print(\\\"->\\\"+head.data);\n\t\t}\n\n\t}\n}\",\"\nhead = None\nfor i in range(4):\n    head = Insert(head, i)\n\nrunner = head\nprint runner.data,\nfor i in range(4):\n    runner = runner.next\n    print \\\"->\\\" + str(runner.data),\n\"}"], ["created_at", "2015-11-15 23:33:31.161994"], ["updated_at", "2015-11-15 23:33:31.161994"]]
+  [1m[36m (8.2ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "problems" ("problem_title", "problem_area", "total_score", "problem_description", "input_description", "output_description", "sample_input", "sample_output", "accomplish_rate", "difficulty_level", "skeleton_code", "supported_langs", "solution_code", "expected_stdout", "given_stdin", "test_prefix", "test_suffix", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19) RETURNING "id"[0m  [["problem_title", "Merge two sorted linked lists"], ["problem_area", "Linked Lists"], ["total_score", 100], ["problem_description", "You’re given the pointer to the head nodes of two sorted linked lists. The data in both lists will be sorted in ascending order. Change the next pointers to obtain a single, merged linked list which also has data in ascending order. Either head pointer given may be null meaning that the corresponding list is empty."], ["input_description", "You have to complete the Node* MergeLists(Node* headA, Node* headB) method which takes two arguments - the heads of the two sorted linked lists to merge. You should NOT read any input from stdin/console."], ["output_description", "Change the next pointer of individual nodes so that nodes from both lists are merged into a single list. Then return the head of this merged list. Do NOT print anything to stdout/console."], ["sample_input", "1 -> 3 -> 5 -> 6 -> NULL\n2 -> 4 -> 7 -> NULL\n15 -> NULL\n12 -> NULL\nNULL \n1 -> 2 -> NULL"], ["sample_output", "1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7\n12 -> 15 -> NULL\n1 -> 2 -> NULL"], ["accomplish_rate", 0.0], ["difficulty_level", "Medium"], ["skeleton_code", nil], ["supported_langs", nil], ["solution_code", nil], ["expected_stdout", nil], ["given_stdin", nil], ["test_prefix", nil], ["test_suffix", nil], ["created_at", "2015-11-15 23:33:31.173043"], ["updated_at", "2015-11-15 23:33:31.173043"]]
+  [1m[35m (9.1ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "problems" ("problem_title", "problem_area", "total_score", "problem_description", "input_description", "output_description", "sample_input", "sample_output", "accomplish_rate", "difficulty_level", "skeleton_code", "supported_langs", "solution_code", "expected_stdout", "given_stdin", "test_prefix", "test_suffix", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19) RETURNING "id"  [["problem_title", "Detect Cycle"], ["problem_area", "Linked Lists"], ["total_score", 100], ["problem_description", "You’re given the pointer to the head node of a linked list. Find whether the list contains any cycle (or loop). A linked list is said to contain cycle if any node is re-visited while traversing the list. The head pointer given may be null meaning that the list is empty."], ["input_description", "You have to complete the int HasCycle(Node* head) method which takes one argument - the head of the linked list. You should NOT read any input from stdin/console. Number of nodes in a linked list doesn't exceed 100."], ["output_description", "Check whether the linked list has a cycle and return 1 if there is a cycle. Otherwise, return 0. Do NOT print anything to stdout/console."], ["sample_input", "1 --> NULL\n1 --> 2 --> 3\n      ^     |\n      |     |\n       ----- "], ["sample_output", "0\n1"], ["accomplish_rate", 0.0], ["difficulty_level", "Hard"], ["skeleton_code", nil], ["supported_langs", nil], ["solution_code", nil], ["expected_stdout", nil], ["given_stdin", nil], ["test_prefix", nil], ["test_suffix", nil], ["created_at", "2015-11-15 23:33:31.184118"], ["updated_at", "2015-11-15 23:33:31.184118"]]
+  [1m[36m (9.2ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "problems" ("problem_title", "problem_area", "total_score", "problem_description", "input_description", "output_description", "sample_input", "sample_output", "accomplish_rate", "difficulty_level", "skeleton_code", "supported_langs", "solution_code", "expected_stdout", "given_stdin", "test_prefix", "test_suffix", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19) RETURNING "id"[0m  [["problem_title", "Binary Search Tree : Insertion"], ["problem_area", "Trees"], ["total_score", 100], ["problem_description", "You are given a pointer to the root of a binary search tree and a value to be inserted into the tree. Insert this value into its appropriate position in the binary search tree and return the root of the updated binary tree. You just have to complete the function."], ["input_description", "You are given a function,\n\nnode * insert (node * root ,int value)\n{\n\n}\nnode is defined as :\n\nstruct node\n{\nint data;\nnode * left;\nnode * right;\n}node;"], ["output_description", "Return the root of the binary search tree after inserting the value into the tree."], ["sample_input", "        4\n       /       2   7\n     /     1   3\n    The value to be inserted is 6."], ["sample_output", "         4\n       /         2     7\n     /    /\n    1   3 6"], ["accomplish_rate", 0.0], ["difficulty_level", "Easy"], ["skeleton_code", nil], ["supported_langs", nil], ["solution_code", nil], ["expected_stdout", nil], ["given_stdin", nil], ["test_prefix", nil], ["test_suffix", nil], ["created_at", "2015-11-15 23:33:31.195244"], ["updated_at", "2015-11-15 23:33:31.195244"]]
+  [1m[35m (9.1ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "jobs" ("job_title", "job_status", "num_views", "date_posted", "job_description", "skills_required", "job_type", "role_type", "location", "company_name", "job_link", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"  [["job_title", "Senior Full-Stack Web Developer"], ["job_status", "Open"], ["num_views", 3], ["date_posted", "2015-10-24"], ["job_description", "Xometry is seeking a senior full-stack web developer to conceptualize, build, and maintain a state of the art customer-facing website and API. This role is key in integrating internet technology with the manufacturing process to give customers digital access to our advanced prototyping and manufacturing capabilities.\nDuties will include:\n• Working closely with the rest of the software development team to maintain a website for customers to upload designs, receive instant quotes, and place orders.\n• Build, maintain, and connect our website to a RESTful API to our proprietary quoting and assessment software.\n• Build automated regression tests and benchmarks for the API and website.\n• Develop best practices for maintaining modern web applications."], ["skills_required", "• Bachelors degree in Computer Science, Applied Math, Engineering or Physics\n• 3+ years of experience building live web applications\n• Experience with maintaining web applications that regularly receive traffic of at least 1,000 visitors per day\n• Fluency in HTML, CSS, Python, JavaScript and jQuery\n• Proficiency with MongoDB\n• Experience with Flask and Angular.JS preferred\n• Eagerness to gain proficiency in the latest web technologies\n• Experience with both building and consuming RESTful APIs\n• Demonstrated ability to efficiently solve problems and debug code\n• A portfolio demonstrating clean and compliant code\n• Familiarity with automated unit/regression testing and continuous integration\n• Familiarity with versioning systems such as Git\n• Familiarity with agile software development methodologies"], ["job_type", "Full Time"], ["role_type", "Full-Stack Developer"], ["location", "Gaithersburg, MD"], ["company_name", "Xometry"], ["job_link", "{https://www.xometry.com/careers/senior-full-stack-web-developer/}"], ["created_at", "2015-11-15 23:33:31.215749"], ["updated_at", "2015-11-15 23:33:31.215749"]]
+  [1m[36m (10.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "jobs" ("job_title", "job_status", "num_views", "date_posted", "job_description", "skills_required", "job_type", "role_type", "location", "company_name", "job_link", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["job_title", "Software Engineer"], ["job_status", "Open"], ["num_views", 7], ["date_posted", "2015-09-22"], ["job_description", "Role & Responsibilities\n● The 4G/LTE Mobility group is looking for a motivated individual who can contribute towards software development in this growing field. You will get to work on state-of-the-art 4G/LTE technology. This technology is deployed on Cisco ISR products. As software engineer working on 4G LTE products you will design and develop LTE solutions that will drive the demand and satisfy wide range of customers."], ["skills_required", "Minimum Qualifications\n● BS CS/EE or equivalent experience\n● Proficiency in C\n● Thorough knowledge of embedded software development\n● ability to work on device drivers\n\nDesired Skills\n● Thorough in embedded programming environment and C. \n● Ability to understand a complex problem and work on a small section of the problem. \n● Ability to generate specifications for smaller part of the bigger problem. \n● Cisco iOS knowledge is preferable but not a must. "], ["job_type", "Internship"], ["role_type", "Software Engineer"], ["location", "San Jose, CA"], ["company_name", "Cisco Systems"], ["job_link", "{https://www.jobs.cisco.com/job/San-Jose-Embedded-Senior-Software-Engineer-CA-95101/271615500/}"], ["created_at", "2015-11-15 23:33:31.228334"], ["updated_at", "2015-11-15 23:33:31.228334"]]
+  [1m[35m (9.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "jobs" ("job_title", "job_status", "num_views", "date_posted", "job_description", "skills_required", "job_type", "role_type", "location", "company_name", "job_link", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"  [["job_title", "Applications Engineer (iOS)"], ["job_status", "Open"], ["num_views", 13], ["date_posted", "2015-06-12"], ["job_description", "• Responsible for ToolKit Packaging.\n• Verification of Toolkit Requirements.\n• Co-ordinating extended documentation Version/Release management of the ToolKits.\n• Distribution to Portal hosting all the deliverables.\n• Validation of Bugs/Deep Analysis for inbound problems with Integrations team.\n• Test harness management (hosting, requirements definition & availability to team).\n• White box testing.\n• Working with internal engineering and other QA teams to deliver robust toolkits to GoPro’s partner.\n• Providing feedback and improvements for seamless integration experience."], ["skills_required", " Masters degree in Computer Science\n• 3+ years of experience as a developer, QA Engineer or Test Engineer\n• Strong analytical skills - a problem solving attitude\n• Strong communication (written and verbal) skills\n• Self-motivated and willing to work as independent contributor\n• API automation testing including working experience with unit test automation frameworks\n• Experience with:\n- Application development for iOS devices\n- BLE (Bluetooth Low energy), working with sensors and telemetry\n• Experience with both writing and executing automated test scripts\n• Experience with open source test tools\n• Hands-on experience with scripting in at least one of the following: Ruby, Shell, Perl, Python, C, C++, C#. \n• Familiarity with XML, JSON and REST-based APIs\n• Experience using test reporting & JIRA\n• Expertise in Objective-C or Java and developing native mobile apps\n• Ability to quickly learn and apply new technologies and methodologies - Ability to manage multiple projects and issues concurrently\n• Have some familiarity with Linux embedded programming\n• Experience working with external partners and suppliers"], ["job_type", "Full Time"], ["role_type", "Software Engineer"], ["location", "San Mateo, CA"], ["company_name", "GoPro"], ["job_link", "{https://www.gopro.com/careers/}"], ["created_at", "2015-11-15 23:33:31.239638"], ["updated_at", "2015-11-15 23:33:31.239638"]]
+  [1m[36m (9.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "jobs" ("job_title", "job_status", "num_views", "date_posted", "job_description", "skills_required", "job_type", "role_type", "location", "company_name", "job_link", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["job_title", "Security/Big-Data Research Internship"], ["job_status", "Open"], ["num_views", 60], ["date_posted", "2015-10-12"], ["job_description", "Our security group has several intern openings in the areas of systems and security with a focus on big-data enabled enterprise security for advanced persistent threats (APT). We have built a surveillance system that collects the data of system activities for various security analysis. To facilitate the querying and management of such large amount of the data, we plan to build a novel querying system that provides user-friendly language to describe security-related activities and efficient query processing on the data."], ["skills_required", "The internship typically produces high quality publications, patents, and the implementation of a research prototype. Our previously internships have resulted in publications in top conferences such as ACM CCS, NDSS, ACM SIGMETIRCS, etc.\nCandidates should be pursuing a PhD or be engaged in active research and have strong system design and building skills. We have multiple intern positions that cover a diverse set of research directions. Previously hands-on experiences on any of the following topics are a plus.\n- Big-data platform design and implementation\n- Big-data storage/database systems, data management and data engineering\n- Program analysis and domain specific language design\n- System programming, kernel instrumentation, kernel event tracing\n- Security big-data analytics (data mining, machine learning for security)"], ["job_type", "Internship"], ["role_type", "Data Scientist"], ["location", "Princeton, NJ"], ["company_name", "NEC Laboratories America"], ["job_link", "{http://www.nec-labs.com/working-at-nec-labs/}"], ["created_at", "2015-11-15 23:33:31.250728"], ["updated_at", "2015-11-15 23:33:31.250728"]]
+  [1m[35m (9.3ms)[0m  COMMIT
+
+
+Started GET "/" for 127.0.0.1 at 2015-11-15 17:33:48 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (4.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (11.2ms)
+Completed 200 OK in 2830ms (Views: 2803.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-11-15 17:33:52 -0600
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 108ms (Views: 107.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/sessions/profile" for 127.0.0.1 at 2015-11-15 17:33:56 -0600
+Processing by SessionsController#profile as HTML
+Redirected to http://localhost:3000/sessions/login
+Filter chain halted as :authenticate_user rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/sessions/login" for 127.0.0.1 at 2015-11-15 17:33:56 -0600
+Processing by SessionsController#login as HTML
+  Rendered sessions/login.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 86ms (Views: 85.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/problems" for 127.0.0.1 at 2015-11-15 17:33:57 -0600
+Processing by ProblemsController#index as HTML
+  [1m[35mProblem Load (0.7ms)[0m  SELECT "problems".* FROM "problems"  ORDER BY created_at DESC
+  Rendered problems/index.html.erb within layouts/application (15.0ms)
+Completed 200 OK in 114ms (Views: 109.8ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/jobs" for 127.0.0.1 at 2015-11-15 17:33:59 -0600
+Processing by JobsController#index as HTML
+  [1m[36mJob Load (0.4ms)[0m  [1mSELECT DISTINCT "jobs"."location" FROM "jobs"[0m
+  [1m[35mJob Load (0.3ms)[0m  SELECT DISTINCT "jobs"."role_type" FROM "jobs"
+  [1m[36mJob Load (0.3ms)[0m  [1mSELECT "jobs".* FROM "jobs"  ORDER BY created_at DESC[0m
+  Rendered jobs/index.html.erb within layouts/application (68.0ms)
+Completed 200 OK in 151ms (Views: 146.5ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/sessions/login" for 127.0.0.1 at 2015-11-15 17:34:01 -0600
+Processing by SessionsController#login as HTML
+  Rendered sessions/login.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 66ms (Views: 65.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/welcome/index" for 127.0.0.1 at 2015-11-15 17:34:03 -0600
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 84ms (Views: 83.4ms | ActiveRecord: 0.0ms)
