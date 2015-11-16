@@ -1,3 +1,12 @@
+require 'simplecov'
+SimpleCov.start do
+  add_filter '/spec/'
+  add_filter '/config/'
+  add_filter '/lib/'
+  add_filter '/test/'
+  add_filter '/vendor/'
+end
+
 # require 'rspec/rails'
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
@@ -14,7 +23,7 @@ require 'capybara/rails'
 # light-weight as possible. Requiring heavyweight dependencies from this file
 # will add to the boot time of your test suite on EVERY test run, even for an
 # individual file that may not need all of that loaded. Instead, consider making
-# a separate helper file that requires the additional dependencies and performs
+# a separate helthe tests in spec/controllers/user_controller_spec.rb and test/controllers/user_controller_spec.rbper file that requires the additional dependencies and performs
 # the additional setup, and require it from the spec files that actually need
 # it.
 #
