@@ -46,6 +46,7 @@ class SolutionSubmission < ActiveRecord::Base
 			results = SolutionChecker.post_check(self.submitted_code, self.language, self.stdin)
 			self.generated_stdout = results["output"]
 			self.generated_errors = results["error"]
+			self.solution_status = "Incorrect"
 			return false
 		end
 
