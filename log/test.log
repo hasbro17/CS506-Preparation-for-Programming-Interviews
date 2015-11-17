@@ -10334,3 +10334,1158 @@ Processing by SessionsController#destroy as HTML
   Rendered sessions/login.html.erb within layouts/application (0.4ms)
 Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.0ms)
   [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'newUser' LIMIT 1
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'newUser@gmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("username", "email", "hashed_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["username", "newUser"], ["email", "newUser@gmail.com"], ["hashed_password", "$2a$10$d2EKnxz0al/61quCz3X2U./DvSZOSdTXIEbivfNz2ZPC67GNS1lT6"], ["created_at", "2015-11-17 01:11:25.298748"], ["updated_at", "2015-11-17 01:11:25.298748"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT 1  [["username", "newUser"]]
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'testUser' LIMIT 1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'testuser@gmail.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("username", "email", "hashed_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "testUser"], ["email", "testuser@gmail.com"], ["hashed_password", "$2a$10$2He6ru4v7YqiomWGE2upEOEkviZkj3MNPGLxdQTct9WlPjsFbRly6"], ["created_at", "2015-11-17 01:11:25.449672"], ["updated_at", "2015-11-17 01:11:25.449672"]]
+  [1m[35m (52.7ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT 1  [["username", "testUser"]]
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" IS NULL LIMIT 1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" IS NULL LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'wn' LIMIT 1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'abc@gmail.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'abcdefghijklmnopqrstuv' LIMIT 1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'abc@gmail.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'abcde' LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'abcdef' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'abcde' LIMIT 1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'abc@abc.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'abcde' LIMIT 1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'abc@abc.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'willlll' LIMIT 1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'abc@gmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("username", "email", "hashed_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["username", "willlll"], ["email", "abc@gmail.com"], ["hashed_password", "$2a$10$FXL76l1ikAUXonDQwmpVLui/4YSngU8EcizxNfnAMsxh5zK8P8B1e"], ["created_at", "2015-11-17 01:11:25.877374"], ["updated_at", "2015-11-17 01:11:25.877374"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'willlll' LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'abc@gmail.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("username", "email", "hashed_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "willlll"], ["email", "abc@gmail.com"], ["hashed_password", "$2a$10$lsnp0txJ0mwPn8yvUHtgjuBVYEDFPAxTsI/c/4jQl251PQXY6Mk/q"], ["created_at", "2015-11-17 01:11:26.021399"], ["updated_at", "2015-11-17 01:11:26.021399"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'willlll' LIMIT 1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'anotherEmail@gmail.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'anotherUser' LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'abc@gmail.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT 1  [["username", "testUser"]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  DELETE FROM "users" WHERE "users"."id" = $1  [["id", 221]]
+  [1m[36m (17.7ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/problems" for 127.0.0.1 at 2015-11-16 19:11:26 -0600
+Processing by ProblemsController#index as HTML
+  [1m[36mProblem Load (0.6ms)[0m  [1mSELECT "problems".* FROM "problems"  ORDER BY created_at DESC[0m
+  Rendered problems/index.html.erb within layouts/application (26.2ms)
+Completed 200 OK in 177ms (Views: 161.8ms | ActiveRecord: 2.0ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Started GET "/problems" for 127.0.0.1 at 2015-11-16 19:11:26 -0600
+Processing by ProblemsController#index as HTML
+  [1m[35mProblem Load (0.4ms)[0m  SELECT "problems".* FROM "problems"  ORDER BY created_at DESC
+  Rendered problems/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.4ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/problems" for 127.0.0.1 at 2015-11-16 19:11:26 -0600
+Processing by ProblemsController#index as HTML
+  [1m[36mProblem Load (0.3ms)[0m  [1mSELECT "problems".* FROM "problems"  ORDER BY created_at DESC[0m
+  Rendered problems/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 4ms (Views: 3.6ms | ActiveRecord: 0.3ms)
+Started GET "/problems?utf8=%E2%9C%93&search=Binary" for 127.0.0.1 at 2015-11-16 19:11:26 -0600
+Processing by ProblemsController#index as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"Binary"}
+  [1m[35mProblem Load (0.5ms)[0m  SELECT "problems".* FROM "problems" WHERE (problem_title like '%Binary%')  ORDER BY created_at DESC
+  Rendered problems/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 5ms (Views: 3.7ms | ActiveRecord: 0.5ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/problems" for 127.0.0.1 at 2015-11-16 19:11:26 -0600
+Processing by ProblemsController#index as HTML
+  [1m[36mProblem Load (0.5ms)[0m  [1mSELECT "problems".* FROM "problems"  ORDER BY created_at DESC[0m
+  Rendered problems/index.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 5ms (Views: 4.2ms | ActiveRecord: 0.5ms)
+Started GET "/problems?utf8=%E2%9C%93&search=Insert" for 127.0.0.1 at 2015-11-16 19:11:26 -0600
+Processing by ProblemsController#index as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"Insert"}
+  [1m[35mProblem Load (0.5ms)[0m  SELECT "problems".* FROM "problems" WHERE (problem_title like '%Insert%')  ORDER BY created_at DESC
+  Rendered problems/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 4ms (Views: 3.0ms | ActiveRecord: 0.5ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/problems" for 127.0.0.1 at 2015-11-16 19:11:26 -0600
+Processing by ProblemsController#index as HTML
+  [1m[36mProblem Load (0.5ms)[0m  [1mSELECT "problems".* FROM "problems"  ORDER BY created_at DESC[0m
+  Rendered problems/index.html.erb within layouts/application (4.3ms)
+Completed 200 OK in 9ms (Views: 8.0ms | ActiveRecord: 0.5ms)
+Started GET "/problems?utf8=%E2%9C%93&search=One" for 127.0.0.1 at 2015-11-16 19:11:26 -0600
+Processing by ProblemsController#index as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"One"}
+  [1m[35mProblem Load (0.3ms)[0m  SELECT "problems".* FROM "problems" WHERE (problem_title like '%One%')  ORDER BY created_at DESC
+  Rendered problems/index.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 9ms (Views: 7.7ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/problems" for 127.0.0.1 at 2015-11-16 19:11:26 -0600
+Processing by ProblemsController#index as HTML
+  [1m[36mProblem Load (0.5ms)[0m  [1mSELECT "problems".* FROM "problems"  ORDER BY created_at DESC[0m
+  Rendered problems/index.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 8ms (Views: 6.6ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Started GET "/users/new" for 127.0.0.1 at 2015-11-16 19:11:26 -0600
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (18.3ms)
+Completed 200 OK in 26ms (Views: 24.6ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Started GET "/users/new" for 127.0.0.1 at 2015-11-16 19:11:26 -0600
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 8ms (Views: 6.7ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Started GET "/users/new" for 127.0.0.1 at 2015-11-16 19:11:26 -0600
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 6ms (Views: 5.6ms | ActiveRecord: 0.0ms)
+Started POST "/users" for 127.0.0.1 at 2015-11-16 19:11:26 -0600
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"username"=>"", "email"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Signup"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = '' LIMIT 1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = '' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendered users/new.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 15ms (Views: 5.0ms | ActiveRecord: 0.8ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Started GET "/users/new" for 127.0.0.1 at 2015-11-16 19:11:26 -0600
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 7ms (Views: 6.0ms | ActiveRecord: 0.0ms)
+Started POST "/users" for 127.0.0.1 at 2015-11-16 19:11:26 -0600
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"username"=>"anewuser", "email"=>"anewuser@wisc.edu", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Signup"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'anewuser' LIMIT 1[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'anewuser@wisc.edu' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("username", "email", "hashed_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "anewuser"], ["email", "anewuser@wisc.edu"], ["hashed_password", "$2a$10$ALb5ZBiGmA03d1epj2Q7keuKRU4NUcRbO4nc8Y/0WWTWekvapdOUm"], ["created_at", "2015-11-17 01:11:26.645086"], ["updated_at", "2015-11-17 01:11:26.645086"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  Rendered users/new.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 147ms (Views: 2.2ms | ActiveRecord: 1.0ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/users/new" for 127.0.0.1 at 2015-11-16 19:11:26 -0600
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.0ms)
+Started POST "/users" for 127.0.0.1 at 2015-11-16 19:11:26 -0600
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"username"=>"anewuser", "email"=>"anewuser@wisc.edu", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Signup"}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.9ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'anewuser' LIMIT 1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'anewuser@wisc.edu' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("username", "email", "hashed_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["username", "anewuser"], ["email", "anewuser@wisc.edu"], ["hashed_password", "$2a$10$zyMJCL5l8E1uwSehiTIQJeEiq4hSJY0cqH1nURiIHPizW34AKiJYu"], ["created_at", "2015-11-17 01:11:26.805872"], ["updated_at", "2015-11-17 01:11:26.805872"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  Rendered users/new.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 147ms (Views: 2.2ms | ActiveRecord: 1.6ms)
+Started GET "/sessions/login" for 127.0.0.1 at 2015-11-16 19:11:26 -0600
+Processing by SessionsController#login as HTML
+  Rendered sessions/login.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.0ms)
+Started POST "/sessions/login_attempt" for 127.0.0.1 at 2015-11-16 19:11:26 -0600
+Processing by SessionsController#login_attempt as HTML
+  Parameters: {"utf8"=>"✓", "username_or_email"=>"anewuser", "login_password"=>"[FILTERED]", "commit"=>"Log In"}
+Unpermitted parameters: utf8, commit
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT 1  [["username", "anewuser"]]
+Redirected to http://www.example.com/sessions/profile
+Completed 302 Found in 71ms (ActiveRecord: 0.3ms)
+Started GET "/sessions/profile" for 127.0.0.1 at 2015-11-16 19:11:26 -0600
+Processing by SessionsController#profile as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT 1[0m  [["username", "anewuser"]]
+  Rendered sessions/profile.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 4ms (Views: 3.1ms | ActiveRecord: 0.2ms)
+Started GET "/log_out" for 127.0.0.1 at 2015-11-16 19:11:26 -0600
+Processing by SessionsController#destroy as HTML
+  Rendered sessions/login.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'newUser' LIMIT 1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'newUser@gmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("username", "email", "hashed_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["username", "newUser"], ["email", "newUser@gmail.com"], ["hashed_password", "$2a$10$zCtEadq.0AjOmdDY9GNs7eox7Kiz8S1Oh57wZN/CekwrAgZ2h/.oS"], ["created_at", "2015-11-17 01:12:17.388037"], ["updated_at", "2015-11-17 01:12:17.388037"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT 1  [["username", "newUser"]]
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'testUser' LIMIT 1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'testuser@gmail.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("username", "email", "hashed_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "testUser"], ["email", "testuser@gmail.com"], ["hashed_password", "$2a$10$d3Wkzccw7Pq2bilUm4bRbOZoojb1LLsA5d0lKwOfG7bavL10T.Oj6"], ["created_at", "2015-11-17 01:12:17.540052"], ["updated_at", "2015-11-17 01:12:17.540052"]]
+  [1m[35m (49.8ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT 1  [["username", "testUser"]]
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" IS NULL LIMIT 1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" IS NULL LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'wn' LIMIT 1
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'abc@gmail.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'abcdefghijklmnopqrstuv' LIMIT 1
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'abc@gmail.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'abcde' LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'abcdef' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'abcde' LIMIT 1
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'abc@abc.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'abcde' LIMIT 1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'abc@abc.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'willlll' LIMIT 1
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'abc@gmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("username", "email", "hashed_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["username", "willlll"], ["email", "abc@gmail.com"], ["hashed_password", "$2a$10$45ZJMUP276le6xAcLLxIVOz8KymsOkDoHNgyl5W3fZRfu1afwnF.m"], ["created_at", "2015-11-17 01:12:17.968400"], ["updated_at", "2015-11-17 01:12:17.968400"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'willlll' LIMIT 1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'abc@gmail.com' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("username", "email", "hashed_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "willlll"], ["email", "abc@gmail.com"], ["hashed_password", "$2a$10$iEncBpa487FgikKL4zWF3Otm.C9BOQ8daSkywT8To0x.aHkEpDLSK"], ["created_at", "2015-11-17 01:12:18.113656"], ["updated_at", "2015-11-17 01:12:18.113656"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'willlll' LIMIT 1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'anotherEmail@gmail.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'anotherUser' LIMIT 1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'abc@gmail.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT 1  [["username", "testUser"]]
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  DELETE FROM "users" WHERE "users"."id" = $1  [["id", 227]]
+  [1m[36m (12.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/problems" for 127.0.0.1 at 2015-11-16 19:12:18 -0600
+Processing by ProblemsController#index as HTML
+  [1m[36mProblem Load (0.6ms)[0m  [1mSELECT "problems".* FROM "problems"  ORDER BY created_at DESC[0m
+  Rendered problems/index.html.erb within layouts/application (28.2ms)
+Completed 200 OK in 191ms (Views: 173.4ms | ActiveRecord: 1.5ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Started GET "/problems" for 127.0.0.1 at 2015-11-16 19:12:18 -0600
+Processing by ProblemsController#index as HTML
+  [1m[35mProblem Load (0.3ms)[0m  SELECT "problems".* FROM "problems"  ORDER BY created_at DESC
+  Rendered problems/index.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 4ms (Views: 3.0ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/problems" for 127.0.0.1 at 2015-11-16 19:12:18 -0600
+Processing by ProblemsController#index as HTML
+  [1m[36mProblem Load (0.3ms)[0m  [1mSELECT "problems".* FROM "problems"  ORDER BY created_at DESC[0m
+  Rendered problems/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 4ms (Views: 3.0ms | ActiveRecord: 0.3ms)
+Started GET "/problems?utf8=%E2%9C%93&search=Binary" for 127.0.0.1 at 2015-11-16 19:12:18 -0600
+Processing by ProblemsController#index as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"Binary"}
+  [1m[35mProblem Load (0.4ms)[0m  SELECT "problems".* FROM "problems" WHERE (problem_title like '%Binary%')  ORDER BY created_at DESC
+  Rendered problems/index.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 4ms (Views: 2.8ms | ActiveRecord: 0.4ms)
+  [1m[36m (2.5ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/problems" for 127.0.0.1 at 2015-11-16 19:12:18 -0600
+Processing by ProblemsController#index as HTML
+  [1m[36mProblem Load (0.4ms)[0m  [1mSELECT "problems".* FROM "problems"  ORDER BY created_at DESC[0m
+  Rendered problems/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.4ms)
+Started GET "/problems?utf8=%E2%9C%93&search=Insert" for 127.0.0.1 at 2015-11-16 19:12:18 -0600
+Processing by ProblemsController#index as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"Insert"}
+  [1m[35mProblem Load (0.5ms)[0m  SELECT "problems".* FROM "problems" WHERE (problem_title like '%Insert%')  ORDER BY created_at DESC
+  Rendered problems/index.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 5ms (Views: 3.8ms | ActiveRecord: 0.5ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/problems" for 127.0.0.1 at 2015-11-16 19:12:18 -0600
+Processing by ProblemsController#index as HTML
+  [1m[36mProblem Load (0.5ms)[0m  [1mSELECT "problems".* FROM "problems"  ORDER BY created_at DESC[0m
+  Rendered problems/index.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 9ms (Views: 7.8ms | ActiveRecord: 0.5ms)
+Started GET "/problems?utf8=%E2%9C%93&search=One" for 127.0.0.1 at 2015-11-16 19:12:18 -0600
+Processing by ProblemsController#index as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"One"}
+  [1m[35mProblem Load (0.3ms)[0m  SELECT "problems".* FROM "problems" WHERE (problem_title like '%One%')  ORDER BY created_at DESC
+  Rendered problems/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 8ms (Views: 5.7ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/problems" for 127.0.0.1 at 2015-11-16 19:12:18 -0600
+Processing by ProblemsController#index as HTML
+  [1m[36mProblem Load (0.3ms)[0m  [1mSELECT "problems".* FROM "problems"  ORDER BY created_at DESC[0m
+  Rendered problems/index.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 5ms (Views: 4.5ms | ActiveRecord: 0.3ms)
+Started GET "/problems?utf8=%E2%9C%93&search=&difficulty_level=Easy" for 127.0.0.1 at 2015-11-16 19:12:18 -0600
+Processing by ProblemsController#index as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"", "difficulty_level"=>"Easy"}
+  [1m[35mProblem Load (0.3ms)[0m  SELECT "problems".* FROM "problems" WHERE (problem_title like '%%') AND "problems"."difficulty_level" = $1  ORDER BY created_at DESC  [["difficulty_level", "Easy"]]
+  Rendered problems/index.html.erb within layouts/application (4.4ms)
+Completed 200 OK in 11ms (Views: 9.3ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.7ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/users/new" for 127.0.0.1 at 2015-11-16 19:12:18 -0600
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (10.0ms)
+Completed 200 OK in 14ms (Views: 13.1ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/users/new" for 127.0.0.1 at 2015-11-16 19:12:18 -0600
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 7ms (Views: 6.3ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/users/new" for 127.0.0.1 at 2015-11-16 19:12:18 -0600
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.0ms)
+Started POST "/users" for 127.0.0.1 at 2015-11-16 19:12:18 -0600
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"username"=>"", "email"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Signup"}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = '' LIMIT 1
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = '' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  Rendered users/new.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 17ms (Views: 8.5ms | ActiveRecord: 0.8ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+Started GET "/users/new" for 127.0.0.1 at 2015-11-16 19:12:18 -0600
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 4ms (Views: 3.5ms | ActiveRecord: 0.0ms)
+Started POST "/users" for 127.0.0.1 at 2015-11-16 19:12:18 -0600
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"username"=>"anewuser", "email"=>"anewuser@wisc.edu", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Signup"}
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'anewuser' LIMIT 1
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'anewuser@wisc.edu' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("username", "email", "hashed_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["username", "anewuser"], ["email", "anewuser@wisc.edu"], ["hashed_password", "$2a$10$yarSdbf11bkgXy1VvPjlHe8l2P/GrhDxBi6ETEuMEUOH1P63hEfgy"], ["created_at", "2015-11-17 01:12:18.765808"], ["updated_at", "2015-11-17 01:12:18.765808"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  Rendered users/new.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 150ms (Views: 2.2ms | ActiveRecord: 1.2ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Started GET "/users/new" for 127.0.0.1 at 2015-11-16 19:12:18 -0600
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.0ms)
+Started POST "/users" for 127.0.0.1 at 2015-11-16 19:12:18 -0600
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"username"=>"anewuser", "email"=>"anewuser@wisc.edu", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Signup"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'anewuser' LIMIT 1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'anewuser@wisc.edu' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("username", "email", "hashed_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "anewuser"], ["email", "anewuser@wisc.edu"], ["hashed_password", "$2a$10$eVbB3SUSGk2kTsaOuWnhYO39KZEHZCaAkZpyX5OO/rvjkbtFaAq3K"], ["created_at", "2015-11-17 01:12:18.927284"], ["updated_at", "2015-11-17 01:12:18.927284"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  Rendered users/new.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 148ms (Views: 2.2ms | ActiveRecord: 1.0ms)
+Started GET "/sessions/login" for 127.0.0.1 at 2015-11-16 19:12:18 -0600
+Processing by SessionsController#login as HTML
+  Rendered sessions/login.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.0ms)
+Started POST "/sessions/login_attempt" for 127.0.0.1 at 2015-11-16 19:12:18 -0600
+Processing by SessionsController#login_attempt as HTML
+  Parameters: {"utf8"=>"✓", "username_or_email"=>"anewuser", "login_password"=>"[FILTERED]", "commit"=>"Log In"}
+Unpermitted parameters: utf8, commit
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT 1[0m  [["username", "anewuser"]]
+Redirected to http://www.example.com/sessions/profile
+Completed 302 Found in 73ms (ActiveRecord: 0.2ms)
+Started GET "/sessions/profile" for 127.0.0.1 at 2015-11-16 19:12:19 -0600
+Processing by SessionsController#profile as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT 1  [["username", "anewuser"]]
+  Rendered sessions/profile.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.2ms)
+Started GET "/log_out" for 127.0.0.1 at 2015-11-16 19:12:19 -0600
+Processing by SessionsController#destroy as HTML
+  Rendered sessions/login.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 8ms (Views: 7.5ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.6ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'newUser' LIMIT 1
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'newUser@gmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("username", "email", "hashed_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["username", "newUser"], ["email", "newUser@gmail.com"], ["hashed_password", "$2a$10$vaQQNzlbnn5ERSV2HqpmCeK6157NPoeJyPT7fEah/xS1oQb0Qq6ty"], ["created_at", "2015-11-17 01:16:46.206825"], ["updated_at", "2015-11-17 01:16:46.206825"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT 1  [["username", "newUser"]]
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'testUser' LIMIT 1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'testuser@gmail.com' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("username", "email", "hashed_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "testUser"], ["email", "testuser@gmail.com"], ["hashed_password", "$2a$10$MOJ06YMhzDdr7ZM5msN/MuMevFshpvatJOS/1gHO.JOXXDLm9QYIW"], ["created_at", "2015-11-17 01:16:46.361145"], ["updated_at", "2015-11-17 01:16:46.361145"]]
+  [1m[35m (8.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT 1  [["username", "testUser"]]
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" IS NULL LIMIT 1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" IS NULL LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'wn' LIMIT 1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'abc@gmail.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'abcdefghijklmnopqrstuv' LIMIT 1
+  [1m[36mUser Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'abc@gmail.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'abcde' LIMIT 1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'abcdef' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'abcde' LIMIT 1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'abc@abc.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'abcde' LIMIT 1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'abc@abc.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'willlll' LIMIT 1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'abc@gmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("username", "email", "hashed_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["username", "willlll"], ["email", "abc@gmail.com"], ["hashed_password", "$2a$10$xbRqD8r9Do79Gr.FI/XX2OcABu2JcZqIc15xHp4TyZlOiUBm.2nUS"], ["created_at", "2015-11-17 01:16:46.750413"], ["updated_at", "2015-11-17 01:16:46.750413"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'willlll' LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'abc@gmail.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("username", "email", "hashed_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "willlll"], ["email", "abc@gmail.com"], ["hashed_password", "$2a$10$A/qC4cp5XixWjAG/sqE/mu93iUqBhFkPRe3k5eNMGLk/YlS1XHgM."], ["created_at", "2015-11-17 01:16:46.897705"], ["updated_at", "2015-11-17 01:16:46.897705"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'willlll' LIMIT 1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'anotherEmail@gmail.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'anotherUser' LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'abc@gmail.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT 1  [["username", "testUser"]]
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  DELETE FROM "users" WHERE "users"."id" = $1  [["id", 233]]
+  [1m[36m (9.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/problems" for 127.0.0.1 at 2015-11-16 19:16:46 -0600
+Processing by ProblemsController#index as HTML
+  [1m[36mProblem Load (0.6ms)[0m  [1mSELECT "problems".* FROM "problems"  ORDER BY created_at DESC[0m
+  Rendered problems/index.html.erb within layouts/application (35.5ms)
+Completed 200 OK in 183ms (Views: 170.9ms | ActiveRecord: 1.8ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Started GET "/problems" for 127.0.0.1 at 2015-11-16 19:16:47 -0600
+Processing by ProblemsController#index as HTML
+  [1m[35mProblem Load (0.4ms)[0m  SELECT "problems".* FROM "problems"  ORDER BY created_at DESC
+  Rendered problems/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.4ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/problems" for 127.0.0.1 at 2015-11-16 19:16:47 -0600
+Processing by ProblemsController#index as HTML
+  [1m[36mProblem Load (0.4ms)[0m  [1mSELECT "problems".* FROM "problems"  ORDER BY created_at DESC[0m
+  Rendered problems/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.4ms)
+Started GET "/problems?utf8=%E2%9C%93&search=Binary" for 127.0.0.1 at 2015-11-16 19:16:47 -0600
+Processing by ProblemsController#index as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"Binary"}
+  [1m[35mProblem Load (0.5ms)[0m  SELECT "problems".* FROM "problems" WHERE (problem_title like '%Binary%')  ORDER BY created_at DESC
+  Rendered problems/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 4ms (Views: 3.1ms | ActiveRecord: 0.5ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/problems" for 127.0.0.1 at 2015-11-16 19:16:47 -0600
+Processing by ProblemsController#index as HTML
+  [1m[36mProblem Load (0.5ms)[0m  [1mSELECT "problems".* FROM "problems"  ORDER BY created_at DESC[0m
+  Rendered problems/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 5ms (Views: 3.8ms | ActiveRecord: 0.5ms)
+Started GET "/problems?utf8=%E2%9C%93&search=Insert" for 127.0.0.1 at 2015-11-16 19:16:47 -0600
+Processing by ProblemsController#index as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"Insert"}
+  [1m[35mProblem Load (0.5ms)[0m  SELECT "problems".* FROM "problems" WHERE (problem_title like '%Insert%')  ORDER BY created_at DESC
+  Rendered problems/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.5ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/problems" for 127.0.0.1 at 2015-11-16 19:16:47 -0600
+Processing by ProblemsController#index as HTML
+  [1m[36mProblem Load (0.5ms)[0m  [1mSELECT "problems".* FROM "problems"  ORDER BY created_at DESC[0m
+  Rendered problems/index.html.erb within layouts/application (5.1ms)
+Completed 200 OK in 10ms (Views: 8.9ms | ActiveRecord: 0.5ms)
+Started GET "/problems?utf8=%E2%9C%93&search=One" for 127.0.0.1 at 2015-11-16 19:16:47 -0600
+Processing by ProblemsController#index as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"One"}
+  [1m[35mProblem Load (0.4ms)[0m  SELECT "problems".* FROM "problems" WHERE (problem_title like '%One%')  ORDER BY created_at DESC
+  Rendered problems/index.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 16ms (Views: 15.5ms | ActiveRecord: 0.4ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+Started GET "/problems" for 127.0.0.1 at 2015-11-16 19:16:47 -0600
+Processing by ProblemsController#index as HTML
+  [1m[36mProblem Load (0.3ms)[0m  [1mSELECT "problems".* FROM "problems"  ORDER BY created_at DESC[0m
+  Rendered problems/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 5ms (Views: 4.3ms | ActiveRecord: 0.3ms)
+Started GET "/problems?utf8=%E2%9C%93&search=&difficulty_level=Easy" for 127.0.0.1 at 2015-11-16 19:16:47 -0600
+Processing by ProblemsController#index as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"", "difficulty_level"=>"Easy"}
+  [1m[35mProblem Load (0.3ms)[0m  SELECT "problems".* FROM "problems" WHERE (problem_title like '%%') AND "problems"."difficulty_level" = $1  ORDER BY created_at DESC  [["difficulty_level", "Easy"]]
+  Rendered problems/index.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 11ms (Views: 9.5ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+Started GET "/problems" for 127.0.0.1 at 2015-11-16 19:16:47 -0600
+Processing by ProblemsController#index as HTML
+  [1m[36mProblem Load (0.7ms)[0m  [1mSELECT "problems".* FROM "problems"  ORDER BY created_at DESC[0m
+  Rendered problems/index.html.erb within layouts/application (4.4ms)
+Completed 200 OK in 8ms (Views: 6.7ms | ActiveRecord: 0.7ms)
+Started GET "/problems?utf8=%E2%9C%93&search=&difficulty_level=Medium" for 127.0.0.1 at 2015-11-16 19:16:47 -0600
+Processing by ProblemsController#index as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"", "difficulty_level"=>"Medium"}
+  [1m[35mProblem Load (0.3ms)[0m  SELECT "problems".* FROM "problems" WHERE (problem_title like '%%') AND "problems"."difficulty_level" = $1  ORDER BY created_at DESC  [["difficulty_level", "Medium"]]
+  Rendered problems/index.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 6ms (Views: 4.7ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/users/new" for 127.0.0.1 at 2015-11-16 19:16:47 -0600
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (15.7ms)
+Completed 200 OK in 19ms (Views: 18.4ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/users/new" for 127.0.0.1 at 2015-11-16 19:16:47 -0600
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/users/new" for 127.0.0.1 at 2015-11-16 19:16:47 -0600
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.0ms)
+Started POST "/users" for 127.0.0.1 at 2015-11-16 19:16:47 -0600
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"username"=>"", "email"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Signup"}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = '' LIMIT 1
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = '' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  Rendered users/new.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 13ms (Views: 4.2ms | ActiveRecord: 1.0ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/users/new" for 127.0.0.1 at 2015-11-16 19:16:47 -0600
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.0ms)
+Started POST "/users" for 127.0.0.1 at 2015-11-16 19:16:47 -0600
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"username"=>"anewuser", "email"=>"anewuser@wisc.edu", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Signup"}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'anewuser' LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'anewuser@wisc.edu' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("username", "email", "hashed_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["username", "anewuser"], ["email", "anewuser@wisc.edu"], ["hashed_password", "$2a$10$MJeJV9oFzvbQfh9AQZKqNeRSbmL2uNT5aImsYjUQT/lEdVYgGtB.6"], ["created_at", "2015-11-17 01:16:47.565582"], ["updated_at", "2015-11-17 01:16:47.565582"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  Rendered users/new.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 145ms (Views: 2.1ms | ActiveRecord: 0.8ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Started GET "/users/new" for 127.0.0.1 at 2015-11-16 19:16:47 -0600
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 2ms (Views: 2.1ms | ActiveRecord: 0.0ms)
+Started POST "/users" for 127.0.0.1 at 2015-11-16 19:16:47 -0600
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"username"=>"anewuser", "email"=>"anewuser@wisc.edu", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Signup"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'anewuser' LIMIT 1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'anewuser@wisc.edu' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("username", "email", "hashed_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "anewuser"], ["email", "anewuser@wisc.edu"], ["hashed_password", "$2a$10$QS5oRDOuT5dqEBAx92elXuCIcTTj.kpkIrorFfsB1WoHu./uAgFSi"], ["created_at", "2015-11-17 01:16:47.724541"], ["updated_at", "2015-11-17 01:16:47.724541"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  Rendered users/new.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 146ms (Views: 2.1ms | ActiveRecord: 0.8ms)
+Started GET "/sessions/login" for 127.0.0.1 at 2015-11-16 19:16:47 -0600
+Processing by SessionsController#login as HTML
+  Rendered sessions/login.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 4ms (Views: 3.0ms | ActiveRecord: 0.0ms)
+Started POST "/sessions/login_attempt" for 127.0.0.1 at 2015-11-16 19:16:47 -0600
+Processing by SessionsController#login_attempt as HTML
+  Parameters: {"utf8"=>"✓", "username_or_email"=>"anewuser", "login_password"=>"[FILTERED]", "commit"=>"Log In"}
+Unpermitted parameters: utf8, commit
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT 1[0m  [["username", "anewuser"]]
+Redirected to http://www.example.com/sessions/profile
+Completed 302 Found in 70ms (ActiveRecord: 0.2ms)
+Started GET "/sessions/profile" for 127.0.0.1 at 2015-11-16 19:16:47 -0600
+Processing by SessionsController#profile as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT 1  [["username", "anewuser"]]
+  Rendered sessions/profile.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 4ms (Views: 2.8ms | ActiveRecord: 0.2ms)
+Started GET "/log_out" for 127.0.0.1 at 2015-11-16 19:16:47 -0600
+Processing by SessionsController#destroy as HTML
+  Rendered sessions/login.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'newUser' LIMIT 1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'newUser@gmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("username", "email", "hashed_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["username", "newUser"], ["email", "newUser@gmail.com"], ["hashed_password", "$2a$10$IusFeKGwpXP6lIDQZxQJ4u2/sBtYGpuwP9U2Q0UPTFWf9VmPr4olm"], ["created_at", "2015-11-17 01:23:17.068771"], ["updated_at", "2015-11-17 01:23:17.068771"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT 1  [["username", "newUser"]]
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'testUser' LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'testuser@gmail.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("username", "email", "hashed_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "testUser"], ["email", "testuser@gmail.com"], ["hashed_password", "$2a$10$FguVuaU2rUFJSTTXNhqnjejOcEF..wZgPOvDUcEfpxDcVguSP9RCO"], ["created_at", "2015-11-17 01:23:17.217426"], ["updated_at", "2015-11-17 01:23:17.217426"]]
+  [1m[35m (2.0ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT 1  [["username", "testUser"]]
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" IS NULL LIMIT 1
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" IS NULL LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'wn' LIMIT 1
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'abc@gmail.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'abcdefghijklmnopqrstuv' LIMIT 1
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'abc@gmail.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'abcde' LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'abcdef' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'abcde' LIMIT 1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'abc@abc.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'abcde' LIMIT 1
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'abc@abc.com' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'willlll' LIMIT 1
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'abc@gmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("username", "email", "hashed_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["username", "willlll"], ["email", "abc@gmail.com"], ["hashed_password", "$2a$10$pkBffJ22xUkrKSGCM8XyZ.M.c7OOw1UTzNCPjlenIXt09Qzd25Qn2"], ["created_at", "2015-11-17 01:23:17.608545"], ["updated_at", "2015-11-17 01:23:17.608545"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'willlll' LIMIT 1[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'abc@gmail.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("username", "email", "hashed_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "willlll"], ["email", "abc@gmail.com"], ["hashed_password", "$2a$10$DqJRmYZQvo5T8eo.tFWp4uRm.WFmyaSi4Q3DSl1Q5.DekdllBlY6W"], ["created_at", "2015-11-17 01:23:17.753267"], ["updated_at", "2015-11-17 01:23:17.753267"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'willlll' LIMIT 1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'anotherEmail@gmail.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'anotherUser' LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'abc@gmail.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT 1  [["username", "testUser"]]
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  DELETE FROM "users" WHERE "users"."id" = $1  [["id", 239]]
+  [1m[36m (3.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/problems" for 127.0.0.1 at 2015-11-16 19:23:17 -0600
+Processing by ProblemsController#index as HTML
+  [1m[36mProblem Load (0.6ms)[0m  [1mSELECT "problems".* FROM "problems"  ORDER BY created_at DESC[0m
+  Rendered problems/index.html.erb within layouts/application (33.1ms)
+Completed 200 OK in 183ms (Views: 170.6ms | ActiveRecord: 1.6ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Started GET "/problems" for 127.0.0.1 at 2015-11-16 19:23:17 -0600
+Processing by ProblemsController#index as HTML
+  [1m[35mProblem Load (0.3ms)[0m  SELECT "problems".* FROM "problems"  ORDER BY created_at DESC
+  Rendered problems/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 4ms (Views: 3.0ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+Started GET "/problems" for 127.0.0.1 at 2015-11-16 19:23:17 -0600
+Processing by ProblemsController#index as HTML
+  [1m[36mProblem Load (0.4ms)[0m  [1mSELECT "problems".* FROM "problems"  ORDER BY created_at DESC[0m
+  Rendered problems/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 5ms (Views: 4.0ms | ActiveRecord: 0.4ms)
+Started GET "/problems?utf8=%E2%9C%93&search=" for 127.0.0.1 at 2015-11-16 19:23:17 -0600
+Processing by ProblemsController#index as HTML
+  Parameters: {"utf8"=>"✓", "search"=>""}
+  [1m[35mProblem Load (0.4ms)[0m  SELECT "problems".* FROM "problems" WHERE (problem_title like '%%')  ORDER BY created_at DESC
+  Rendered problems/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 4ms (Views: 2.8ms | ActiveRecord: 0.4ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/problems" for 127.0.0.1 at 2015-11-16 19:23:18 -0600
+Processing by ProblemsController#index as HTML
+  [1m[36mProblem Load (0.5ms)[0m  [1mSELECT "problems".* FROM "problems"  ORDER BY created_at DESC[0m
+  Rendered problems/index.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 5ms (Views: 3.9ms | ActiveRecord: 0.5ms)
+Started GET "/problems?utf8=%E2%9C%93&search=Binary" for 127.0.0.1 at 2015-11-16 19:23:18 -0600
+Processing by ProblemsController#index as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"Binary"}
+  [1m[35mProblem Load (0.3ms)[0m  SELECT "problems".* FROM "problems" WHERE (problem_title like '%Binary%')  ORDER BY created_at DESC
+  Rendered problems/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.7ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/problems" for 127.0.0.1 at 2015-11-16 19:23:18 -0600
+Processing by ProblemsController#index as HTML
+  [1m[36mProblem Load (0.3ms)[0m  [1mSELECT "problems".* FROM "problems"  ORDER BY created_at DESC[0m
+  Rendered problems/index.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 8ms (Views: 7.2ms | ActiveRecord: 0.3ms)
+Started GET "/problems?utf8=%E2%9C%93&search=Insert" for 127.0.0.1 at 2015-11-16 19:23:18 -0600
+Processing by ProblemsController#index as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"Insert"}
+  [1m[35mProblem Load (0.4ms)[0m  SELECT "problems".* FROM "problems" WHERE (problem_title like '%Insert%')  ORDER BY created_at DESC
+  Rendered problems/index.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 12ms (Views: 10.6ms | ActiveRecord: 0.4ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/problems" for 127.0.0.1 at 2015-11-16 19:23:18 -0600
+Processing by ProblemsController#index as HTML
+  [1m[36mProblem Load (0.4ms)[0m  [1mSELECT "problems".* FROM "problems"  ORDER BY created_at DESC[0m
+  Rendered problems/index.html.erb within layouts/application (5.5ms)
+Completed 200 OK in 11ms (Views: 10.5ms | ActiveRecord: 0.4ms)
+Started GET "/problems?utf8=%E2%9C%93&search=One" for 127.0.0.1 at 2015-11-16 19:23:18 -0600
+Processing by ProblemsController#index as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"One"}
+  [1m[35mProblem Load (0.3ms)[0m  SELECT "problems".* FROM "problems" WHERE (problem_title like '%One%')  ORDER BY created_at DESC
+  Rendered problems/index.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 8ms (Views: 6.5ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+Started GET "/problems" for 127.0.0.1 at 2015-11-16 19:23:18 -0600
+Processing by ProblemsController#index as HTML
+  [1m[36mProblem Load (0.3ms)[0m  [1mSELECT "problems".* FROM "problems"  ORDER BY created_at DESC[0m
+  Rendered problems/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 5ms (Views: 4.2ms | ActiveRecord: 0.3ms)
+Started GET "/problems?utf8=%E2%9C%93&search=&difficulty_level=Easy" for 127.0.0.1 at 2015-11-16 19:23:18 -0600
+Processing by ProblemsController#index as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"", "difficulty_level"=>"Easy"}
+  [1m[35mProblem Load (0.3ms)[0m  SELECT "problems".* FROM "problems" WHERE (problem_title like '%%') AND "problems"."difficulty_level" = $1  ORDER BY created_at DESC  [["difficulty_level", "Easy"]]
+  Rendered problems/index.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 6ms (Views: 4.6ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/problems" for 127.0.0.1 at 2015-11-16 19:23:18 -0600
+Processing by ProblemsController#index as HTML
+  [1m[36mProblem Load (0.3ms)[0m  [1mSELECT "problems".* FROM "problems"  ORDER BY created_at DESC[0m
+  Rendered problems/index.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 5ms (Views: 4.2ms | ActiveRecord: 0.3ms)
+Started GET "/problems?utf8=%E2%9C%93&search=&difficulty_level=Medium" for 127.0.0.1 at 2015-11-16 19:23:18 -0600
+Processing by ProblemsController#index as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"", "difficulty_level"=>"Medium"}
+  [1m[35mProblem Load (0.3ms)[0m  SELECT "problems".* FROM "problems" WHERE (problem_title like '%%') AND "problems"."difficulty_level" = $1  ORDER BY created_at DESC  [["difficulty_level", "Medium"]]
+  Rendered problems/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 5ms (Views: 4.1ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/problems" for 127.0.0.1 at 2015-11-16 19:23:18 -0600
+Processing by ProblemsController#index as HTML
+  [1m[36mProblem Load (0.4ms)[0m  [1mSELECT "problems".* FROM "problems"  ORDER BY created_at DESC[0m
+  Rendered problems/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 5ms (Views: 4.2ms | ActiveRecord: 0.4ms)
+Started GET "/problems?utf8=%E2%9C%93&search=&difficulty_level=Medium" for 127.0.0.1 at 2015-11-16 19:23:18 -0600
+Processing by ProblemsController#index as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"", "difficulty_level"=>"Medium"}
+  [1m[35mProblem Load (0.4ms)[0m  SELECT "problems".* FROM "problems" WHERE (problem_title like '%%') AND "problems"."difficulty_level" = $1  ORDER BY created_at DESC  [["difficulty_level", "Medium"]]
+  Rendered problems/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 5ms (Views: 3.5ms | ActiveRecord: 0.4ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/users/new" for 127.0.0.1 at 2015-11-16 19:23:18 -0600
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (7.6ms)
+Completed 200 OK in 11ms (Views: 10.1ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.5ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/users/new" for 127.0.0.1 at 2015-11-16 19:23:18 -0600
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 2ms (Views: 2.0ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/users/new" for 127.0.0.1 at 2015-11-16 19:23:18 -0600
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 3ms (Views: 2.9ms | ActiveRecord: 0.0ms)
+Started POST "/users" for 127.0.0.1 at 2015-11-16 19:23:18 -0600
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"username"=>"", "email"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Signup"}
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = '' LIMIT 1
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = '' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  Rendered users/new.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 11ms (Views: 3.7ms | ActiveRecord: 1.0ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/users/new" for 127.0.0.1 at 2015-11-16 19:23:18 -0600
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 3ms (Views: 2.9ms | ActiveRecord: 0.0ms)
+Started POST "/users" for 127.0.0.1 at 2015-11-16 19:23:18 -0600
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"username"=>"anewuser", "email"=>"anewuser@wisc.edu", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Signup"}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'anewuser' LIMIT 1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'anewuser@wisc.edu' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("username", "email", "hashed_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["username", "anewuser"], ["email", "anewuser@wisc.edu"], ["hashed_password", "$2a$10$4cZC8norPd/Iwmb3EVMS5eOmb27TRsMxsaOosKa3rNfDIWD50TvzS"], ["created_at", "2015-11-17 01:23:18.442644"], ["updated_at", "2015-11-17 01:23:18.442644"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  Rendered users/new.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 149ms (Views: 2.9ms | ActiveRecord: 0.9ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Started GET "/users/new" for 127.0.0.1 at 2015-11-16 19:23:18 -0600
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 2ms (Views: 1.9ms | ActiveRecord: 0.0ms)
+Started POST "/users" for 127.0.0.1 at 2015-11-16 19:23:18 -0600
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"username"=>"anewuser", "email"=>"anewuser@wisc.edu", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Signup"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'anewuser' LIMIT 1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'anewuser@wisc.edu' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("username", "email", "hashed_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "anewuser"], ["email", "anewuser@wisc.edu"], ["hashed_password", "$2a$10$RCXkMLIds1H24GC.mIJ4EOoEiOCOtNBxFOcA8ck46K.Rl5qD8q5Be"], ["created_at", "2015-11-17 01:23:18.603721"], ["updated_at", "2015-11-17 01:23:18.603721"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  Rendered users/new.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 146ms (Views: 2.1ms | ActiveRecord: 0.7ms)
+Started GET "/sessions/login" for 127.0.0.1 at 2015-11-16 19:23:18 -0600
+Processing by SessionsController#login as HTML
+  Rendered sessions/login.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 4ms (Views: 3.0ms | ActiveRecord: 0.0ms)
+Started POST "/sessions/login_attempt" for 127.0.0.1 at 2015-11-16 19:23:18 -0600
+Processing by SessionsController#login_attempt as HTML
+  Parameters: {"utf8"=>"✓", "username_or_email"=>"anewuser", "login_password"=>"[FILTERED]", "commit"=>"Log In"}
+Unpermitted parameters: utf8, commit
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT 1[0m  [["username", "anewuser"]]
+Redirected to http://www.example.com/sessions/profile
+Completed 302 Found in 70ms (ActiveRecord: 0.2ms)
+Started GET "/sessions/profile" for 127.0.0.1 at 2015-11-16 19:23:18 -0600
+Processing by SessionsController#profile as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT 1  [["username", "anewuser"]]
+  Rendered sessions/profile.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 4ms (Views: 2.7ms | ActiveRecord: 0.2ms)
+Started GET "/log_out" for 127.0.0.1 at 2015-11-16 19:23:18 -0600
+Processing by SessionsController#destroy as HTML
+  Rendered sessions/login.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.5ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'newUser' LIMIT 1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'newUser@gmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("username", "email", "hashed_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["username", "newUser"], ["email", "newUser@gmail.com"], ["hashed_password", "$2a$10$GYteyiYMToHTjcaLECEXm.6.u2nFjR/Z07eYiiNZcCfiC8GJXj0jW"], ["created_at", "2015-11-17 01:23:54.110562"], ["updated_at", "2015-11-17 01:23:54.110562"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT 1  [["username", "newUser"]]
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'testUser' LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'testuser@gmail.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("username", "email", "hashed_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "testUser"], ["email", "testuser@gmail.com"], ["hashed_password", "$2a$10$rvsNRMyxR8I8gOvk0MqMC.oXW9IC.u.c0Tsjnxm07f0UIlPj471gu"], ["created_at", "2015-11-17 01:23:54.260740"], ["updated_at", "2015-11-17 01:23:54.260740"]]
+  [1m[35m (2.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT 1  [["username", "testUser"]]
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" IS NULL LIMIT 1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" IS NULL LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'wn' LIMIT 1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'abc@gmail.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'abcdefghijklmnopqrstuv' LIMIT 1
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'abc@gmail.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'abcde' LIMIT 1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'abcdef' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'abcde' LIMIT 1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'abc@abc.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'abcde' LIMIT 1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'abc@abc.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'willlll' LIMIT 1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'abc@gmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("username", "email", "hashed_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["username", "willlll"], ["email", "abc@gmail.com"], ["hashed_password", "$2a$10$voCeK96PjFS0Tf0fOQlWEO5id/asM9R8f67I9KM40oDkQjYfny/cO"], ["created_at", "2015-11-17 01:23:54.638318"], ["updated_at", "2015-11-17 01:23:54.638318"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'willlll' LIMIT 1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'abc@gmail.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("username", "email", "hashed_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "willlll"], ["email", "abc@gmail.com"], ["hashed_password", "$2a$10$GJLLE78VwjoWftLcxBwWbutufrfyZEQswkL6zNTIaiHPNpq/wSqnG"], ["created_at", "2015-11-17 01:23:54.783119"], ["updated_at", "2015-11-17 01:23:54.783119"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'willlll' LIMIT 1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'anotherEmail@gmail.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'anotherUser' LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'abc@gmail.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT 1  [["username", "testUser"]]
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  DELETE FROM "users" WHERE "users"."id" = $1  [["id", 245]]
+  [1m[36m (6.0ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/problems" for 127.0.0.1 at 2015-11-16 19:23:54 -0600
+Processing by ProblemsController#index as HTML
+  [1m[36mProblem Load (0.7ms)[0m  [1mSELECT "problems".* FROM "problems"  ORDER BY created_at DESC[0m
+  Rendered problems/index.html.erb within layouts/application (26.9ms)
+Completed 200 OK in 184ms (Views: 168.6ms | ActiveRecord: 1.6ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Started GET "/problems" for 127.0.0.1 at 2015-11-16 19:23:55 -0600
+Processing by ProblemsController#index as HTML
+  [1m[35mProblem Load (0.3ms)[0m  SELECT "problems".* FROM "problems"  ORDER BY created_at DESC
+  Rendered problems/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 4ms (Views: 2.9ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/problems" for 127.0.0.1 at 2015-11-16 19:23:55 -0600
+Processing by ProblemsController#index as HTML
+  [1m[36mProblem Load (0.3ms)[0m  [1mSELECT "problems".* FROM "problems"  ORDER BY created_at DESC[0m
+  Rendered problems/index.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.3ms)
+Started GET "/problems?utf8=%E2%9C%93&search=" for 127.0.0.1 at 2015-11-16 19:23:55 -0600
+Processing by ProblemsController#index as HTML
+  Parameters: {"utf8"=>"✓", "search"=>""}
+  [1m[35mProblem Load (0.5ms)[0m  SELECT "problems".* FROM "problems" WHERE (problem_title like '%%')  ORDER BY created_at DESC
+  Rendered problems/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 4ms (Views: 2.9ms | ActiveRecord: 0.5ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/problems" for 127.0.0.1 at 2015-11-16 19:23:55 -0600
+Processing by ProblemsController#index as HTML
+  [1m[36mProblem Load (0.5ms)[0m  [1mSELECT "problems".* FROM "problems"  ORDER BY created_at DESC[0m
+  Rendered problems/index.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 5ms (Views: 4.2ms | ActiveRecord: 0.5ms)
+Started GET "/problems?utf8=%E2%9C%93&search=Binary" for 127.0.0.1 at 2015-11-16 19:23:55 -0600
+Processing by ProblemsController#index as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"Binary"}
+  [1m[35mProblem Load (0.3ms)[0m  SELECT "problems".* FROM "problems" WHERE (problem_title like '%Binary%')  ORDER BY created_at DESC
+  Rendered problems/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.4ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/problems" for 127.0.0.1 at 2015-11-16 19:23:55 -0600
+Processing by ProblemsController#index as HTML
+  [1m[36mProblem Load (0.5ms)[0m  [1mSELECT "problems".* FROM "problems"  ORDER BY created_at DESC[0m
+  Rendered problems/index.html.erb within layouts/application (4.7ms)
+Completed 200 OK in 10ms (Views: 8.7ms | ActiveRecord: 0.5ms)
+Started GET "/problems?utf8=%E2%9C%93&search=Insert" for 127.0.0.1 at 2015-11-16 19:23:55 -0600
+Processing by ProblemsController#index as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"Insert"}
+  [1m[35mProblem Load (0.4ms)[0m  SELECT "problems".* FROM "problems" WHERE (problem_title like '%Insert%')  ORDER BY created_at DESC
+  Rendered problems/index.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 6ms (Views: 5.6ms | ActiveRecord: 0.4ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/problems" for 127.0.0.1 at 2015-11-16 19:23:55 -0600
+Processing by ProblemsController#index as HTML
+  [1m[36mProblem Load (0.4ms)[0m  [1mSELECT "problems".* FROM "problems"  ORDER BY created_at DESC[0m
+  Rendered problems/index.html.erb within layouts/application (4.7ms)
+Completed 200 OK in 10ms (Views: 9.1ms | ActiveRecord: 0.4ms)
+Started GET "/problems?utf8=%E2%9C%93&search=One" for 127.0.0.1 at 2015-11-16 19:23:55 -0600
+Processing by ProblemsController#index as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"One"}
+  [1m[35mProblem Load (0.4ms)[0m  SELECT "problems".* FROM "problems" WHERE (problem_title like '%One%')  ORDER BY created_at DESC
+  Rendered problems/index.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 9ms (Views: 7.5ms | ActiveRecord: 0.4ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/problems" for 127.0.0.1 at 2015-11-16 19:23:55 -0600
+Processing by ProblemsController#index as HTML
+  [1m[36mProblem Load (0.3ms)[0m  [1mSELECT "problems".* FROM "problems"  ORDER BY created_at DESC[0m
+  Rendered problems/index.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 5ms (Views: 4.2ms | ActiveRecord: 0.3ms)
+Started GET "/problems?utf8=%E2%9C%93&search=&difficulty_level=Easy" for 127.0.0.1 at 2015-11-16 19:23:55 -0600
+Processing by ProblemsController#index as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"", "difficulty_level"=>"Easy"}
+  [1m[35mProblem Load (0.3ms)[0m  SELECT "problems".* FROM "problems" WHERE (problem_title like '%%') AND "problems"."difficulty_level" = $1  ORDER BY created_at DESC  [["difficulty_level", "Easy"]]
+  Rendered problems/index.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 9ms (Views: 7.0ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+Started GET "/problems" for 127.0.0.1 at 2015-11-16 19:23:55 -0600
+Processing by ProblemsController#index as HTML
+  [1m[36mProblem Load (0.5ms)[0m  [1mSELECT "problems".* FROM "problems"  ORDER BY created_at DESC[0m
+  Rendered problems/index.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 5ms (Views: 4.1ms | ActiveRecord: 0.5ms)
+Started GET "/problems?utf8=%E2%9C%93&search=&difficulty_level=Medium" for 127.0.0.1 at 2015-11-16 19:23:55 -0600
+Processing by ProblemsController#index as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"", "difficulty_level"=>"Medium"}
+  [1m[35mProblem Load (0.2ms)[0m  SELECT "problems".* FROM "problems" WHERE (problem_title like '%%') AND "problems"."difficulty_level" = $1  ORDER BY created_at DESC  [["difficulty_level", "Medium"]]
+  Rendered problems/index.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 5ms (Views: 3.5ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/problems" for 127.0.0.1 at 2015-11-16 19:23:55 -0600
+Processing by ProblemsController#index as HTML
+  [1m[36mProblem Load (0.5ms)[0m  [1mSELECT "problems".* FROM "problems"  ORDER BY created_at DESC[0m
+  Rendered problems/index.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 5ms (Views: 4.0ms | ActiveRecord: 0.5ms)
+Started GET "/problems?utf8=%E2%9C%93&search=&difficulty_level=Hard" for 127.0.0.1 at 2015-11-16 19:23:55 -0600
+Processing by ProblemsController#index as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"", "difficulty_level"=>"Hard"}
+  [1m[35mProblem Load (0.5ms)[0m  SELECT "problems".* FROM "problems" WHERE (problem_title like '%%') AND "problems"."difficulty_level" = $1  ORDER BY created_at DESC  [["difficulty_level", "Hard"]]
+  Rendered problems/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 5ms (Views: 3.6ms | ActiveRecord: 0.5ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/users/new" for 127.0.0.1 at 2015-11-16 19:23:55 -0600
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (9.9ms)
+Completed 200 OK in 14ms (Views: 13.1ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+Started GET "/users/new" for 127.0.0.1 at 2015-11-16 19:23:55 -0600
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 3ms (Views: 2.9ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/users/new" for 127.0.0.1 at 2015-11-16 19:23:55 -0600
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.0ms)
+Started POST "/users" for 127.0.0.1 at 2015-11-16 19:23:55 -0600
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"username"=>"", "email"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Signup"}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = '' LIMIT 1
+  [1m[36mUser Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = '' LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  Rendered users/new.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 14ms (Views: 4.2ms | ActiveRecord: 1.5ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/users/new" for 127.0.0.1 at 2015-11-16 19:23:55 -0600
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.0ms)
+Started POST "/users" for 127.0.0.1 at 2015-11-16 19:23:55 -0600
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"username"=>"anewuser", "email"=>"anewuser@wisc.edu", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Signup"}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'anewuser' LIMIT 1
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'anewuser@wisc.edu' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("username", "email", "hashed_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["username", "anewuser"], ["email", "anewuser@wisc.edu"], ["hashed_password", "$2a$10$iNitMpMd5yhoY1DBXTbauO0K6SlZtCcsivDbSEL7IvoTa2McPJVPC"], ["created_at", "2015-11-17 01:23:55.497979"], ["updated_at", "2015-11-17 01:23:55.497979"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  Rendered users/new.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 147ms (Views: 2.1ms | ActiveRecord: 0.9ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Started GET "/users/new" for 127.0.0.1 at 2015-11-16 19:23:55 -0600
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 2ms (Views: 1.9ms | ActiveRecord: 0.0ms)
+Started POST "/users" for 127.0.0.1 at 2015-11-16 19:23:55 -0600
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"username"=>"anewuser", "email"=>"anewuser@wisc.edu", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Signup"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'anewuser' LIMIT 1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'anewuser@wisc.edu' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("username", "email", "hashed_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "anewuser"], ["email", "anewuser@wisc.edu"], ["hashed_password", "$2a$10$o3a/QL3kuNxZ3jjxfXranuIFKke2v32FGUqUMhZ2.6qoqatH/rnZ6"], ["created_at", "2015-11-17 01:23:55.655183"], ["updated_at", "2015-11-17 01:23:55.655183"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  Rendered users/new.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 145ms (Views: 2.1ms | ActiveRecord: 0.8ms)
+Started GET "/sessions/login" for 127.0.0.1 at 2015-11-16 19:23:55 -0600
+Processing by SessionsController#login as HTML
+  Rendered sessions/login.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 3ms (Views: 2.8ms | ActiveRecord: 0.0ms)
+Started POST "/sessions/login_attempt" for 127.0.0.1 at 2015-11-16 19:23:55 -0600
+Processing by SessionsController#login_attempt as HTML
+  Parameters: {"utf8"=>"✓", "username_or_email"=>"anewuser", "login_password"=>"[FILTERED]", "commit"=>"Log In"}
+Unpermitted parameters: utf8, commit
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT 1[0m  [["username", "anewuser"]]
+Redirected to http://www.example.com/sessions/profile
+Completed 302 Found in 70ms (ActiveRecord: 0.2ms)
+Started GET "/sessions/profile" for 127.0.0.1 at 2015-11-16 19:23:55 -0600
+Processing by SessionsController#profile as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT 1  [["username", "anewuser"]]
+  Rendered sessions/profile.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 4ms (Views: 2.7ms | ActiveRecord: 0.2ms)
+Started GET "/log_out" for 127.0.0.1 at 2015-11-16 19:23:55 -0600
+Processing by SessionsController#destroy as HTML
+  Rendered sessions/login.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
