@@ -3,55 +3,85 @@ require 'spec_helper'
 
 RSpec.describe "ProblomSearch", type: :request do
   describe "return list by search keywords" do
-    it "get problom_path" do
-      get new_user_path
+    it "get probloms_path" do
+      get 'http://localhost:3000/problems'
       expect(response).to have_http_status(200)
+    end
+
+    it "visit problems page" do
+      visit 'http://localhost:3000/problems'
+    end
+
+    it "return item by search keywords" do
+      visit 'http://localhost:3000/problems'
+      fill_in "search", :with => "Binary"
+      click_button "Search"      
+      page.should have_no_content("Detect Cycle")
+      page.should have_no_content("Merge two sorted linked lists")
+      page.should have_no_content("Insert a node at the tail of a linked list")
+      page.should have_no_content("Hello World Test")
+      page.should have_content("Binary Search Tree : Insertion")
+    end
+
+    it "return list by search keywords" do
+      visit 'http://localhost:3000/problems'
+      fill_in "search", :with => "Insert"
+      click_button "Search"
+      page.should have_no_content("Detect Cycle")
+      page.should have_no_content("Merge two sorted linked lists")      
+      page.should have_no_content("Hello World Test")
+      page.should have_content("Binary Search Tree : Insertion")          
+      page.should have_content("Insert a node at the tail of a linked list")
+    end
+
+    it "return nil search but don't find keywords" do
+      visit 'http://localhost:3000/problems'
+      fill_in "search", :with => "One"
+      click_button "Search"
+      page.should have_no_content("Binary Search Tree : Insertion")
+      page.should have_no_content("Insert a node at the tail of a linked list")
+      page.should have_no_content("Detect Cycle")
+      page.should have_no_content("Merge two sorted linked lists")
+      page.should have_no_content("Hello World Test")
+    end
+  end
+
+  describe "return list by difficulty select" do
+    it "return problems of easy level " do
+      visit 'http://localhost:3000/problems'
+      choose 'request_difficulty_level_Easy'
+      click_button "Search"      
+      page.should have_no_content("Detect Cycle")
+      page.should have_no_content("Merge two sorted linked lists")
+      page.should have_content("Insert a node at the tail of a linked list")
+      page.should have_content("Hello World Test")
+      page.should have_content("Binary Search Tree : Insertion")
     end
 =begin
 
-    it "visit user creation page" do
-      visit new_user_path
+    it "return list by search keywords" do
+      visit 'http://localhost:3000/problems'
+      fill_in "search", :with => "Insert"
+      click_button "Search"
+      page.should have_no_content("Detect Cycle")
+      page.should have_no_content("Merge two sorted linked lists")      
+      page.should have_no_content("Hello World Test")
+      page.should have_content("Binary Search Tree : Insertion")          
+      page.should have_content("Insert a node at the tail of a linked list")
     end
 
-    it "create empty account should fail" do
-      visit new_user_path
-      page.should have_content("Sign Up")
-      click_button "Signup"
-      page.should have_content("Form is invalid")
+    it "return nil search but don't find keywords" do
+      visit 'http://localhost:3000/problems'
+      fill_in "search", :with => "One"
+      click_button "Search"
+      page.should have_no_content("Binary Search Tree : Insertion")
+      page.should have_no_content("Insert a node at the tail of a linked list")
+      page.should have_no_content("Detect Cycle")
+      page.should have_no_content("Merge two sorted linked lists")
+      page.should have_no_content("Hello World Test")
     end
-
-    it "create valid account should success" do
-      visit new_user_path
-      fill_in "username_field", :with => "anewuser"
-      fill_in "email_field", :with => "anewuser@wisc.edu"
-      fill_in "password_field", :with => "123456"
-      fill_in "pass_conf_field", :with => "123456"
-      click_button "Signup"
-      page.should have_content("You signed up successfully")
-    end
-
-    it "login with the newly created user" do
-      visit new_user_path
-      fill_in "username_field", :with => "anewuser"
-      fill_in "email_field", :with => "anewuser@wisc.edu"
-      fill_in "password_field", :with => "123456"
-      fill_in "pass_conf_field", :with => "123456"
-      click_button "Signup"
-      page.should have_content("You signed up successfully")
-
-      click_link "Log in"
-      fill_in "user_field", :with => "anewuser"
-      fill_in "password_field", :with => "123456"
-      click_button "Log In"
-      # page.should have_content("Log in")
-      page.should have_content("Profile")
-      page.should have_content("anewuser")
-      page.should have_content("anewuser@wisc.edu")
-      click_link "Logout"
-      page.should have_content("You've successfully logged out")
-
-    end
-=end
-
+=end    
   end
+
+
 end
