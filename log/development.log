@@ -4285,3 +4285,33 @@ Started GET "/users/new" for 127.0.0.1 at 2015-11-15 14:39:53 -0600
 Processing by UsersController#new as HTML
   Rendered users/new.html.erb within layouts/application (4.4ms)
 Completed 200 OK in 170ms (Views: 168.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-11-16 16:07:30 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 385ms (Views: 377.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/problems" for 127.0.0.1 at 2015-11-16 16:07:33 -0600
+Processing by ProblemsController#index as HTML
+  [1m[35mProblem Load (3.6ms)[0m  SELECT "problems".* FROM "problems"  ORDER BY created_at DESC
+  Rendered problems/index.html.erb within layouts/application (63.3ms)
+Completed 200 OK in 223ms (Views: 208.0ms | ActiveRecord: 7.6ms)
+
+
+Started GET "/problems?utf8=%E2%9C%93&search=tree" for 127.0.0.1 at 2015-11-16 16:10:33 -0600
+Processing by ProblemsController#index as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"tree"}
+  [1m[36mProblem Load (0.9ms)[0m  [1mSELECT "problems".* FROM "problems" WHERE (problem_title like '%tree%')  ORDER BY created_at DESC[0m
+  Rendered problems/index.html.erb within layouts/application (5.8ms)
+Completed 200 OK in 162ms (Views: 160.3ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/problems?utf8=%E2%9C%93&search=Tree" for 127.0.0.1 at 2015-11-16 16:10:38 -0600
+Processing by ProblemsController#index as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"Tree"}
+  [1m[35mProblem Load (0.6ms)[0m  SELECT "problems".* FROM "problems" WHERE (problem_title like '%Tree%')  ORDER BY created_at DESC
+  Rendered problems/index.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 132ms (Views: 131.2ms | ActiveRecord: 0.6ms)
