@@ -4,7 +4,7 @@ require 'spec_helper'
 
 
 describe "user_model_test" do
-  
+
   before(:all) do
     @testUser = User.new(
         :username => "testUser",
@@ -106,6 +106,33 @@ describe "user_model_test" do
         :password_confirmation =>"abcdefg",
     )
     expect(@user.save).to be_falsey
+  end
+
+  it "authenticate check" do
+    @testUser = User.find_by_username("testUser")
+    result = User.authenticate(
+            :username_or_email =>@testUser.username,
+            :login_password => '123456'
+    )
+    expect(result).to be_truthy
+
+    result = User.authenticate(
+        :username_or_email =>@testUser.email,
+        :login_password => '123456'
+    )
+    expect(result).to be_truthy
+
+    result = User.authenticate(
+        :username_or_email =>@testUser.username,
+        :login_password => 'wrongpassword'
+    )
+    expect(result).to be_falsey
+
+    result = User.authenticate(
+        :username_or_email =>'invalidUser',
+        :login_password => 'wrongpassword'
+    )
+    expect(result).to be_falsey
   end
 end
 
