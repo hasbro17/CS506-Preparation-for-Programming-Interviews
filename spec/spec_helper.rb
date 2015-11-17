@@ -5,6 +5,7 @@ SimpleCov.start do
   add_filter '/lib/'
   add_filter '/test/'
   add_filter '/vendor/'
+
 end
 
 # require 'rspec/rails'

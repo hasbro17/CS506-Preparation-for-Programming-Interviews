@@ -1,3 +1,4 @@
+
 require 'rails_helper'
 require 'spec_helper'
 
@@ -107,6 +108,7 @@ describe "user_model_test" do
     )
     expect(@user.save).to be_falsey
   end
+
 end
 
 

@@ -1,9 +1,11 @@
+
 require 'rails_helper'
 require 'spec_helper'
 
 
 
 describe "user_controller_test" do
+
   it "create user with controller" do
     @newUser = User.create(
         :username => "newUser",
@@ -15,6 +17,7 @@ describe "user_controller_test" do
     expect(user).to be_truthy
     expect(user).to be_instance_of(User)
   end
+
 end
 
 
