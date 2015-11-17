@@ -14,7 +14,7 @@
       <img src="./assets/0.10.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2015-11-16T13:51:28-06:00">2015-11-16T13:51:28-06:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2015-11-16T18:12:50-06:00">2015-11-16T18:12:50-06:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -25,7 +25,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         1.19
+         1.4
        </span>
     </span> hits/line)
   </h2>
@@ -57,7 +57,7 @@
         <td>13</td>
         <td>9</td>
         <td>4</td>
-        <td>2.1</td>
+        <td>2.2</td>
       </tr>
       
       <tr>
@@ -77,7 +77,7 @@
         <td>17</td>
         <td>17</td>
         <td>0</td>
-        <td>2.0</td>
+        <td>2.1</td>
       </tr>
       
       <tr>
@@ -167,7 +167,7 @@
         <td>26</td>
         <td>24</td>
         <td>2</td>
-        <td>1.0</td>
+        <td>1.7</td>
       </tr>
       
     </tbody>
@@ -338,8 +338,8 @@
           <code class="ruby">	def save_login_state</code>
         </li>
       
-        <li class="covered" data-hits="10" data-linenumber="24">
-          <span class="hits">10</span>
+        <li class="covered" data-hits="11" data-linenumber="24">
+          <span class="hits">11</span>
           
           <code class="ruby">		if session[:id]</code>
         </li>
@@ -362,8 +362,8 @@
           <code class="ruby">		else</code>
         </li>
       
-        <li class="covered" data-hits="10" data-linenumber="28">
-          <span class="hits">10</span>
+        <li class="covered" data-hits="11" data-linenumber="28">
+          <span class="hits">11</span>
           
           <code class="ruby">			return true</code>
         </li>
@@ -956,8 +956,8 @@
           <code class="ruby">	def new</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="11">
-          <span class="hits">5</span>
+        <li class="covered" data-hits="6" data-linenumber="11">
+          <span class="hits">6</span>
           
           <code class="ruby">	@user = User.new</code>
         </li>
@@ -1532,14 +1532,14 @@
           <code class="ruby">	def match_password(login_password)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="32">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="4" data-linenumber="32">
+          <span class="hits">4</span>
           
           <code class="ruby">		if BCrypt::Password.new(hashed_password)==login_password</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="33">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="2" data-linenumber="33">
+          <span class="hits">2</span>
           
           <code class="ruby">			return true</code>
         </li>
@@ -1574,14 +1574,14 @@
           <code class="ruby">	def encrypt_password</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="39">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="6" data-linenumber="39">
+          <span class="hits">6</span>
           
           <code class="ruby">		unless password.blank?</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="40">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="6" data-linenumber="40">
+          <span class="hits">6</span>
           
           <code class="ruby">			self.hashed_password = BCrypt::Password.create(password)</code>
         </li>
@@ -1616,8 +1616,8 @@
           <code class="ruby">	def clear_password</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="46">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="6" data-linenumber="46">
+          <span class="hits">6</span>
           
           <code class="ruby">		self.password = nil</code>
         </li>
