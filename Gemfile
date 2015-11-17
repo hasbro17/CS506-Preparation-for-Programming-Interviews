@@ -72,3 +72,6 @@ gem 'bootstrap-sass',       '3.2.0.0'
 
 #Paginate
 gem 'will_paginate'
+
+#test sort feature
+gem 'orderly'

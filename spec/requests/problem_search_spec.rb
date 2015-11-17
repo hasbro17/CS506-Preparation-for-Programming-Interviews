@@ -45,7 +45,7 @@ RSpec.describe "ProblomSearch", type: :request do
       page.should have_content("Insert a node at the tail of a linked list")
     end
 
-    it "return nil search but don't find keywords" do
+    it "return nil if don't find keywords" do
       visit 'http://localhost:3000/problems'
       fill_in "search", :with => "One"
       click_button "Search"
@@ -93,40 +93,31 @@ RSpec.describe "ProblomSearch", type: :request do
     end    
   end
 
-  describe "return list by difficulty select" do
-    it "return problems of easy level " do
+  describe "return list sorted name" do
+    it "return problems sorted name" do
       visit 'http://localhost:3000/problems'
-      choose 'difficulty_level_Easy'
+      check 'SortName'
       click_button "Search"      
-      page.should have_no_content("Detect Cycle")
-      page.should have_no_content("Merge two sorted linked lists")
-      page.should have_content("Insert a node at the tail of a linked list")
-      page.should have_content("Hello World Test")
       page.should have_content("Binary Search Tree : Insertion")
-    end
-
-
-    it "return problems of medium level" do
-      visit 'http://localhost:3000/problems'
-      choose 'difficulty_level_Medium'
-      click_button "Search"
-      page.should have_no_content("Detect Cycle")
-      page.should have_content("Merge two sorted linked lists")      
-      page.should have_no_content("Hello World Test")
-      page.should have_no_content("Binary Search Tree : Insertion")          
-      page.should have_no_content("Insert a node at the tail of a linked list")
-    end
-
-    it "return problems of hard level" do
-      visit 'http://localhost:3000/problems'
-      choose 'difficulty_level_Hard'
-      click_button "Search"
       page.should have_content("Detect Cycle")
-      page.should have_no_content("Merge two sorted linked lists")      
-      page.should have_no_content("Hello World Test")
-      page.should have_no_content("Binary Search Tree : Insertion")          
-      page.should have_no_content("Insert a node at the tail of a linked list")
-    end    
+      page.should have_content("Hello World Test")
+      page.should have_content("Merge two sorted linked lists")
+      page.should have_content("Insert a node at the tail of a linked list")
+    end 
   end
 
+  describe "return list with filter and keywords" do
+    it "return problems with keywords in control of filter" do
+      visit 'http://localhost:3000/problems'
+      fill_in "search", :with => "Insert"
+      choose 'difficulty_level_Easy'
+      check 'SortName'
+      click_button "Search"      
+      page.should have_content("Binary Search Tree : Insertion")
+      page.should have_no_content("Detect Cycle")
+      page.should have_no_content("Hello World Test")
+      page.should have_no_content("Merge two sorted linked lists")
+      page.should have_content("Insert a node at the tail of a linked list")
+    end 
+  end 
 end
