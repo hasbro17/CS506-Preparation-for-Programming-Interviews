@@ -4,6 +4,21 @@ require 'spec_helper'
 
 
 describe "user_model_test" do
+  
+  before(:all) do
+    @testUser = User.new(
+        :username => "testUser",
+        :email => "testuser@gmail.com",
+        :password => "123456",
+        :password_confirmation =>"123456",
+    )
+    @testUser.save
+  end
+  after(:all) do
+    @testUser = User.find_by_username("testUser")
+    @testUser.destroy
+  end
+
   it "check_password" do
     user = User.find_by_username("testUser")
     expect(user.match_password("123456")).to be_truthy #be_truthy: not false nor nil
