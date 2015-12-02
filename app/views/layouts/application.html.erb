@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Ppi506</title>
+  <title>ppi-506</title>
   <meta charset="UTF-8">
+  <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -21,22 +22,49 @@
 
 </head>
 <body>
-    <header class="navbar navbar-fixed-top navbar-inverse">
-      <div class="container">
-        <nav>
-          <ul class="nav navbar-nav navbar-right">
-            <li><%= link_to "Home",   welcome_index_path %></li>
-            <li><%=link_to 'Profile', sessions_profile_path%></li>
-            <li><%= link_to "Problems",   problems_path %></li>
-            <li><%= link_to "Jobs",   jobs_path %></li>
-            <li><%= link_to "Log in", sessions_login_path %></li>
-
-          </ul>
-        </nav>
-      </div>
-    </header>
+  <header class="navbar navbar-fixed-top navbar-inverse">
     <div class="container">
-      <%= yield %>
-    </div>
-  </body>
+      <nav>
+        <ul class="nav navbar-nav navbar-right">
+
+          <li><%= link_to "Home",   welcome_index_path %></li>
+          <li><%= link_to "Problems",   problems_path %></li>
+          <li><%= link_to "Jobs",   jobs_path %></li>
+
+          <% if logged_in? %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              Account <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%=link_to 'Profile', sessions_profile_path%></li>
+              <li><%= link_to "Account Settings", '#' %></li>
+              <li class="divider"></li>
+              <li>
+                <%= link_to "Log out", logout_path %>
+              </li>
+            </ul>
+          </li>
+          <% else %>
+          <li><%=link_to 'Sign Up', new_user_path %></li>
+          <li><%= link_to "Log in", sessions_login_path %></li>
+          <% end %>
+
+
+
+<!--
+          <li><%=link_to 'Profile', sessions_profile_path%></li>
+          <li><%= link_to "Problems",   problems_path %></li>
+          <li><%= link_to "Jobs",   jobs_path %></li>
+          <li><%= link_to "Log in", sessions_login_path %></li>
+        -->
+
+      </ul>
+    </nav>
+  </div>
+</header>
+<div class="container">
+  <%= yield %>
+</div>
+</body>
 </html>

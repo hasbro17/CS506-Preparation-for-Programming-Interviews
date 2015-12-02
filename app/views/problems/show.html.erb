@@ -1,5 +1,6 @@
 <h2><%= @problem.problem_title %></h2>
 
+<%= link_to 'Back to Problems List', problems_path, class:"btn btn-primary" %>  <%= link_to 'View Submissions', solution_submissions_path(:problem_id => @problem.id), class:"btn btn-success" %><br>
 <p>
   <strong>Problem Statment</strong><br>
   <%= @problem.problem_description %>  
@@ -30,23 +31,24 @@
 
 </p>
 
+<% if @problem.skeleton_code != nil %>
 <p>
 
-<% if @problem.skeleton_code != nil %>
-  <h3>Skeleton Codes</h3>
-    <%= form_for :display do |f| %>
-    <%= f.label :title, 'C/C++' %><br>
-    <%= f.text_area :c_sk, :value => @problem.skeleton_code[0], size: "30x10", :readonly => true %><br>
+<h3>Skeleton Codes</h3>
+  <%= form_for :display do |f| %>
+  <%= f.label :title, 'C/C++' %><br>
+  <%= f.text_area :c_sk, :value => @problem.skeleton_code[0], size: "70x12", :readonly => true %><br>
 
-    <%= f.label :title, 'Java' %><br>
-    <%= f.text_area :j_sk, :value => @problem.skeleton_code[1], size: "30x10", :readonly => true %><br>
+  <%= f.label :title, 'Java' %><br>
+  <%= f.text_area :j_sk, :value => @problem.skeleton_code[1], size: "70x12", :readonly => true %><br>
 
-    <%= f.label :title, 'Python2' %><br>
-    <%= f.text_area :p_sk, :value => @problem.skeleton_code[2], size: "30x10", :readonly => true %><br>
-  <% end %>
-    
-  </p>
+  <%= f.label :title, 'Python2' %><br>
+  <%= f.text_area :p_sk, :value => @problem.skeleton_code[2], size: "70x12", :readonly => true %><br>
 <% end %>
+  
+</p>
+<% end %>
+
 
  
 <p>
@@ -68,10 +70,7 @@
 
   <%= form_for :solution_submission, url: solution_submissions_path do |f| %>  <p>
     <%= f.label :title, 'Write your solution' %><br>
-    <%= f.text_area :submitted_code %><br>
-    
-    <%= f.label :title, 'Standard Input' %><br>
-    <%= f.text_area :stdin, :placeholder => "" %><br>
+    <%= f.text_area :submitted_code, size: "70x12" %><br>
 
     <%= f.hidden_field :problem_id, value: @problem.id %><br>
 
@@ -92,4 +91,3 @@
   
 </p>
 
-<%= link_to 'Back to Problems List', problems_path %>

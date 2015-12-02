@@ -1,49 +1,68 @@
 == README
 
-Preparation for Programming Interviews:
+Preparation For Programming Interviews
 
+Instructions to Fetch and Run Code
+
+Our GitHub Repo is hosted at:
+https://github.com/hasbro17/CS506-Preparation-for-Programming-Interviews
+
+Requirements:
 Rails 4.2.4
 Ruby 2.2.3
 
 To run the app as a local instance in development mode on your local server
 
-1. Check out the Iteration 1 release tag by doing
-	git clone --branch v1.0.2 https://github.com/hasbro17/CS506-Preparation-for-Programming-Interviews.git
+1. Check out the Iteration 2 release tag
+git clone --branch v1.0.2 https://github.com/hasbro17/CS506-Preparation-for-Programming-Interviews.github
 
-2. Set up the local Postgres Database:
-	Postgres 9.4.5
+2. Set up the local Postgres Database version 9.4.5:
 
-	To run the app in development mode, as defined in the database.yml file, the app accesses a database called "ppi-506_development" using a role called "ppi-506".
-	Username: ppi-506
-	Password: ppi-506
+To install postgres, refer to this guide:
+http://www.unixmen.com/install-postgresql-9-4-and-phppgadmin-on-ubuntu-15-10/
 
-	The app fetches the password from an environment variable defined in database.yml file called "PPI_506_DATABASE_PASSWORD".
-	So set the environment variable (for bash) 
-	export PPI_506_DATABASE_PASSWORD="ppi-506"
+NOTE: We highly recommend setting up phpPGAdmin which is a web based administration utility that greatly simplifies creating the roles and adding database that is needed for this project. The steps to setup phpPGAdmin are outlined at the end of the same postgres tutorial linked above.
 
-	Create the role "ppi-506" in your postgres database and set the permissions for that user to: 
-	1. Login
-	2. Create a database
+To run the app in development mode, as defined in the database.yml file, the app accesses a database called "ppi-506_development" using a role called "ppi-506".
+Username: ppi-506
+Password: ppi-506
 
-	Then log into the postgres instance using the role ppi-506 and create the required datbase "ppi-506_development".
+The app fetches the password from an environment variable defined in database.yml file called "PPI_506_DATABASE_PASSWORD".
+So set the environment variable (for bash) 
+export PPI_506_DATABASE_PASSWORD="ppi-506"
 
-	The app should be able to connect to the local database.
+Create the role "ppi-506" in your postgres database and set the permissions for that user to: 
+1. Login
+2. Create a database
+
+Then log into the postgres instance using the role ppi-506 and create the required database "ppi-506_development".
+
+The app should be able to connect to the local database after this point.
+
 
 3. To install dependencies, run:
 	bundle update
 
 4. Migrate and seed the database
-	Run the commands inside the ppi-506 app directory
-	1. rake db:drop
-	2. rake db:create
-	3. rake db:migrate
-	4. rake db:seed
+Run the commands inside the ppi-506 app directory
+rake db:drop
+rake db:create
+rake db:migrate
+rake db:seed
 
-	This should set up and seed the database
+This should set up and seed the database
 
-5. Launch the rails app on local host by
-	rails server
+5. Launch the rails app on localhost by:
+rails server
 
 6. Visit localhost:3000 in your browser to see the app.
+
+Testing:
+To run the tests just run the command:
+rspec
+
+This should show our test cases and the code coverage output.
+To see statistics about the test cases run:
+rake stats
 
 <tt>rake doc:app</tt>.

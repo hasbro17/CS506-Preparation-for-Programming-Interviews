@@ -1,0 +1,30 @@
+<h1>Submissions List</h1>
+
+<h3><%=@problem.problem_title %></h3>
+
+<%=link_to 'Back to problem', problem_path(@problem.id), class:"btn btn-primary" %>
+
+<table class="table table-hover">
+  <tr>
+    <th style="text-align:center;">Language</th>
+    <th style="text-align:center;">Submitted</th>
+    <th style="text-align:center;">Result</th>
+    <th style="text-align:center;">Suppported</th>
+    <th style="text-align:center;">Submission</th>
+  </tr>
+ 
+  <% @solution_submissions.each do |submission| %>
+    <tr>
+      <td style="text-align:center;"><%= submission.language %></td>
+      <td style="text-align:center;"><%= submission.date_submitted %></td>
+      <td style="text-align:center;"><%= submission.solution_status %></td>
+      <% if @problem.supported_langs != nil %>
+        <td style="text-align:center;">Yes</td>
+      <%else%>
+        <td style="text-align:center;">No</td>
+      <%end%>
+      <td style="text-align:center;"><%= link_to "View Submission", solution_submission_path(submission.id), class:"btn btn-success" %></td>
+
+    </tr>
+  <% end %>
+</table>

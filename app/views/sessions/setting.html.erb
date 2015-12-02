@@ -1,2 +1,14 @@
-<h1>Sessions#setting</h1>
-<p>Find me in app/views/sessions/setting.html.erb</p>
+<h1>Modify Profile</h1>
+<% @page_title = "Modify Profile" -%>
+<div class ="settings_form">
+	<%=form_tag(:action => 'setting') do %>
+		<p> Email: </br> <%= text_field_tag (:email) , "",  :id => 'email_field'%></p>
+		<p>First Name: </br> <%= text_field_tag (:first_name), "",  :id => 'first_name_field'%></p>
+		<p>Last Name: </br> <%= text_field_tag (:last_name),"", :id => 'last_name_field'%></p>
+		<p>Company Name: </br> <%= text_field_tag (:company),"", :id => 'company_field'%></p>
+		<%= submit_tag("Modify")%>
+	<% end %>
+	<%= flash[:notice] %>
+</div>
+<br>
+<%= link_to "Back to Profile", sessions_profile_path, class:"btn btn-primary" %>

@@ -5,8 +5,10 @@
 </p>
  
 <p>
-  <strong>Code:</strong>
-  <%= simple_format(@solution_submission.submitted_code) %>
+  <strong>Code Submitted:</strong>
+  <%= form_for :display do |f| %>
+  <%= f.text_area :code_submit, :value => @solution_submission.submitted_code, size: "70x10", :readonly => true %><br>
+  <% end %>
 </p>
 
 <p>
@@ -19,4 +21,4 @@
   <%= simple_format(@solution_submission.solution_status) %>
 </p>
 
-<%= link_to 'Problems List', problems_path %>
+<%= link_to 'Back to Problem', problem_path(@problem.id), class:"btn btn-primary" %> <%= link_to 'View Submissions', solution_submissions_path(:problem_id => @problem.id), class:"btn btn-success" %><br>

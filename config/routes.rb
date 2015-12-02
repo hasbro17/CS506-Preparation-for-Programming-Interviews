@@ -5,7 +5,10 @@ Rails.application.routes.draw do
 
   get 'sessions/profile'
 
+#used for modify profile calls
   get 'sessions/setting'
+  post 'sessions/setting'
+
 
 #used for logout call
   get "log_out" => "sessions#destroy", :as => "logout"

@@ -1,9 +1,29 @@
 <% @page_title = "Profile" -%>
-<h1>Profile</h1>
-<h2 class='User_Header'> <%=@current_user[:username]%></h2>
-<h3>
- <%=@current_user[:email]%> </br>
- <%=@current_user[:created_at]%> </br>
- <%=@current_user[:updated_at]%> 
+<h1 class='User_Header'>Username: <%=@current_user[:username]%></h1>
+<h4>
+Email: <%=@current_user[:email]%> </br>
+Name: <% if (@current_user[:first_name] && @current_user[:last_name]) %>
+<%=@current_user[:first_name]  + " "  + @current_user[:last_name] %>
+	<% else%>
+		<%= @nil%>
+<% end %>
+</br>
+
+Company: <% if (@current_user[:company]) %>
+	<%=@current_user[:company]%>
+<% else%>
+	<%= @nil%>
+<% end %>
+ </br>
+</br>
+
+Total Number of Attempts: <%= @total %> </br>
+Correct submissions: <%= @correct %> </br>
+</h4>
+<h3>Submissions by Language</h3>
+<%= pie_chart(@lang_count)%>
+
+
 </h3>
-<%= link_to "Logout", :controller => 'sessions', :action => 'destroy' %>
+<%= link_to "Logout", logout_path, class:"btn btn-warning" %>
+<%= link_to "Modify Profile Settings", sessions_setting_path, class:"btn btn-primary"%>
