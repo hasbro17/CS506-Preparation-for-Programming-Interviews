@@ -1,0 +1,49 @@
+
+  <pre id="editor">
+  //Your code goes here.
+  </pre>
+
+<%= skeleton_code[0] %><br>
+<%= problem.id %><br>
+<%= problem.skeleton_code[0] %>
+
+<%= javascript_tag "skeleton_code_global = #{skeleton_code.to_json.html_safe};" %>
+
+
+<script src="ace-builds-master/src/ace.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    var editor = ace.edit("editor");
+    editor.setTheme("ace/theme/twilight");
+    editor.session.setMode("ace/mode/javascript");
+    editor.setValue("the new text here");
+
+    $(document).ready(function(){
+	
+		//Hide the simple text_area
+	    $('#solution_submission_submitted_code').hide();
+	
+		//Copy Ace-editor's content to the text_area just before submit
+	    $('#form_ID').submit(function(){ 
+	    	$('#solution_submission_submitted_code').val(editor.getSession().getValue());
+	    });
+
+	    $("#lang_id").change(function(){
+
+	    	if(skeleton_code_global)
+	    		alert(skeleton_code_global[0].toString());
+	    	else
+	    		alert("Global array not defined");
+
+	    	var pid_global = "<%= problem.id %>";
+	    	if(pid_global){
+	    		alert(pid_global);
+	    	}
+	    	else{
+	    		alert("problem_id not defined");
+	    	}
+
+	    	editor.setValue(skeleton_code_global[0].toString());
+
+	    });
+	});
+</script>

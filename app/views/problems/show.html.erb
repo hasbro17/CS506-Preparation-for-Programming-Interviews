@@ -54,34 +54,47 @@
 <p>
   <strong>Code Editor</strong><br>
 
-  <pre id="editor">function foo(items) {
-    var i;
-    for (i = 0; i &lt; items.length; i++) {
-        alert("Ace Rocks " + items[i]);
-    }
-}</pre>
+<!--
+<pre id="editor">
+  //Your code goes here.
+  </pre>
+<script src="ace-builds-master/src/ace.js" type="text/javascript" charset="utf-8"></script>
+-->
+<%= render partial: 'problems/editor_partial', locals: {skeleton_code: @problem.skeleton_code, problem: @problem} %>
+
+
+<!--
+  <pre id="editor">
+  //Your code goes here.
+  </pre>
 
 <script src="ace-builds-master/src/ace.js" type="text/javascript" charset="utf-8"></script>
 <script>
     var editor = ace.edit("editor");
     editor.setTheme("ace/theme/twilight");
     editor.session.setMode("ace/mode/javascript");
+    editor.setValue("the new text here");
 </script>
 
-  <%= form_for :solution_submission, url: solution_submissions_path do |f| %>  <p>
-    <%= f.label :title, 'Write your solution' %><br>
-    <%= f.text_area :submitted_code, size: "70x12" %><br>
+-->
+  <%= form_for :solution_submission, url: solution_submissions_path, :html => {:id => "form_ID"} do |f| %>  <p>
+    <%= f.label :title, 'Select language' %> 
+    <%= f.text_area :submitted_code, size: "70x12" %>
+    <%= f.hidden_field :problem_id, value: @problem.id %>
 
-    <%= f.hidden_field :problem_id, value: @problem.id %><br>
-
-	
+	<!--
 	<%= f.radio_button :language, 'C/C++', :checked => true %>
     <%= f.label :language, 'C/C++' %>
     <%= f.radio_button :language, 'Java' %>
     <%= f.label :language, 'Java'%>
     <%= f.radio_button :language, 'Python' %>
     <%= f.label :language, 'Python'%>
- 
+    -->
+
+    
+    <% lang_array = @problem.supported_langs.map { |lang| [lang, lang] } %>
+    <%= select_tag(:lang_id, options_for_select(lang_array, @problem.supported_langs[0])) %>
+
   </p>
  
   <p>
