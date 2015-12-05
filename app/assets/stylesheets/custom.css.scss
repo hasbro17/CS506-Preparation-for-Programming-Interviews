@@ -3,6 +3,10 @@
 
 /* universal */
 
+#avatarimg {
+	border: 1px solid black;
+}
+
 body {
   padding-top: 60px;
 }
@@ -21,4 +25,49 @@ textarea {
 
 .center h1 {
   margin-bottom: 10px;
+}
+
+label.profileLab {
+	color: #3498db
+}
+
+.btn-prof-primary {
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0px;
+  width: 200px;
+  color: #ffffff;
+  font-size: 20px;
+  background: #39a5ed;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.btn-prof-primary:hover {
+  background: #2c82b8;
+  text-decoration: none;
+}
+
+.btn-prof-secondary {
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0px;
+  width: 200px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 20px;
+  background: #eb3b3b;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.btn-prof-secondary:hover {
+  background: #b51d1d;
+  text-decoration: none;
+}
+
+.profileInfo {
+	padding-left: 50px;
+	vertical-align: text-top;
+	line-height: 2;
 }
