@@ -4,13 +4,14 @@ class SessionsController < ApplicationController
 	before_filter :authenticate_user, :only => [:profile, :setting, :stats]
 	before_filter :save_login_state, :only => [:login, :login_attempt]
 	before_filter :stats, :only =>[:profile]
-	before_filter :set_notice, :only => [:login_attempt, :destroy]
+	before_filter :set_notice, :only => [:login_attempt, :destroy, :setting]
 
 #sets value of notice variables
 	def set_notice
 		@success_notice = "You logged in as "
 		@failure_notice = "Invalid Username or Password"
 		@logout_notice = "You've successfully logged out"
+		@modify_notice = "Profile Modified"
 	end
 
 #called on navigation to login page. Redirects to profile if user logged in
@@ -97,9 +98,13 @@ class SessionsController < ApplicationController
 		if setting_params[:company].present?#company update
 			user.update_attribute(:company, setting_params[:company])
 		end
+		if setting_params[:avatar].present?
+			user.update_attribute(:avatar, setting_params[:avatar])
+		end
+		flash[:notice] = "#{@modify_notice}"
 	end
 
 	def setting_params
-		params.permit(:email, :first_name, :last_name, :company)
+		params.permit(:email, :first_name, :last_name, :company, :avatar)
 	end
 end

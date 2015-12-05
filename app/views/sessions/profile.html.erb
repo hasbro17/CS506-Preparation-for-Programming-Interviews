@@ -1,29 +1,53 @@
 <% @page_title = "Profile" -%>
-<h1 class='User_Header'>Username: <%=@current_user[:username]%></h1>
-<h4>
-Email: <%=@current_user[:email]%> </br>
-Name: <% if (@current_user[:first_name] && @current_user[:last_name]) %>
-<%=@current_user[:first_name]  + " "  + @current_user[:last_name] %>
-	<% else%>
-		<%= @nil%>
-<% end %>
-</br>
-
-Company: <% if (@current_user[:company]) %>
-	<%=@current_user[:company]%>
-<% else%>
-	<%= @nil%>
-<% end %>
- </br>
-</br>
-
-Total Number of Attempts: <%= @total %> </br>
-Correct submissions: <%= @correct %> </br>
+<h1 class='User_Header'><%=@current_user[:username]%></h1>
+<hr>
+<table>
+	<tr>
+		<td>
+			<div id="avatarimg">
+				<% if (@current_user[:avatar_file_name]) %>
+					<%= image_tag @current_user.avatar.url (:large)%>
+					<% @current_user.avatar.url%>
+				<% else%>
+					<%= @nil%>
+				<% end %> </br>
+			</div>
+				<%= link_to "Modify Profile Settings", sessions_setting_path, class: "btn btn-prof-primary"%></br>
+				<%= link_to "Logout", logout_path, class:"btn btn-prof-secondary" %> </br>
+			 </br>
+			</br>
+		</td>
+		<td class="profileInfo">
+			<h4>
+			<label class = "profileLab">Email:</label> <%=@current_user[:email]%> </br>
+			<label class = "profileLab">Name:</label><% if (@current_user[:first_name] && @current_user[:last_name]) %>
+			<%=@current_user[:first_name]  + " "  + @current_user[:last_name] %>
+				<% else%>
+					<%= @nil%>
+			<% end %>
+			</br>
+			<label class = "profileLab">Company:</label> <% if (@current_user[:company]) %>
+				<%=@current_user[:company]%>
+			<% else%>
+				<%= @nil%>
+			<% end %>
+			 </br>
+			</br>
+		</td>
+	</tr>
+</table>
 </h4>
-<h3>Submissions by Language</h3>
-<%= pie_chart(@lang_count)%>
-
-
-</h3>
-<%= link_to "Logout", logout_path, class:"btn btn-warning" %>
-<%= link_to "Modify Profile Settings", sessions_setting_path, class:"btn btn-primary"%>
+<h3><label class = "profileLab">Submissions by Language</label></h3>
+<hr>
+<table>
+	<tr>
+		<td>
+		<%= pie_chart(@lang_count)%>
+		</td>
+		<td>
+		Total Number of Attempts: <%= @total %> </br>
+		Correct submissions: <%= @correct %> </br>
+		</td>
+	</tr>
+	</h3>
+</table>

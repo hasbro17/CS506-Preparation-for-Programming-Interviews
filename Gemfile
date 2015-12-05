@@ -75,3 +75,11 @@ gem 'will_paginate'
 
 #Charts
 gem "chartkick"
+
+#image support
+gem "rmagick"
+gem 'paperclip'
+
+#aws and environment support
+gem 'aws-sdk', ' < 2.0'
+gem 'figaro'
