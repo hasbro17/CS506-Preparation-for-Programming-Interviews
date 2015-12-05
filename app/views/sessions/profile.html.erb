@@ -12,7 +12,7 @@
 					<%= @nil%>
 				<% end %> </br>
 			</div>
-				<%= link_to "Modify Profile Settings", sessions_setting_path, class: "btn btn-prof-primary"%></br>
+				<br><%= link_to "Modify Profile Settings", sessions_setting_path, class: "btn btn-prof-primary"%></br><br>
 				<%= link_to "Logout", logout_path, class:"btn btn-prof-secondary" %> </br>
 			 </br>
 			</br>
@@ -38,16 +38,10 @@
 </table>
 </h4>
 <h3><label class = "profileLab">Submissions by Language</label></h3>
-<hr>
-<table>
-	<tr>
-		<td>
-		<%= pie_chart(@lang_count)%>
-		</td>
-		<td>
-		Total Number of Attempts: <%= @total %> </br>
-		Correct submissions: <%= @correct %> </br>
-		</td>
-	</tr>
-	</h3>
-</table>
+
+<h3>
+	Number of Attempts: <%= @total%> </br>
+	Correct submissions: <%= @correct %> </br>
+</h3>
+
+<%= pie_chart(@lang_count)%>
