@@ -3,19 +3,27 @@
   //Your code goes here.
   </pre>
 
-<%= skeleton_code[0] %><br>
-<%= problem.id %><br>
-<%= problem.skeleton_code[0] %>
 
-<%= javascript_tag "skeleton_code_global = #{skeleton_code.to_json.html_safe};" %>
+<%= javascript_tag "skeleton_code = #{problem.skeleton_code.to_json.html_safe};" %>
+<%= javascript_tag "ace_modes = #{ace_modes.to_json.html_safe};" %>
 
 
 <script src="ace-builds-master/src/ace.js" type="text/javascript" charset="utf-8"></script>
 <script>
     var editor = ace.edit("editor");
     editor.setTheme("ace/theme/twilight");
-    editor.session.setMode("ace/mode/javascript");
-    editor.setValue("the new text here");
+    //editor.session.setMode("ace/mode/java");
+    editor.session.setMode(ace_modes["C/C++"]);
+
+ 	//Start off with the code skeleton for the first language, C/C++ as default
+ 	//If supported
+	
+	if(skeleton_code){ 	
+    	editor.setValue(skeleton_code[0].toString());
+	}
+	else{
+		editor.setValue("//Not yet supported");
+	}
 
     $(document).ready(function(){
 	
@@ -27,23 +35,26 @@
 	    	$('#solution_submission_submitted_code').val(editor.getSession().getValue());
 	    });
 
-	    $("#lang_id").change(function(){
+	    //Dynamically change the code skeleton on change of language
+	    $("#language").change(function(){
 
-	    	if(skeleton_code_global)
-	    		alert(skeleton_code_global[0].toString());
-	    	else
-	    		alert("Global array not defined");
+	    	var lang_index = $("#language option:selected").index();
+	    	var lang_value = $("#language option:selected").val();
 
-	    	var pid_global = "<%= problem.id %>";
-	    	if(pid_global){
-	    		alert(pid_global);
+	    	if(skeleton_code){
+	    		//alert(skeleton_code[lang_index].toString());
+	    		editor.setValue(skeleton_code[lang_index].toString());
+	    		editor.session.setMode(ace_modes[lang_value.toString()]);
+	    		
 	    	}
 	    	else{
-	    		alert("problem_id not defined");
-	    	}
+				editor.setValue("//Problem not yet supported for any language");
+			}
 
-	    	editor.setValue(skeleton_code_global[0].toString());
+	    	
 
 	    });
 	});
+
+
 </script>

@@ -24,6 +24,7 @@ class SolutionSubmissionsController < ApplicationController
 		#Can get rid of date_submitted, already have created timestamp
 		@solution_submission.date_submitted = Date.today
 		@solution_submission.user_id = @current_user.id
+		@solution_submission.language = params[:language]
 
 		@solution_submission.send_to_checker()
 

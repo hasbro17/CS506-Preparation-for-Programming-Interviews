@@ -1,5 +1,5 @@
 class ProblemsController < ApplicationController
-
+include Enums
 	#Show the list of all problems
 	def index
 
@@ -30,6 +30,7 @@ class ProblemsController < ApplicationController
 	#Show the specific problem clicked on
 	def show
 		@problem = Problem.find(params[:id])
+		@ace_modes = Enums::ace_modes_enum
 		#@user = User.find(FindUserFromSessionOrCookie)
 	end
 

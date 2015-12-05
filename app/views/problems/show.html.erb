@@ -31,6 +31,7 @@
 
 </p>
 
+<!--
 <% if @problem.skeleton_code != nil %>
 <p>
 
@@ -48,7 +49,7 @@
   
 </p>
 <% end %>
-
+-->
 
  
 <p>
@@ -60,7 +61,7 @@
   </pre>
 <script src="ace-builds-master/src/ace.js" type="text/javascript" charset="utf-8"></script>
 -->
-<%= render partial: 'problems/editor_partial', locals: {skeleton_code: @problem.skeleton_code, problem: @problem} %>
+<%= render partial: 'problems/editor_partial', locals: {problem: @problem, ace_modes: @ace_modes} %>
 
 
 <!--
@@ -78,27 +79,29 @@
 
 -->
   <%= form_for :solution_submission, url: solution_submissions_path, :html => {:id => "form_ID"} do |f| %>  <p>
-    <%= f.label :title, 'Select language' %> 
-    <%= f.text_area :submitted_code, size: "70x12" %>
     <%= f.hidden_field :problem_id, value: @problem.id %>
 
-	<!--
-	<%= f.radio_button :language, 'C/C++', :checked => true %>
-    <%= f.label :language, 'C/C++' %>
-    <%= f.radio_button :language, 'Java' %>
-    <%= f.label :language, 'Java'%>
-    <%= f.radio_button :language, 'Python' %>
-    <%= f.label :language, 'Python'%>
-    -->
+    <%= f.text_area :submitted_code, size: "70x12" %>
 
-    
-    <% lang_array = @problem.supported_langs.map { |lang| [lang, lang] } %>
-    <%= select_tag(:lang_id, options_for_select(lang_array, @problem.supported_langs[0])) %>
+    <% if @problem.skeleton_code != nil %>
+      <%= f.label :title, 'Select language' %> 
+
+    	<!--
+    	<%= f.radio_button :language, 'C/C++', :checked => true %>
+        <%= f.label :language, 'C/C++' %>
+        <%= f.radio_button :language, 'Java' %>
+        <%= f.label :language, 'Java'%>
+        <%= f.radio_button :language, 'Python' %>
+        <%= f.label :language, 'Python'%>
+        -->    
+      <% lang_array = @problem.supported_langs.map { |lang| [lang, lang] } %>
+      <%= select_tag(:language, options_for_select(lang_array, @problem.supported_langs[0])) %>
+    <% end %>
 
   </p>
  
   <p>
-    <%= f.submit %>
+    <%= f.submit "Submit Solution"%>
   </p>
 <% end %>
   

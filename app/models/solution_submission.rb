@@ -30,7 +30,7 @@ class SolutionSubmission < ActiveRecord::Base
 			r2 = SolutionChecker.post_check(user_code, self.language, self.stdin)
 			stdout = r2["output"]
 			self.generated_stdout = stdout
-			self.generated_errors = r2["error"]
+			self.generated_errors = r2["errors"]
 
 			#Now check if user solution is valid, add checks for compilation error later
 			if stdout == expected_stdout[lang_index]
@@ -45,10 +45,14 @@ class SolutionSubmission < ActiveRecord::Base
 		else #language not supported: just execute code and don't save submission
 			results = SolutionChecker.post_check(self.submitted_code, self.language, self.stdin)
 			self.generated_stdout = results["output"]
-			self.generated_errors = results["error"]
+			self.generated_errors = results["errors"]
 			self.solution_status = "Incorrect"
 			return false
 		end
+
+		puts "\nRESULTS\n"
+		puts "\n\nSTDOUT: " + self.generated_stdout
+		puts "\n\nSTDERR: " + self.generated_errors
 
 
 

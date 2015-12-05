@@ -47,6 +47,17 @@ module Enums
 		@@problem_difficulty_enum
 	end
 
+	#Ace language mode paths
+	@@ace_modes_enum = {
+		"C/C++" => "ace/mode/c_cpp",
+		"Java" => "ace/mode/java",
+		"Python" => "ace/mode/python"
+	}
+
+	def self.ace_modes_enum
+		@@ace_modes_enum
+	end
+
 
 	######SolutionSubmission Enums########
 
