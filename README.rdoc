@@ -1,11 +1,10 @@
 == README
 
-Preparation For Programming Interviews
+**Preparation For Programming Interviews**
+
+The app is currently hosted on heroku [here] (https://murmuring-headland-8400.herokuapp.com/)
 
 Instructions to Fetch and Run Code
-
-Our GitHub Repo is hosted at:
-https://github.com/hasbro17/CS506-Preparation-for-Programming-Interviews
 
 Requirements:
 Rails 4.2.4
@@ -13,10 +12,9 @@ Ruby 2.2.3
 
 To run the app as a local instance in development mode on your local server
 
-1. Check out the Iteration 2 release tag
-git clone --branch v1.0.2 https://github.com/hasbro17/CS506-Preparation-for-Programming-Interviews.github
+Check out the [Iteration 2 release tag] (git clone --branch v1.0.2 https://github.com/hasbro17/CS506-Preparation-for-Programming-Interviews.github)
 
-2. Set up the local Postgres Database version 9.4.5:
+Set up the local Postgres Database version 9.4.5:
 
 To install postgres, refer to this guide:
 http://www.unixmen.com/install-postgresql-9-4-and-phppgadmin-on-ubuntu-15-10/
@@ -40,10 +38,10 @@ Then log into the postgres instance using the role ppi-506 and create the requir
 The app should be able to connect to the local database after this point.
 
 
-3. To install dependencies, run:
+* To install dependencies, run:
 	bundle update
 
-4. Migrate and seed the database
+* Migrate and seed the database
 Run the commands inside the ppi-506 app directory
 rake db:drop
 rake db:create
@@ -52,10 +50,10 @@ rake db:seed
 
 This should set up and seed the database
 
-5. Launch the rails app on localhost by:
+* Launch the rails app on localhost by:
 rails server
 
-6. Visit localhost:3000 in your browser to see the app.
+* Visit localhost:3000 in your browser to see the app.
 
 Testing:
 To run the tests just run the command:
